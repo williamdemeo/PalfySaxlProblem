@@ -1,0 +1,170 @@
+%% Based on a TeXnicCenter-Template by Gyorgy SZEIDL.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%------------------------------------------------------------
+%
+\documentclass{amsart}
+%
+%----------------------------------------------------------
+% This is a sample document for the AMS LaTeX Article Class
+% Class options
+%        -- Point size:  8pt, 9pt, 10pt (default), 11pt, 12pt
+%        -- Paper size:  letterpaper(default), a4paper
+%        -- Orientation: portrait(default), landscape
+%        -- Print size:  oneside, twoside(default)
+%        -- Quality:     final(default), draft
+%        -- Title page:  notitlepage, titlepage(default)
+%        -- Start chapter on left:
+%                        openright(default), openany
+%        -- Columns:     onecolumn(default), twocolumn
+%        -- Omit extra math features:
+%                        nomath
+%        -- AMSfonts:    noamsfonts
+%        -- PSAMSFonts  (fewer AMSfonts sizes):
+%                        psamsfonts
+%        -- Equation numbering:
+%                        leqno(default), reqno (equation numbers are on the right side)
+%        -- Equation centering:
+%                        centertags(default), tbtags
+%        -- Displayed equations (centered is the default):
+%                        fleqn (equations start at the same distance from the right side)
+%        -- Electronic journal:
+%                        e-only
+%------------------------------------------------------------
+% For instance the command
+%          \documentclass[a4paper,12pt,reqno]{amsart}
+% ensures that the paper size is a4, fonts are typeset at the size 12p
+% and the equation numbers are on the right side
+%
+\usepackage{amsmath}%
+\usepackage{amsfonts}%
+\usepackage{amssymb}%
+%(wjd) added stmaryrd and enumerate packages
+\usepackage{stmaryrd,enumerate}
+\usepackage{graphicx}
+\usepackage{comment}
+%------------------------------------------------------------
+% Theorem like environments
+%
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\theoremstyle{definition}
+\newtheorem{acknowledgement}{Acknowledgement}
+\newtheorem{algorithm}{Algorithm}
+\newtheorem{axiom}{Axiom}
+\newtheorem{case}{Case}
+\newtheorem{claim}{Claim}
+\newtheorem{conclusion}{Conclusion}
+\newtheorem{condition}{Condition}
+\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{criterion}{Criterion}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{exercise}{Exercise}
+\newtheorem{lemma}{Lemma}
+\newtheorem{fact}{Fact}
+\newtheorem{notation}{Notation}
+\newtheorem{problem}{Problem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{solution}{Solution}
+\newtheorem{summary}{Summary}
+\newtheorem{tool}{Tool}
+\theoremstyle{definition}
+\newtheorem{Example}{Example}
+\numberwithin{equation}{section}
+%--------------------------------------------------------
+%(wjd) A few useful macros 
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\newcommand{\core}{\ensuremath{\operatorname{core}}}
+\newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
+\newcommand{\<}{\ensuremath{\langle}}
+\renewcommand{\>}{\ensuremath{\rangle}}
+\newcommand{\lb}{\ensuremath{\llbracket}}
+\newcommand{\rb}{\ensuremath{\rrbracket}}
+%(wjd) I think it's better to use \lb H, G \rb than [H,G], 
+%      since single brackets typically denotes the commutator.
+%      If you don't like this, uncomment the next two lines and
+%      everything will change back to single brackets:
+% \renewcommand{\lb}{\ensuremath{[}}
+% \renewcommand{\rb}{\ensuremath{]}}
+
+%
+%(wjd) I prefer angled less or equal symbols, but you can
+%      change these back by commenting the next 6 lines.
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\nleq}{\ensuremath{\nleqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+\renewcommand{\lneq}{\ensuremath{\lneqslant}}
+\renewcommand{\gneq}{\ensuremath{\gneqslant}}
+\renewcommand{\ngeq}{\ensuremath{\ngeqslant}}
+%
+%(wjd) I prefer angled "normal or equal" symbol, but you can
+%      change this back by commenting the next line.
+\renewcommand{\unlhd}{\ensuremath{\trianglelefteqslant}}
+
+
+\newcommand{\bA}{\ensuremath{\mathbf{A}}}
+\newcommand{\Con}{\ensuremath{\operatorname{Con}}}
+\newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
+
+%-------------------------------------------------------
+\begin{document}
+\title{On a problem of Palfy and Saxl}
+\author{William DeMeo}
+\date{November 13, 2013}
+
+\maketitle
+
+\section{Introduction}
+In the paper \cite{PalfySaxl}, Peter Palfy and Jan Saxl pose the following 
+\begin{quote}
+  {\bf PROBLEM.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
+  4$. If three nontrivial congruences of $\bA$ pairwise permute, does it follow
+  that every pair of congruences of $\bA$ permute?
+\end{quote}
+
+These notes address answer this question affirmatively.
+
+First, we establish some basic facts and notation.
+Throughout, $X$ denotes a finite set, $\Eq(X)$ denotes the lattice of
+equivalence relations on $X$ and, for $\alpha \in \Eq(X)$ and $x\in X$, we
+denote by $x/\alpha$ the equivalence class of $\alpha$ containing $x$.  
+We often refer to equivalnce classes as
+``blocks,'' and we say that $\alpha$ has \emph{uniform blocks} if, for all 
+$x, y \in X$, $|x/\alpha| = |y/\alpha|$.  In other words, all equivalence
+classes of  $\alpha$ have the same size.  
+
+If $\alpha$ has uniform blocks of size $r$, then the number of blocks 
+of $\alpha$ is $m = |X|/r$.  We say that two equivalence relations with uniform
+blocks  have 
+%% If $\beta$ is another equivalence relation, we say
+%% that $\alpha$ and $\beta$ have 
+\emph{complementary uniform block structure}, or simply \emph{complementary
+  structure}, if the number of blocks of one is equal to
+the block size of the other. In other words, if $\alpha$ and $\beta$ are two
+equivalence relations on $X$ with uniform block sizes $r_\alpha$ and
+$r_\beta$, respectively, then $\alpha$ and $\beta$ have complementary block
+structure if and only if $r_\alpha r_\beta = |X|$.
+
+We denote the largest and smallest equivalence relations on $X$ by $1_X$ and
+$0_X$, respectively.
+That is, $1_X = \{(x,y) : x\in X, \,y \in X\}$ and 
+%% $(\forall x)(\forall y)(x,y) \in 1_X$.  W
+$0_X = \{(x,x) : x \in X\}$.
+%% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
+
+\begin{fact}
+If $\alpha_1$, $\alpha_2$, $\alpha_3$ are three distinct pairwise permuting,
+pairwise complementary equivalence relations on $X$, then these three
+relations have complementary structure, and each
+$\alpha_i$ has block size $|X|^{1/2} = n$, for some positive integer
+$n$.  Thus, the number of blocks of each $\alpha_i$ is $|X|^{1/2}$, and
+$|X| = n^2$.
+\end{fact}
+
+\bibliographystyle{plainurl}
+\bibliography{wjd}
+
+\end{document}
