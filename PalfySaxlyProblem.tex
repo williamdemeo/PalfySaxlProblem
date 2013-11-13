@@ -108,6 +108,11 @@
 \newcommand{\bA}{\ensuremath{\mathbf{A}}}
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
 \newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
+\newcommand{\rel}{\ensuremath{\mathrel}}
+\newcommand{\meet}{\ensuremath{\wedge}}
+\newcommand{\join}{\ensuremath{\vee}}
+\newcommand{\Meet}{\ensuremath{\bigwedge}}
+\renewcommand{\Join}{\ensuremath{\bigvee}}
 
 %-------------------------------------------------------
 \begin{document}
@@ -142,27 +147,52 @@ blocks  have
 %% If $\beta$ is another equivalence relation, we say
 %% that $\alpha$ and $\beta$ have 
 \emph{complementary uniform block structure}, or simply \emph{complementary
-  structure}, if the number of blocks of one is equal to
+  blocks}, if the number of blocks of one is equal to
 the block size of the other. In other words, if $\alpha$ and $\beta$ are two
 equivalence relations on $X$ with uniform block sizes $r_\alpha$ and
 $r_\beta$, respectively, then $\alpha$ and $\beta$ have complementary block
 structure if and only if $r_\alpha r_\beta = |X|$.
 
+%% If $\alpha \in \Eq(X)$ has uniform blocks of size $r$, we say that $\alpha$ has
+%% \emph{balanced uniform block structure}, or simply \emph{balanced blocks},
+%% provided $r = |X|^{1/2}$.
+
+Given two equivalence relations $\alpha$ and $\beta$ on $X$, the relation
+\[
+\alpha \circ \beta = \{(x,y) \in X^2: (\exists z)x\rel{\alpha} z
+\rel{\beta} y\}
+\]
+is called the \emph{composition of $\alpha$ and $\beta$}, and if 
+$\alpha \circ \beta = \beta \circ \alpha$ then $\alpha$ and $\beta$ are said to
+\emph{permute}, or to be \emph{permuting} equivalence relations.  
+Note that $\alpha \circ \beta \subseteq \alpha \join \beta$ with equility if and
+only if $\alpha$ and $\beta$ permute.
+
 We denote the largest and smallest equivalence relations on $X$ by $1_X$ and
 $0_X$, respectively.
-That is, $1_X = \{(x,y) : x\in X, \,y \in X\}$ and 
-%% $(\forall x)(\forall y)(x,y) \in 1_X$.  W
+That is, $1_X = X^2$ and 
 $0_X = \{(x,x) : x \in X\}$.
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
+We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
+on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
+\begin{lemma}
+Let $\{\alpha_i\}$ be some pairwise complementary
+equivalence relations on $X$.
+\begin{enumerate}
+\item If $\alpha_1 \circ \alpha_2 = \alpha_2 \circ \alpha_1$, then 
+$\alpha_1$ and $\alpha_2$ have uniform blocks.
+\item If $\alpha_1$ and $\alpha_2$ have uniform blocks of size $|X|^{1/2}$, then 
+$\alpha_1 \circ \alpha_2 =  \alpha_2 \circ \alpha_1$.
+\item Three pairwise complementary equivalence relations are pairwise permuting if and only
+  if all three have uniform blocks of size $|X|^{1/2}$.
+\end{enumerate}
+%% these three
+%% relations have complementary structure, and each
+%% $\alpha_i$ has block size $|X|^{1/2} = n$, for some positive integer
+%% $n$.  Thus, the number of blocks of each $\alpha_i$ is $|X|^{1/2}$, and
+%% $|X| = n^2$.
+\end{lemma}
 
-\begin{fact}
-If $\alpha_1$, $\alpha_2$, $\alpha_3$ are three distinct pairwise permuting,
-pairwise complementary equivalence relations on $X$, then these three
-relations have complementary structure, and each
-$\alpha_i$ has block size $|X|^{1/2} = n$, for some positive integer
-$n$.  Thus, the number of blocks of each $\alpha_i$ is $|X|^{1/2}$, and
-$|X| = n^2$.
-\end{fact}
 
 \bibliographystyle{plainurl}
 \bibliography{wjd}
