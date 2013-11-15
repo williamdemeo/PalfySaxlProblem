@@ -106,6 +106,8 @@
 \renewcommand{\unlhd}{\ensuremath{\trianglelefteqslant}}
 
 
+\newcommand{\Peter}{P{\'e}ter}
+\newcommand{\Palfy}{P\'alfy}
 \newcommand{\bA}{\ensuremath{\mathbf{A}}}
 \newcommand{\sP}{\ensuremath{\mathscr{P}}}
 %\newcommand{\ker}{\ensuremath{\operatorname{ker}}}
@@ -128,9 +130,9 @@
 \maketitle
 
 \section{Introduction}
-In the paper \cite{PalfySaxl}, Peter P\'{a}lfy and Jan Saxl pose the following 
+In the paper \cite{PalfySaxl}, \Peter\ \Palfy\ and Jan Saxl pose the following 
 \begin{quote}
-  {\bf PROBLEM.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
+  {\sc Problem.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
   4$. If three nontrivial congruences of $\bA$ pairwise permute, does it follow
   that every pair of congruences of $\bA$ permute?
 \end{quote}
@@ -139,7 +141,7 @@ These notes collect some notation and facts that might be useful for attacking t
 Throughout, $X$ denotes a finite set, $\Eq(X)$ denotes the lattice of
 equivalence relations on $X$ and, for $\alpha \in \Eq(X)$ and $x\in X$, we
 denote by $x/\alpha$ the equivalence class of $\alpha$ containing $x$.
-We often refer to equivalnce classes as
+We often refer to equivalence classes as
 ``blocks,'' and we denote by $\nb{\alpha}$ the number of blocks of the
 equivalence relation $\alpha$. 
 
@@ -161,11 +163,12 @@ We say that $\alpha$ has \emph{uniform blocks} if
 all blocks of  $\alpha$ have the same size; or, equivalently,
 the block-size function is constant: for all 
 $x, y \in X$, $|x/\alpha| = |y/\alpha|$.  We will use $|x/\alpha|$, without specifying
-a particular $x\in X$, to denote this block size.\footnote{Alternatively, we
-  might consider using 
-  $|x_{\cdot}/\alpha|$ to emphasize that every $x\in X$ can be substituted for
-  $x_\cdot$ without changing the value of $|x_\cdot/\alpha|$, but this notation
-  may be too cumbersome.}  
+a particular $x\in X$, to denote this block size.
+%% \footnote{Alternatively, we
+%%   might consider using 
+%%   $|x_{\cdot}/\alpha|$ to emphasize that every $x\in X$ can be substituted for
+%%   $x_\cdot$ without changing the value of $|x_\cdot/\alpha|$, but this notation
+%%   may be too cumbersome.}  
 Thus, when $\alpha$
 has uniform blocks, we have $|X|= |x/\alpha| \cdot \nb{\alpha}$.
 
@@ -194,12 +197,13 @@ Given two equivalence relations $\alpha$ and $\beta$ on $X$, the relation
 is called the \emph{composition of $\alpha$ and $\beta$}, and if 
 $\alpha \circ \beta = \beta \circ \alpha$ then $\alpha$ and $\beta$ are said to
 \emph{permute}, or to be \emph{permuting} equivalence relations.  
-Note that $\alpha \circ \beta \subseteq \alpha \join \beta$ with equility if and
+Note that $\alpha \circ \beta \subseteq \alpha \join \beta$ with equality if and
 only if $\alpha$ and $\beta$ permute.
 
-The largest and smallest equivalence relations on $X$ are given by $1_X = X^2$
+The largest and smallest equivalence relations on $X$ are $1_X = X^2$
 and $0_X = \{(x,x) : x \in X\}$, respectively.
 
+\section{Basic observations}
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
 We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
 on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
@@ -247,7 +251,7 @@ for all $x, y\in X$, we have
  = |x/\alpha|\cdot \nb{\alpha} = |X|.
 \]
 
-To prove the converse, suppse $\alpha$ and $\beta$ are pairwise complements
+To prove the converse, suppose $\alpha$ and $\beta$ are pairwise complements
 with complementary blocks.  Then $|x/\alpha|\cdot |y/\beta| = |X|$, 
 thus $|y/\beta| = |x/\alpha|^{-1} \cdot |X|  = \nb{\alpha}$ 
 hold for all $x, y \in X$.  Therefore, for all $x\in X$, we have
@@ -262,12 +266,12 @@ This proves that $\alpha\circ \beta = 1_X$, as desired.
 
 \begin{proof}[Proof of Corollary~\ref{cor:1}]
 Since $\alpha_1$ and $\alpha_2$ permute and are complements, Lemma~\ref{lem:1}
-implies they have complmentary blocks, so
+implies they have complementary blocks, so
 \begin{equation}
   \label{eq:2}
 |x/\alpha_1| = |x/\alpha_2|^{-1} \cdot |X|= \nb{\alpha_2}.
 \end{equation}
-(This holds for all $x\in X$. Recall that complemntary blocks are always
+(This holds for all $x\in X$. Recall that complementary blocks are always
 uniform.) 
 Similarly, since $\alpha_1$ and $\alpha_3$ permute, we have
 $|x/\alpha_1| = |x/\alpha_3|^{-1} \cdot |X| = \nb{\alpha_3}$.
@@ -290,6 +294,36 @@ $|x/\alpha_i| = \sqrt{|X|}$, then
 $\nb{\alpha_i} = \sqrt{|X|}$, so
 $\alpha_i \circ \alpha_j = 1_X$.
 \end{proof}
+
+From Corollary~\ref{cor:1} we see that the \Palfy-Saxl problem can be stated as
+\begin{quote}
+  {\sc Problem.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
+  4$. %If three nontrivial congruences of $\bA$ pairwise permute, does it follow
+If three atoms of $\bA$ have Property~(\ref{eq:4}) below, does it follow
+  that every atom has Property~(\ref{eq:4})?
+  \begin{equation}
+    \label{eq:4}
+(\forall x) \; |x/\alpha|  = \sqrt{|X|} = \nb{\alpha}
+  \end{equation}
+\end{quote}
+
+\bigskip
+
+\noindent To prove that the answer is ``no,'' it would suffice to find a 
+congruence lattice $\Con \bA \cong M_n$, $n\geq 4$, where 3 atoms have
+Property~(\ref{eq:4})   
+% $|x/\alpha| = \sqrt{|X|}$
+ and one atom $\beta$ has $|x/\beta| < \sqrt{|X|} < \nb{\beta}$.
+
+\bigskip
+
+\noindent To prove that the answer is ``yes,'' it would suffice to prove that 
+if $M_n\leq \Eq(X)$ has 3 atoms 
+with Property~(\ref{eq:4}) and
+an atom $\beta$ with $|x/\beta| < \sqrt{|X|}$, then this $M_n$ is not a
+congruence lattice.  For example, we might find a method which shows in
+such cases that the closure of the lattice will always contain some 
+$\beta < \theta < 1_X$.
 
 %% \begin{lemma}
 %% Let $\{\alpha_i : 0\leq i < r\}$ be a set of pairwise complementary
