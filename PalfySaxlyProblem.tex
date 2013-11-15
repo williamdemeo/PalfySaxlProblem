@@ -180,7 +180,7 @@ blocks  have
 the block size of the other. In other words, if $\alpha$ and $\beta$ are two
 equivalence relations on $X$ with uniform block sizes $|x/\alpha|$ and
 $|x/\beta|$, respectively, then $\alpha$ and $\beta$ have complementary blocks
-if and only if $(\forall x)(\forall y) |x/\alpha|\cdot |y/\beta| = |X|$.
+if and only if $(\forall x)(\forall y)\, |x/\alpha|\cdot |y/\beta| = |X|$.
 
 %% If $\alpha \in \Eq(X)$ has uniform blocks of size $r$, we say that $\alpha$ has
 %% \emph{balanced uniform block structure}, or simply \emph{balanced blocks},
@@ -204,33 +204,83 @@ and $0_X = \{(x,x) : x \in X\}$, respectively.
 We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
 on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
 \begin{lemma}
+\label{lem:1}
 Suppose $\alpha$ and $\beta$ are complementary equivalence relations on
 $X$. Then $\alpha$ and $\beta$ permute if and only if they have complementary
 blocks.  That is,
 \[
-\alpha \circ \beta \quad \Longleftrightarrow \quad (\forall x)(\forall y)
+\alpha \circ \beta \quad \Longleftrightarrow \quad (\forall x)(\forall y)\,
 |x/\alpha|\cdot |y/\alpha| = |X|.
 \]
 \end{lemma}
+\begin{corollary}
+\label{cor:1}
+Suppose $\alpha_1$, $\alpha_2$, $\alpha_3$ are pairwise complementary
+equivalence relations on $X$. Then  $\alpha_1$, $\alpha_2$, $\alpha_3$ are
+pairwise permuting if and only if they all have uniform blocks of size 
+$\sqrt{|X|}$.  In other words,
+\[
+(\forall i)(\forall j) \, (i\neq j \longrightarrow \alpha_i \circ \alpha_j = 1_X)
+\quad \Longleftrightarrow \quad (\forall i)(\forall x) \, |x/\alpha_i| =
+\sqrt{|X|}.
+\]
+In this case, we clearly have $|x/\alpha_i| =\nb{\alpha_i}$. 
+\end{corollary}
+\begin{proof}[Proof of Lemma~\ref{lem:1}]
+  Assume $\alpha \circ \beta = \alpha \join \beta = 1_X$. Then, for all $x\in X$
+  we have
+  \begin{equation}
+    \label{eq:1}
+%x/(\alpha\circ \beta) = \dot{\bigcup}_{y \in x/\alpha} y/\beta = X,
+x/(\alpha\circ \beta) = \coprod_{y \in x/\alpha} y/\beta = X,
+  \end{equation}
+where $\coprod$ denotes disjoint union.  The union is disjoint since
+$\alpha \meet \beta = 0_X$.  Since the union in~(\ref{eq:1}) is all of $X$,
+every block of $\beta$ must appear in the union, so the block $x/\alpha$ has
+exactly $\nb{\beta}$ elements. Since $x$ was arbitrary, $\alpha$ has uniform
+blocks of size $|x/\alpha| =\nb{\beta}$. Similarly, 
+$x/(\beta \circ \alpha) = \coprod_{y \in x/\beta} y/\alpha = X$, so 
+$|x/\beta| =\nb{\alpha}$ holds for all $x\in X$.  Therefore, 
+for all $x, y\in X$, we have
+\[
+|x/\alpha|\cdot |y/\beta| 
+ = |x/\alpha|\cdot \nb{\alpha} = |X|.
+\]
 
+To prove the converse, suppse $\alpha$ and $\beta$ are pairwise complements
+with complementary blocks.  Then $|x/\alpha|\cdot |y/\beta| = |X|$, 
+thus $|y/\beta| = |x/\alpha|^{-1} \cdot |X|  = \nb{\alpha}$ 
+hold for all $x, y \in X$.  Therefore, for all $x\in X$, we have
+\begin{align*}
+\bigl|x/(\alpha\circ \beta)\bigr| &= \bigl|\coprod_{y\in x/\alpha} y/\beta\bigr|
+= \sum_{y \in x/\alpha} |y/\beta|\\
+&= \sum_{y \in x/\alpha} \nb{\alpha} \\
+&= |x/\alpha|\nb{\alpha} = |X|.
+\end{align*}
+This proves that $\alpha\circ \beta = 1_X$.
+\end{proof}
 
-\begin{lemma}
-Let $\{\alpha_i : 0\leq i < r\}$ be a set of pairwise complementary
-equivalence relations on $X$.
-\begin{enumerate}
-\item If $\alpha_1 \circ \alpha_2 = \alpha_2 \circ \alpha_1$, then 
-$\alpha_1$ and $\alpha_2$ have uniform blocks.
-\item If $\alpha_1$ and $\alpha_2$ have uniform blocks of size $|X|^{1/2}$, then 
-$\alpha_1 \circ \alpha_2 =  \alpha_2 \circ \alpha_1$.
-\item Three pairwise complementary equivalence relations are pairwise permuting if and only
-  if all three have uniform blocks of size $|X|^{1/2}$.
-\end{enumerate}
+\begin{proof}[Proof of Corollary~\ref{cor:1}]
+
+\end{proof}
+
+%% \begin{lemma}
+%% Let $\{\alpha_i : 0\leq i < r\}$ be a set of pairwise complementary
+%% equivalence relations on $X$.
+%% \begin{enumerate}
+%% \item If $\alpha_1 \circ \alpha_2 = \alpha_2 \circ \alpha_1$, then 
+%% $\alpha_1$ and $\alpha_2$ have uniform blocks.
+%% \item If $\alpha_1$ and $\alpha_2$ have uniform blocks of size $|X|^{1/2}$, then 
+%% $\alpha_1 \circ \alpha_2 =  \alpha_2 \circ \alpha_1$.
+%% \item Three pairwise complementary equivalence relations are pairwise permuting if and only
+%%   if all three have uniform blocks of size $|X|^{1/2}$.
+%% \end{enumerate}
 %% these three
 %% relations have complementary structure, and each
 %% $\alpha_i$ has block size $|X|^{1/2} = n$, for some positive integer
 %% $n$.  Thus, the number of blocks of each $\alpha_i$ is $|X|^{1/2}$, and
 %% $|X| = n^2$.
-\end{lemma}
+%% \end{lemma}
 
 
 \bibliographystyle{plainurl}
