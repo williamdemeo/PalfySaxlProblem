@@ -39,6 +39,7 @@
 \usepackage{amsmath}%
 \usepackage{amsfonts}%
 \usepackage{amssymb}%
+\usepackage{mathrsfs}
 %(wjd) added stmaryrd and enumerate packages
 \usepackage{stmaryrd,enumerate}
 \usepackage{graphicx}
@@ -106,6 +107,8 @@
 
 
 \newcommand{\bA}{\ensuremath{\mathbf{A}}}
+\newcommand{\sP}{\ensuremath{\mathscr{P}}}
+%\newcommand{\ker}{\ensuremath{\operatorname{ker}}}
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
 \newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
 \newcommand{\rel}{\ensuremath{\mathrel}}
@@ -113,6 +116,8 @@
 \newcommand{\join}{\ensuremath{\vee}}
 \newcommand{\Meet}{\ensuremath{\bigwedge}}
 \renewcommand{\Join}{\ensuremath{\bigvee}}
+\newcommand{\nb}[1]{\ensuremath{\#\mathrm{Blocks}(#1)}}
+%\newcommand{\nb}[1]{\ensuremath{\#{#1}}}
 
 %-------------------------------------------------------
 \begin{document}
@@ -130,28 +135,52 @@ In the paper \cite{PalfySaxl}, Peter Palfy and Jan Saxl pose the following
   that every pair of congruences of $\bA$ permute?
 \end{quote}
 
-These notes address answer this question affirmatively.
-
-First, we establish some basic facts and notation.
+These notes collect some notation and facts that might be useful for attacking this problem.
 Throughout, $X$ denotes a finite set, $\Eq(X)$ denotes the lattice of
 equivalence relations on $X$ and, for $\alpha \in \Eq(X)$ and $x\in X$, we
-denote by $x/\alpha$ the equivalence class of $\alpha$ containing $x$.  
+denote by $x/\alpha$ the equivalence class of $\alpha$ containing $x$.
 We often refer to equivalnce classes as
-``blocks,'' and we say that $\alpha$ has \emph{uniform blocks} if, for all 
-$x, y \in X$, $|x/\alpha| = |y/\alpha|$.  In other words, all equivalence
-classes of  $\alpha$ have the same size.  
+``blocks,'' and we denote by $\nb{\alpha}$ the number of blocks of the
+equivalence relation $\alpha$. 
 
-If $\alpha$ has uniform blocks of size $r$, then the number of blocks 
-of $\alpha$ is $m = |X|/r$.  We say that two equivalence relations with uniform
+For a given $\alpha\in \Eq(X)$ the map 
+ $\phi_\alpha: x \mapsto x/\alpha$ is a
+function from $X$ into the power set $\sP(X)$
+with kernel $\ker \phi_\alpha = \alpha$. 
+The \emph{block-size function} $x \mapsto |x/\alpha|$ is a function from $X$ into $\{1,2,\dots, |X|\}$.
+
+We will often abuse notation and equate an equivalence relation with the
+corresponding partition of the set $X$.  For example, we will equate 
+the relation 
+\[
+\alpha = \{(0,0), (1,1), (2,2), (3,3), (0,1), (1,0), (2,3), (3,2)\}
+\]
+with the partition $|0,1|2,3|$, and often we resort to writing $\alpha = |0,1|2,3|$.
+
+We say that $\alpha$ has \emph{uniform blocks} if 
+all blocks of  $\alpha$ have the same size; or, equivalently,
+the block-size function is constant: for all 
+$x, y \in X$, $|x/\alpha| = |y/\alpha|$.  We will use $|x/\alpha|$, without specifying
+a particular $x\in X$, to denote this block size.\footnote{Alternatively, we
+  might consider using 
+  $|x_{\cdot}/\alpha|$ to emphasize that every $x\in X$ can be substituted for
+  $x_\cdot$ without changing the value of $|x_\cdot/\alpha|$, but this notation
+  may be too cumbersome.}  
+Thus, when $\alpha$
+has uniform blocks, we have $|X|= |x/\alpha| \cdot \nb{\alpha}$.
+
+%% If $\alpha$ has uniform blocks of size $r$, then the number of blocks 
+%% of $\alpha$ is $m = |X|/r$.  
+We say that two equivalence relations with uniform
 blocks  have 
 %% If $\beta$ is another equivalence relation, we say
 %% that $\alpha$ and $\beta$ have 
 \emph{complementary uniform block structure}, or simply \emph{complementary
   blocks}, if the number of blocks of one is equal to
 the block size of the other. In other words, if $\alpha$ and $\beta$ are two
-equivalence relations on $X$ with uniform block sizes $r_\alpha$ and
-$r_\beta$, respectively, then $\alpha$ and $\beta$ have complementary block
-structure if and only if $r_\alpha r_\beta = |X|$.
+equivalence relations on $X$ with uniform block sizes $|x/\alpha|$ and
+$|x/\beta|$, respectively, then $\alpha$ and $\beta$ have complementary blocks
+if and only if $(\forall x)(\forall y) |x/\alpha|\cdot |y/\beta| = |X|$.
 
 %% If $\alpha \in \Eq(X)$ has uniform blocks of size $r$, we say that $\alpha$ has
 %% \emph{balanced uniform block structure}, or simply \emph{balanced blocks},
@@ -168,15 +197,25 @@ $\alpha \circ \beta = \beta \circ \alpha$ then $\alpha$ and $\beta$ are said to
 Note that $\alpha \circ \beta \subseteq \alpha \join \beta$ with equility if and
 only if $\alpha$ and $\beta$ permute.
 
-We denote the largest and smallest equivalence relations on $X$ by $1_X$ and
-$0_X$, respectively.
-That is, $1_X = X^2$ and 
-$0_X = \{(x,x) : x \in X\}$.
+The largest and smallest equivalence relations on $X$ are given by $1_X = X^2$
+and $0_X = \{(x,x) : x \in X\}$, respectively.
+
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
 We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
 on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
 \begin{lemma}
-Let $\{\alpha_i\}$ be some pairwise complementary
+Suppose $\alpha$ and $\beta$ are complementary equivalence relations on
+$X$. Then $\alpha$ and $\beta$ permute if and only if they have complementary
+blocks.  That is,
+\[
+\alpha \circ \beta \quad \Longleftrightarrow \quad (\forall x)(\forall y)
+|x/\alpha|\cdot |y/\alpha| = |X|.
+\]
+\end{lemma}
+
+
+\begin{lemma}
+Let $\{\alpha_i : 0\leq i < r\}$ be a set of pairwise complementary
 equivalence relations on $X$.
 \begin{enumerate}
 \item If $\alpha_1 \circ \alpha_2 = \alpha_2 \circ \alpha_1$, then 
