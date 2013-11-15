@@ -209,15 +209,15 @@ Suppose $\alpha$ and $\beta$ are complementary equivalence relations on
 $X$. Then $\alpha$ and $\beta$ permute if and only if they have complementary
 blocks.  That is,
 \[
-\alpha \circ \beta \quad \Longleftrightarrow \quad (\forall x)(\forall y)\,
+\alpha \circ \beta =1_X \quad \Longleftrightarrow \quad (\forall x)(\forall y)\,
 |x/\alpha|\cdot |y/\alpha| = |X|.
 \]
 \end{lemma}
 \begin{corollary}
 \label{cor:1}
 Suppose $\alpha_1$, $\alpha_2$, $\alpha_3$ are pairwise complementary
-equivalence relations on $X$. Then  $\alpha_1$, $\alpha_2$, $\alpha_3$ are
-pairwise permuting if and only if they all have uniform blocks of size 
+equivalence relations on $X$. Then  $\alpha_1$, $\alpha_2$, $\alpha_3$
+pairwise permute if and only if they all have uniform blocks of size 
 $\sqrt{|X|}$.  In other words,
 \[
 (\forall i)(\forall j) \, (i\neq j \longrightarrow \alpha_i \circ \alpha_j = 1_X)
@@ -257,11 +257,32 @@ hold for all $x, y \in X$.  Therefore, for all $x\in X$, we have
 &= \sum_{y \in x/\alpha} \nb{\alpha} \\
 &= |x/\alpha|\nb{\alpha} = |X|.
 \end{align*}
-This proves that $\alpha\circ \beta = 1_X$.
+This proves that $\alpha\circ \beta = 1_X$, as desired.
 \end{proof}
 
 \begin{proof}[Proof of Corollary~\ref{cor:1}]
-
+Since $\alpha_1$ and $\alpha_2$ permute and are complements, Lemma~\ref{lem:1}
+implies they have complmentary blocks, so
+\begin{equation}
+  \label{eq:2}
+|x/\alpha_1| = |x/\alpha_2|^{-1} \cdot |X|= \nb{\alpha_2}.
+\end{equation}
+(This holds for all $x\in X$. Recall that complemntary blocks are always
+uniform.) 
+Similarly, since $\alpha_1$ and $\alpha_3$ permute, we have
+$|x/\alpha_1| = |x/\alpha_3|^{-1} \cdot |X| = \nb{\alpha_3}$.
+Therefore, $\nb{\alpha_2} = \nb{\alpha_3}$.  Since 
+$\alpha_2$ and $\alpha_3$ permute, we have
+\begin{equation}
+  \label{eq:3}
+|x/\alpha_2| = |x/\alpha_3|^{-1} \cdot |X|= \nb{\alpha_3},
+\end{equation}
+and the latter is equal to $\nb{\alpha_2}$.  Therefore,
+\[
+|X| = |x/\alpha_2| \cdot \nb{\alpha_2} = |x/\alpha_2| \cdot |x/\alpha_2|. 
+\]
+Thus, $|x/\alpha_2|  = \sqrt{|X|}$, so by (\ref{eq:2}) and (\ref{eq:3}) we have 
+$|x/\alpha_i| = \sqrt{|X|} = \nb{\alpha_i}$ for $i = 1, 2, 3$.
 \end{proof}
 
 %% \begin{lemma}
