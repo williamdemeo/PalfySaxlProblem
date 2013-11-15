@@ -5,7 +5,7 @@ This repsitory contains notes and articles related to a problem of Palfy and Sax
 **Problem.**
 Let A be a finite algebra with Con(A) isomorphic to M_n, for some n at least 4. 
 If three nontrivial congruences of A pairwise permute, does it follow
-that every pair of congruences of $A$ permute?
+that every pair of congruences of A permute?
 
 The main files are as follows:
 
