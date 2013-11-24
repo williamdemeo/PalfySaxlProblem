@@ -44,6 +44,8 @@
 \usepackage{stmaryrd,enumerate}
 \usepackage{graphicx}
 \usepackage{comment}
+\usepackage{tikz}
+\usepackage{xspace}
 %------------------------------------------------------------
 % Theorem like environments
 %
@@ -114,6 +116,7 @@
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
 \newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
 \newcommand{\rel}{\ensuremath{\mathrel}}
+\newcommand{\PPPC}{\textsc{pppc}\xspace}
 \newcommand{\meet}{\ensuremath{\wedge}}
 \newcommand{\join}{\ensuremath{\vee}}
 \newcommand{\Meet}{\ensuremath{\bigwedge}}
@@ -309,22 +312,106 @@ If three atoms of $\bA$ have Property~(\ref{eq:4}) below, does it follow
 
 \bigskip
 
-\noindent To prove that the answer is ``no,'' it would suffice to find a 
-congruence lattice $\Con \bA \cong M_n$, $n\geq 4$, where 3 atoms have
-Property~(\ref{eq:4})   
-% $|x/\alpha| = \sqrt{|X|}$
- and one atom $\beta$ has $|x/\beta| < \sqrt{|X|} < \nb{\beta}$.
+%% \noindent To prove that the answer is ``no,'' it would suffice to find a 
+%% congruence lattice $\Con \bA \cong M_n$, $n\geq 4$, where 3 atoms have
+%% Property~(\ref{eq:4})   
+%% % $|x/\alpha| = \sqrt{|X|}$
+%%  and one atom $\beta$ has $|x/\beta| < \sqrt{|X|} < \nb{\beta}$.
+%% \bigskip
 
-\bigskip
-
-\noindent To prove that the answer is ``yes,'' it would suffice to prove that 
+\noindent To prove that the answer is ``yes,'' it will suffice to prove that 
 if $M_n\leq \Eq(X)$ has 3 atoms 
 with Property~(\ref{eq:4}) and
 an atom $\beta$ with $|x/\beta| < \sqrt{|X|}$, then this $M_n$ is not a
-congruence lattice.  For example, we might find a method which shows in
-such cases that the closure of the lattice will always contain some 
-$\beta < \theta < 1_X$.
+congruence lattice.  
+%% For example, we might find a method which shows in
+%% such cases that the closure of the lattice will always contain some 
+%% $\beta < \theta < 1_X$.
 
+\section{Graphical Compositions}
+Suppose $\alpha_1$, $\alpha_2$, and $\alpha_3$ are pairwise permuting pairwise
+complements (\PPPC) in $\Eq(X)$, and let $\beta\in \Eq(X)$ be complementary to
+each 
+$\alpha_i$, so that 
+\[
+L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong M_4.
+\]  
+Define the relation $\rho=\rho(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ as
+follows:
+\[
+x \mathrel{\rho} y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  x \rel{\alpha_1} a
+\rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
+\]
+Graphically, $x \mathrel{\rho} y$ if and only if there exist $a, b \in X$
+satisfying the relations depicted in Figure~\ref{fig:rho}.
+
+\newcommand\dotsize{1pt}
+%\begin{center}
+\begin{figure}
+      \begin{tikzpicture}[scale=1.2]
+      \node (x) at (-1,1)  [draw, circle, inner sep=\dotsize] {};
+      \node (y) at (1,1)  [draw, circle, inner sep=\dotsize] {};
+      \node (a) at (0,2)  [draw, circle, inner sep=\dotsize] {};
+      \node (b) at (0,0)  [draw, circle, inner sep=\dotsize] {};
+      \draw (x) node [left] {$x$};
+      \draw (a) node [above] {$a$};
+      \draw (b) node [below] {$b$};
+      \draw (y) node [right] {$y$};
+      \draw[semithick] (b)-- (a) node[pos=.5,right] {$\beta$};
+      \draw[semithick] (x)-- (a) node[pos=.5,left] {$\alpha_1$};
+      \draw[semithick] (x)-- (b) node[pos=.5,left] {$\alpha_2$};
+      \draw[semithick] (b)-- (y) node[pos=.5,right] {$\alpha_1$};
+      \draw[semithick] (a)-- (y) node[pos=.5,right] {$\alpha_2$};
+      \end{tikzpicture}
+  \caption{The graph defining the relation $\rho(\alpha_1, \alpha_2, \beta)$;
+    that is, $(x,y) \in \rho(\alpha_1, \alpha_2, \beta)$ if and only if there
+    exist $a, b \in X$ satisfying the relations in the diagram.}
+  \label{fig:rho}
+\end{figure}
+
+%\end{center}
+It is clear that $\rho$ is reflexive and symmetric but not transitive.
+Suppose $f\in X^X$ is a unary function that respects each relation 
+$\theta \in \{\alpha_1, \alpha_2, \beta\}$---that is, 
+$(u,v)\in \theta \, \longrightarrow \, (f(u), f(v))\in \theta$.  Then it is clear
+that $f$ must also respect $\rho$. (Use the same diagram as above, replacing each
+vertex label $u$ with the label $f(u)$.)
+
+\begin{fact} If 
+$L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong  M_4$,
+then
+  \[
+\alpha_1 \cap \rho(\alpha_1, \alpha_2, \beta)
+= 0_X =  \alpha_2 \cap \rho(\alpha_1, \alpha_2, \beta),
+\]
+\[
+\alpha_1 \cap \rho(\alpha_1, \alpha_3, \beta)
+= 0_X =  \alpha_3 \cap \rho(\alpha_1, \alpha_3, \beta),
+\]
+\[
+\alpha_2 \cap \rho(\alpha_2, \alpha_3, \beta)
+ = 0_X = \alpha_3 \cap \rho(\alpha_2, \alpha_3, \beta).
+\]
+%%   \[
+%% \rho(\alpha_1, \alpha_2, \beta) \cap \alpha_1
+%% = 0_X = \rho(\alpha_1, \alpha_2, \beta) \cap \alpha_2,
+%% \]
+%% \[
+%% \rho(\alpha_1, \alpha_3, \beta) \cap \alpha_1
+%% = 0_X = \rho(\alpha_1, \alpha_3, \beta) \cap \alpha_3,
+%% \]
+%% \[
+%% \rho(\alpha_2, \alpha_3, \beta) \cap \alpha_2
+%%  = 0_X = \rho(\alpha_2, \alpha_3, \beta) \cap \alpha_3.
+%% \]
+\end{fact}
+\begin{proof}
+  Fix $(x,y) \in  \alpha_1 \cap \rho(\alpha_1, \alpha_2, \beta)$ and suppose 
+  $a$ and $b$ satisfy the diagram in Figure~\ref{fig:rho}.  Then 
+  $(x,y) \in \alpha_1$ implies $(a, b)\in \alpha_1 \meet \beta = 0_X$, so 
+  $a = b$.  Therefore, $(x,y) \in \alpha_1 \meet \alpha_2 = 0_X$, so $x = y$.
+  Proofs of the other identities are similar.
+\end{proof}
 %% \begin{lemma}
 %% Let $\{\alpha_i : 0\leq i < r\}$ be a set of pairwise complementary
 %% equivalence relations on $X$.
