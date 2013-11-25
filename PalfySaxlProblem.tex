@@ -428,11 +428,11 @@ Figure~\ref{fig:rho} are satisfied.
 Suppose $\alpha_i$ and $\alpha_j$ are complementary equivalence
 relations on $X$ with uniform blocks of size $\sqrt{|X|}$.
 Then the relation $R_{i,j}^\beta$ restricted to $\beta\times X^2$ is
-  a one-to-one function from $\beta$ to $X^2$.
+  a one-to-one function from $\beta$ into $X^2$.
 %$R_{i,j}^\beta : \beta   \rightarrow X^2$.
 \end{lemma}
 \begin{proof}
-First we note that there is at most one image. For if
+First we note that each pair $(a,b)\in \beta$ has at most one image. For if
 $(a,b) \rel{R_{i,j}^\beta} (x,y)$ and $(a,b) \rel{R_{i,j}^\beta} (u,v)$, then 
 $(x,u) \in  \alpha_i \meet \alpha_j = 0_X$ and 
 $(y,v) \in  \alpha_i \meet \alpha_j = 0_X$, so $(x,y) = (u,v)$.
@@ -443,15 +443,15 @@ $\sqrt{|X|}$ blocks, and since each of these blocks has size $\sqrt{|X|}$, we
 see that each block of $\alpha_i$ intersects each block of $\alpha_j$ at
 exactly one point.  That is, for all $a, b \in X$, the set 
 $a/\alpha_i \cap b/\alpha_j$ is a singleton.
-Therefore, for each $(a,b)\in \beta$, there is precisely one $(x,y)\in X^2$ such that 
-$(a,b) \rel{R_{i,j}^\beta} (x,y)$ holds.  
+Therefore, to each $(a,b)\in \beta$ there corresponds precisely one $(x,y)\in
+X^2$ such that $(a,b) \rel{R_{i,j}^\beta} (x,y)$ holds.  
 Specifically, $\{x\} = a/\alpha_i \cap b/\alpha_j$ and 
 $\{y\} = b/\alpha_i \cap a/\alpha_j$. 
 Thus,  $R_{i,j}^\beta$ is a function.  
 
 From now on, we let 
 $R_{i,j}^\beta((a,b))$ denote the image of $(a,b)$ under $R_{i,j}^\beta$; that
-is, the ordered pair $(x,y)$
+is, $R_{i,j}^\beta((a,b))$ denotes the ordered pair $(x,y)$
 satisfying $(a,b) \rel{R_{i,j}^\beta} (x,y)$.
 
 
