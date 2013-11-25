@@ -423,13 +423,14 @@ x \rel{\alpha_1} a \rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
 Define $R_{1,3}^\beta$ and $R_{2,3}^\beta$ similarly.  Graphically, 
 $(a,b) \rel{R_{1,2}^\beta} (x,y)$ holds if and only if the relations in
 Figure~\ref{fig:rho} are satisfied.
-\begin{fact}
+\begin{lemma}
+\label{lem:injection}
 Suppose $\alpha_i$ and $\alpha_j$ are complementary equivalence
 relations on $X$ with uniform blocks of size $\sqrt{|X|}$.
 Then the relation $R_{i,j}^\beta$ restricted to $\beta\times X^2$ is
   a one-to-one function from $\beta$ to $X^2$.
 %$R_{i,j}^\beta : \beta   \rightarrow X^2$.
-\end{fact}
+\end{lemma}
 \begin{proof}
 First we note that there is at most one image. For if
 $(a,b) \rel{R_{i,j}^\beta} (x,y)$ and $(a,b) \rel{R_{i,j}^\beta} (u,v)$, then 
@@ -460,6 +461,12 @@ and
 $(b,d) \in \alpha_i\meet \alpha_j = 0_X$, so $(a,b) = (c,d)$.
 Therefore,  $R_{i,j}^\beta$ is one-to-one.
 \end{proof}
+
+If, in addition to the assumptions  of Lemma~\ref{lem:injection}, we assume that
+the image of $\beta$ under $R_{i,j}^\beta$ is contained in $\beta$, then 
+$R_{i,j}^\beta: \beta \rightarrow \beta$ is a bijective involution on $\beta$.
+That is, $R_{i,j}^\beta$ is one-to-one and onto, and 
+$R_{i,j}^\beta\circ R_{i,j}^\beta$ is the identity function on $\beta$.
 %% \begin{lemma}
 %% Let $\{\alpha_i : 0\leq i < r\}$ be a set of pairwise complementary
 %% equivalence relations on $X$.
