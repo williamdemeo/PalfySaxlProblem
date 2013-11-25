@@ -339,8 +339,8 @@ L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong M_4.
 Define the relation $\rho=\rho(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ as
 follows:
 \[
-x \mathrel{\rho} y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  x \rel{\alpha_1} a
-\rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
+x \mathrel{\rho} y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  
+x \rel{\alpha_1} a \rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
 \]
 Graphically, $x \mathrel{\rho} y$ if and only if there exist $a, b \in X$
 satisfying the relations depicted in Figure~\ref{fig:rho}.
@@ -411,6 +411,54 @@ then
   $(x,y) \in \alpha_1$ implies $(a, b)\in \alpha_1 \meet \beta = 0_X$, so 
   $a = b$.  Therefore, $(x,y) \in \alpha_1 \meet \alpha_2 = 0_X$, so $x = y$.
   Proofs of the other identities are similar.
+\end{proof}
+
+\section{Functions Derived from Graphical Compositions}
+Let $R_{1,2}^\beta$ be the relation on $X^2 \times X^2$ defined by 
+\[
+(a,b) \rel{R_{1,2}^\beta} (x,y) \quad \longleftrightarrow \quad 
+(a,b) \in \beta \; \text{ and } \;
+x \rel{\alpha_1} a \rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
+\]
+Define $R_{1,3}^\beta$ and $R_{2,3}^\beta$ similarly.  Graphically, 
+$(a,b) \rel{R_{1,2}^\beta} (x,y)$ holds if and only if the relations in
+Figure~\ref{fig:rho} are satisfied.
+\begin{fact}
+Suppose $\alpha_i$ and $\alpha_j$ are complementary equivalence
+relations on $X$ with uniform blocks of size $\sqrt{|X|}$.
+Then the relation $R_{i,j}^\beta$ restricted to $\beta\times X^2$ is
+  a one-to-one function from $\beta$ to $X^2$.
+%$R_{i,j}^\beta : \beta   \rightarrow X^2$.
+\end{fact}
+\begin{proof}
+First we note that there is at most one image. For if
+$(a,b) \rel{R_{i,j}^\beta} (x,y)$ and $(a,b) \rel{R_{i,j}^\beta} (u,v)$, then 
+$(x,u) \in  \alpha_i \meet \alpha_j = 0_X$ and 
+$(y,v) \in  \alpha_i \meet \alpha_j = 0_X$, so $(x,y) = (u,v)$.
+
+Next,
+since both $\alpha_i$ and $\alpha_j$ have 
+$\sqrt{|X|}$ blocks, and since each of these blocks has size $\sqrt{|X|}$, we
+see that each block of $\alpha_i$ intersects each block of $\alpha_j$ at
+exactly one point.  That is, for all $a, b \in X$, the set 
+$a/\alpha_i \cap b/\alpha_j$ is a singleton.
+Therefore, for each $(a,b)\in \beta$, there is precisely one $(x,y)\in X^2$ such that 
+$(a,b) \rel{R_{i,j}^\beta} (x,y)$ holds.  
+Specifically, $\{x\} = a/\alpha_i \cap b/\alpha_j$ and 
+$\{y\} = b/\alpha_i \cap a/\alpha_j$. 
+Thus,  $R_{i,j}^\beta$ is a function.  
+
+From now on, we let 
+$R_{i,j}^\beta((a,b))$ denote the image of $(a,b)$ under $R_{i,j}^\beta$; that
+is, the ordered pair $(x,y)$
+satisfying $(a,b) \rel{R_{i,j}^\beta} (x,y)$.
+
+
+Suppose $R_{i,j}^\beta((a,b)) = R_{i,j}^\beta((c,d))$. Then 
+$(a,c) \in \alpha_i\meet \alpha_j = 0_X$
+and
+$(b,d) \in \alpha_i\meet \alpha_j = 0_X$, so $(a,b) = (c,d)$.
+Therefore,  $R_{i,j}^\beta$ is one-to-one.
 \end{proof}
 %% \begin{lemma}
 %% Let $\{\alpha_i : 0\leq i < r\}$ be a set of pairwise complementary
