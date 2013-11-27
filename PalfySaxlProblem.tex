@@ -536,22 +536,22 @@ Lemma~\ref{lem:missingpiece} in turn and,
 in each case, find $b$ satisfying $a \rel{\beta} b \rel{\alpha_1} w$.
 \begin{enumerate}
 \item If $(a,w) \in \alpha_2$, then let $b = z/\alpha_2 \cap w/\alpha_1$.  Then
-$R_{12}(z,w) = (a,b)$ and since 
-$R_{12}: \beta \rightarrow \beta$, we have $(a,b) \in \beta$, so 
+$R^\beta_{12}(z,w) = (a,b)$ and since 
+$R^\beta_{12}: \beta \rightarrow \beta$, we have $(a,b) \in \beta$, so 
 $a \rel{\beta} b \rel{\alpha_1} w$, as desired.  
 \item If $(a,w) \in \alpha_3$, then let $b = z/\alpha_3 \cap w/\alpha_1$. Use the same
-argument as in the first case, but replace $R_{12}$ with $R_{13}$. 
+argument as in the first case, but replace $R^\beta_{12}$ with $R^\beta_{13}$. 
 \item If $(a,w) \in \beta$, then let $b = a$. 
 \item If  $a/\alpha_2 \cap z/\alpha_3 \cap w/\alpha_1 \neq \emptyset$, then let
   $y$ denote the element in this set.  Let $x = z/\alpha_1 \cap w/\alpha_3$, and
   let $b = x/\alpha_2\cap y/\alpha_1$.  
-  Then $(R_{12}\circ R_{13})(z,w) = R_{12}(x,y) = (a,b)$, so $(a,b) \in \beta$.
+  Then $(R^\beta_{12}\circ R^\beta_{13})(z,w) = R^\beta_{12}(x,y) = (a,b)$, so $(a,b) \in \beta$.
   Now, $b\rel{\alpha_1} y \rel{\alpha_1} w$, so
   $a \rel{\beta} b \rel{\alpha_1} w$, as desired.
 \item If $a/\alpha_3 \cap z/\alpha_2 \cap w/\alpha_1 \neq \emptyset$, then let 
   $y$ denote this element, let $x = z/\alpha_1 \cap w/\alpha_2$, and
   let $b = x/\alpha_3\cap y/\alpha_1$.  
-  Then $(R_{13}\circ R_{12})(z,w) = R_{12}(x,y) = (a,b)$, so $(a,b) \in \beta$.
+  Then $(R^\beta_{13}\circ R^\beta_{12})(z,w) = R^\beta_{12}(x,y) = (a,b)$, so $(a,b) \in \beta$.
   Now, $b\rel{\alpha_1} y \rel{\alpha_1} w$, so $a \rel{\beta} b \rel{\alpha_1} w$, as desired.
 \end{enumerate}
 \end{proof}
