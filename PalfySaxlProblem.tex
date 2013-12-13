@@ -116,7 +116,16 @@
 %\newcommand{\ker}{\ensuremath{\operatorname{ker}}}
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
 \newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
+
 \newcommand{\rel}{\ensuremath{\mathrel}}
+\newcommand{\ralpha}{\ensuremath{\mathrel{\alpha}}}
+\newcommand{\rbeta}{\ensuremath{\mathrel{\beta}}}
+\newcommand{\rgamma}{\ensuremath{\mathrel{\gamma}}}
+\newcommand{\rdelta}{\ensuremath{\mathrel{\tau}}}
+\newcommand{\rrho}{\ensuremath{\mathrel{\tau}}}
+\newcommand{\rtau}{\ensuremath{\mathrel{\tau}}}
+\newcommand{\rtheta}{\ensuremath{\mathrel{\theta}}}
+
 \newcommand{\meet}{\ensuremath{\wedge}}
 \newcommand{\join}{\ensuremath{\vee}}
 \newcommand{\Meet}{\ensuremath{\bigwedge}}
@@ -194,8 +203,8 @@ if and only if $(\forall x)(\forall y)\, |x/\alpha|\cdot |y/\beta| = |X|$.
 
 Given two equivalence relations $\alpha$ and $\beta$ on $X$, the relation
 \[
-\alpha \circ \beta = \{(x,y) \in X^2: (\exists z)x\rel{\alpha} z
-\rel{\beta} y\}
+\alpha \circ \beta = \{(x,y) \in X^2: (\exists z)x \ralpha z
+\rbeta y\}
 \]
 is called the \emph{composition of $\alpha$ and $\beta$}, and if 
 $\alpha \circ \beta = \beta \circ \alpha$ then $\alpha$ and $\beta$ are said to
@@ -351,8 +360,8 @@ L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong M_4.
 Define the relation $\tau=\tau(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ as
 follows:
 \[
-x \mathrel{\tau} y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  
-x \rel{\alpha_1} a \rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
+x \rtau y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  
+x \ralpha_1 a \ralpha_2 y \ralpha_1 b \ralpha_2 x.
 \]
 Graphically, $x \mathrel{\tau} y$ if and only if there exist $a, b \in X$
 satisfying the relations depicted in Figure~\ref{fig:rho}.
@@ -375,8 +384,9 @@ satisfying the relations depicted in Figure~\ref{fig:rho}.
       \draw[semithick] (b)-- (y) node[pos=.5,right] {$\alpha_1$};
       \draw[semithick] (a)-- (y) node[pos=.5,right] {$\alpha_2$};
       \end{tikzpicture}
-  \caption{The graph defining the relation $\tau(\alpha_1, \alpha_2, \beta)$;
-    that is, $(x,y) \in \tau(\alpha_1, \alpha_2, \beta)$ if and only if there
+  \caption{The Wheatstone Bridge which defines the relation 
+    $\tau(\alpha_1, \alpha_2, \beta)$ as follows: 
+    $(x,y) \in \tau(\alpha_1, \alpha_2, \beta)$ if and only if there 
     exist $a, b \in X$ satisfying the relations in the diagram.}
   \label{fig:rho}
 \end{figure}
@@ -430,7 +440,7 @@ Let $R_{12}^\beta$ be the relation on $X^2 \times X^2$ defined by
 \[
 (a,b) \rel{R_{12}^\beta} (x,y) \quad \longleftrightarrow \quad 
 (a,b) \in \beta \; \text{ and } \;
-x \rel{\alpha_1} a \rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
+x \ralpha_1 a \ralpha_2 y \ralpha_1 b \ralpha_2 x.
 \]
 Define $R_{13}^\beta$ and $R_{23}^\beta$ similarly.  Graphically, 
 $(a,b) \rel{R_{12}^\beta} (x,y)$ holds if and only if the relations in
@@ -514,7 +524,7 @@ $i, j \in \{1,2,3\}$.
 \begin{lemma}
   \label{lem:missingpiece}
 If %$(a,w) \in \alpha_1\circ \beta$ with 
-$a \rel{\alpha_1} z \rel{\beta} w$,
+$a \ralpha_1 z \rbeta w$,
 then one of the following holds:
 \begin{enumerate}
 \item $(a,w) \in \alpha_2$, 
@@ -532,14 +542,14 @@ congruence lattice with $\alpha_i$ \ac{PPPC}, then $\beta$ permutes with each $\
 \end{theorem}
 \begin{proof}
 We will show $\alpha_1 \circ \beta \subseteq \beta \circ \alpha_1$.
-Assume $a \rel{\alpha_1} z \rel{\beta} w$.  We consider each of the cases in
+Assume $a \ralpha_1 z \rbeta w$.  We consider each of the cases in
 Lemma~\ref{lem:missingpiece} in turn and,
-in each case, find $b$ satisfying $a \rel{\beta} b \rel{\alpha_1} w$.
+in each case, find $b$ satisfying $a \rbeta b \ralpha_1 w$.
 \begin{enumerate}
 \item If $(a,w) \in \alpha_2$, then let $b = z/\alpha_2 \cap w/\alpha_1$.  Then
 $R^\beta_{12}(z,w) = (a,b)$ and since 
 $R^\beta_{12}: \beta \rightarrow \beta$, we have $(a,b) \in \beta$, so 
-$a \rel{\beta} b \rel{\alpha_1} w$, as desired.  
+$a \rbeta b \ralpha_1 w$, as desired.  
 \item If $(a,w) \in \alpha_3$, then let $b = z/\alpha_3 \cap w/\alpha_1$. Use the same
 argument as in the first case, but replace $R^\beta_{12}$ with $R^\beta_{13}$. 
 \item If $(a,w) \in \beta$, then let $b = a$. 
@@ -547,21 +557,21 @@ argument as in the first case, but replace $R^\beta_{12}$ with $R^\beta_{13}$.
   $y$ denote the element in this set.  Let $x = z/\alpha_1 \cap w/\alpha_3$, and
   let $b = x/\alpha_2\cap y/\alpha_1$.  
   Then $(R^\beta_{12}\circ R^\beta_{13})(z,w) = R^\beta_{12}(x,y) = (a,b)$, so $(a,b) \in \beta$.
-  Now, $b\rel{\alpha_1} y \rel{\alpha_1} w$, so
-  $a \rel{\beta} b \rel{\alpha_1} w$, as desired.
+  Now, $b\ralpha_1 y \ralpha_1 w$, so
+  $a \rbeta b \ralpha_1 w$, as desired.
 \item If $a/\alpha_3 \cap z/\alpha_2 \cap w/\alpha_1 \neq \emptyset$, then let 
   $y$ denote this element, let $x = z/\alpha_1 \cap w/\alpha_2$, and
   let $b = x/\alpha_3\cap y/\alpha_1$.  
   Then $(R^\beta_{13}\circ R^\beta_{12})(z,w) = R^\beta_{12}(x,y) = (a,b)$, so $(a,b) \in \beta$.
-  Now, $b\rel{\alpha_1} y \rel{\alpha_1} w$, so $a \rel{\beta} b \rel{\alpha_1} w$, as desired.
+  Now, $b\ralpha_1 y \ralpha_1 w$, so $a \rbeta b \ralpha_1 w$, as desired.
 \end{enumerate}
 \end{proof}
 
 \section{Proof of Lemma 3}
 Consider the relation $\theta_{ij}$ defined as follows:
 \[
-x \rel{\theta_{ij}} y \quad \longleftrightarrow \quad (\exists a, b) \;
-a \rel{\alpha_i} x \rel{\alpha_j} b \rel{\beta} y \rel{\alpha_j} a.
+x \rtheta_{ij} y \quad \longleftrightarrow \quad (\exists a, b) \;
+a \ralpha_i x \ralpha_j b \rbeta y \ralpha_j a.
 \]
 Easy arguments similar to those above establish that 
 \[
@@ -579,7 +589,7 @@ lists of lists, and write them as (possibly nonrectangular) arrays, where each
 row represents a single block.  We do this in the following example, which 
 aids our intuition when thinking about the Palfy-Saxl problem.
 
-Let $X = \{0,1,2, \dots, 15\}$, and consider the equivalence relation
+Let $X = \{0,1,2, \dots, 15\}$, and consider the equivalence relations
 $\alpha_1, \dots, \alpha_5$ and $\beta$, generating the following sublattice of
 $\Eq(X)$:
 
@@ -616,8 +626,7 @@ $\Eq(X)$:
 %%     exist $a, b \in X$ satisfying the relations in the diagram.}
 %%   \label{fig:rho}
 %% \end{figure}
-where $\alpha_1, \dots, \alpha_5$, and $\beta$ correspond to partitions of $X$
-as follows:
+where $\alpha_1, \dots, \alpha_5$, and $\beta$ correspond to the following partitions of $X$:
 \[
 \begin{matrix}
 & \alpha_1 &&\\
@@ -710,30 +719,68 @@ TODO: Check this; also check whether $\alpha_3$ and the other omitted $\alpha$
   \begin{fact}
 \label{fact:tau}
   The relation $\tau = \tau(\alpha_1, \alpha_2, \beta)$ defined via the
-  Wheatstone bridge (Figure~\ref{fig:rhoagain}) is a subset of $\beta$.
+  Wheatstone Bridge (Figure~\ref{fig:rhoagain}) is a subset of $\beta$.
   \end{fact}
+
+What follows is an informal discussion of the motivation that lead to the
+relation $\beta$ given in this example.  (It is verbose and inelegant and
+will be removed eventually.)
+
 Regarding the last fact, $\beta$ was constructed specifically to provide a
-nontrivial example where this fact holds; i.e., we wanted to know if there was
-an example where $\beta$ is of lesser height than the $\alpha_i$, so that 
-$|x/\beta| \leq |y/\alpha_i| < \nb{\beta}$, so that $\beta$ does not permute
-with $\alpha_1$ and $\alpha_2$, and such that we cannot use the Wheatstone
-bridge to prove that $\{0_X, \alpha_1, \alpha_2, \beta, 1_X\}$ is not closed.
+nontrivial example where such a fact would hold.  That is, we wanted to know if
+there was an example where $\beta$ has smaller height than $\alpha_i$ (so that 
+$|x/\beta| \leq |y/\alpha_i| < \nb{\beta}$, and so $\beta$ would not permute
+with $\alpha_1$ and $\alpha_2$), and such that 
+$\tau(\alpha_1, \alpha_2, \beta)\subseteq \beta$, so that the Wheatstone
+Bridge of Figure~\ref{fig:rhoagain} would not generate an equivalence
+relation that isn't already contained in 
+$\{0_X, \alpha_1, \alpha_2, \beta, 1_X\}$.
 
-So, to construct $\beta$, we considered the Wheatstone bridge involving
-$\alpha_1$ and $\alpha_2$ and determined the pairs that would have to end up in
-$\beta$ in order to achieve $\tau\subseteq \beta$.  (So that $\tau$ does not
-generate a new relation in the closure.)
+To construct $\beta$, we started by assuming $0/\beta = \{0,5,10,15\}$,
+which is the main diagonal of both $\alpha_1$ and $\alpha_2$.  Then we considered the
+Wheatstone Bridge involving $\alpha_1$ and $\alpha_2$ and noticed that, if
+$\tau \subseteq \beta$, then $\beta$ must contain all pairs that are at
+``opposite corners'' (defined below)
+relative to pairs on the main diagonal
+$\{0,5,10,15\}$. 
 
-Recall the relation $\tau=\tau(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ is
-defined follows:
+%% Such a $\beta$ 
+%% acheive this even when the remaining
+%% $\beta$-blocks, other than $0/\beta$, have size 2, we have found an example that
+%% satisfies the goal: does not permute with $\alpha_1$ or $\alpha_2$ and has
+%% more blocks.
+
+By ``opposite corners'' we mean the following.  Fix a pair in $\beta$, say,
+$(0,10)\in \beta$, and consider the squares this pair generates in $\alpha_1$
+and $\alpha_2$; that is, the squares with 0 and 10 at diagonal corners. We see
+that 2 and 8 appear at the remaining corners of such squares.  We call the
+corners labeled 2 and 8 the ``opposite corners'' relative to 0 and 10. 
+
+The relation $\tau$ defined by the Wheatstone Bridge satisfies 
 \[
-x \mathrel{\tau} y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  
-x \rel{\alpha_1} a \rel{\alpha_2} y \rel{\alpha_1} b \rel{\alpha_2} x.
+0 \rtau 10 \quad \longleftrightarrow \quad 2\rtau 8.
 \]
+
+Let us make this more general and precise.
+Recall the relation $\tau=\tau(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ is
+defined by
+\begin{equation}
+\label{eq:5}  
+x \mathrel{\tau} y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  
+x \ralpha_1 a \ralpha_2 y \ralpha_1 b \ralpha_2 x.
+\end{equation}
 Graphically, $x \mathrel{\tau} y$ if and only if there exist $a, b \in X$
 satisfying the relations depicted in Figure~\ref{fig:rhoagain}.  
-We know that operations respecting $\alpha_1$, $\alpha_2$, and $\beta$ must also
-respect $\tau$.  
+
+Let us order the elements of the equivalence classes of $\alpha_1$
+and $\alpha_2$ according to the row-column arrangements given in the array
+representations above, and
+denote by $\alpha_1(i,j)$ the $j$-th element of the $i$-th equivalence class of
+$\alpha_1$---that is $\alpha_1(i,j)$ is the element in row $i$ and column $j$ of
+the array representation of $\alpha_1$.
+%% We know that operations respecting $\alpha_1$, $\alpha_2$, and $\beta$ must also
+%% respect $\tau$.  
+
 
 \begin{figure}
       \begin{tikzpicture}[scale=1.2]
@@ -751,14 +798,37 @@ respect $\tau$.
       \draw[semithick] (b)-- (y) node[pos=.5,right] {$\alpha_1$};
       \draw[semithick] (a)-- (y) node[pos=.5,right] {$\alpha_2$};
       \end{tikzpicture}
-  \caption{The graph defining the relation $\tau(\alpha_1, \alpha_2, \beta)$;
-    that is, $(x,y) \in \tau(\alpha_1, \alpha_2, \beta)$ if and only if there
+  \caption{The Wheatstone Bridge which defines the relation 
+    $\tau(\alpha_1, \alpha_2, \beta)$ as follows: 
+    $(x,y) \in \tau(\alpha_1, \alpha_2, \beta)$ if and only if there 
     exist $a, b \in X$ satisfying the relations in the diagram.}
   \label{fig:rhoagain}
 \end{figure}
 
+Consider the Wheatstone Bridge diagram and note that, if 
+$(x,y)$ and $(a, b)$ satisfy this diagram, so that~(\ref{eq:5}) holds, then  we have
+\begin{equation}
+\label{eq:6}  
+x \in a/\alpha_1 \cap b/\alpha_2 \qquad \text{ and }
+y \in b/\alpha_1 \cap a/\alpha_2.
+\end{equation}
+Suppose $a = \alpha_1(i,j)$ and $b = \alpha_2(k,\ell)$.  Then, by~(\ref{eq:6}),  $x$ is the
+point where the $i$-th row of $\alpha_1$ intersects the $k$-th row of
+$\alpha_2$.  But notice that, in this example, the array representing $\alpha_2$
+happens to be the transpose of the array representing $\alpha_1$.  Therefore,
+the $k$-th row of $\alpha_2$ is the $k$-th column of $\alpha_1$, so $x$ is
+the element contained in the $i$-th row and $k$-th column of $\alpha_1$, that is, 
+$x = \alpha_1(i,k)$. Similarly, $y = \alpha_1(j,\ell)$.  More generally, for all
+$i$, $j$, $r$, $s$ in $\{1, 2, 3, 4\}$, we have
+\[
+\alpha_1(i,j) \rbeta \alpha_1(r,s) \quad \longrightarrow \quad 
+\alpha_1(i,s) \rtau \alpha_1(j,r).
+\]
+For example, looking at the array representing $\alpha_1$, we see that if, say,
+$(2,15)$ were to belong to $\beta$, then the pair $(3,15)$ at 
+the opposite corners must belong to $\tau$. % = \tau(\alpha_1, \alpha_2, \beta)$.
 
-
+\vskip2cm
 
 \section{List of Acronyms}
 \begin{acronym}
