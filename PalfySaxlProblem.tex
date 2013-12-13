@@ -46,6 +46,7 @@
 \usepackage{comment}
 \usepackage{tikz}
 \usepackage{xspace}
+\usepackage[printonlyused]{acronym}%
 %------------------------------------------------------------
 % Theorem like environments
 %
@@ -66,7 +67,7 @@
 \newtheorem{example}{Example}
 \newtheorem{exercise}{Exercise}
 \newtheorem{lemma}{Lemma}
-\newtheorem{fact}{Fact}
+\newtheorem{fact}{Fact}[section]
 \newtheorem{notation}{Notation}
 \newtheorem{problem}{Problem}
 \newtheorem{proposition}{Proposition}
@@ -116,7 +117,6 @@
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
 \newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
 \newcommand{\rel}{\ensuremath{\mathrel}}
-\newcommand{\PPPC}{\textsc{pppc}\xspace}
 \newcommand{\meet}{\ensuremath{\wedge}}
 \newcommand{\join}{\ensuremath{\vee}}
 \newcommand{\Meet}{\ensuremath{\bigwedge}}
@@ -208,14 +208,14 @@ and $0_X = \{(x,x) : x \in X\}$, respectively.
 
 One more piece of shorthand notation will be useful below.  
 Suppose $\Theta$ is a set of equivalence relations that are 
-\emph{pairwise permuting pairwise complements}---that is, 
+\emph{pairwise permuting pairwise complements} (\ac{PPPC})---that is, 
 for all $\gamma \neq \delta$ in $\Theta$, we have
 \[
 \gamma \circ \delta = \delta \circ \gamma,  
 \quad  \gamma \meet \delta = 0_X, 
 \quad  \gamma \join \delta = 1_X.
 \]
-Then we say that the relations in $\Theta$ are \PPPC.
+Then we say that the relations in $\Theta$ are \acs{PPPC}.
 
 \section{Basic observations}
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
@@ -340,8 +340,9 @@ congruence lattice.
 %% $\beta < \theta < 1_X$.
 
 \section{Graphical Compositions}
-Suppose $\alpha_1$, $\alpha_2$, and $\alpha_3$ are pairwise permuting pairwise
-complements (\PPPC) in $\Eq(X)$, and let $\beta\in \Eq(X)$ be complementary to
+Suppose $\alpha_1$, $\alpha_2$, and $\alpha_3$ are pairwise permuting
+pairwise complements (\ac{PPPC}) in $\Eq(X)$, and let $\beta\in \Eq(X)$ be
+complementary to 
 each 
 $\alpha_i$, so that 
 \[
@@ -506,7 +507,7 @@ $R_{ij}^\beta\circ R_{ij}^\beta$ is the identity map.
 
 \section{Final piece of the puzzle}
 As above, suppose $L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong  M_4$ is a
-congruence lattice with $\alpha_i$ \PPPC.  
+congruence lattice with $\alpha_i$ \ac{PPPC}.  
 Suppose $R_{ij}^\beta: \beta \rightarrow \beta$ holds for all 
 $i, j \in \{1,2,3\}$.
 
@@ -527,7 +528,7 @@ then one of the following holds:
 If Lemma~\ref{lem:missingpiece} is true, then we can prove the following:
 \begin{theorem}
 If $L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong  M_4$ is a
-congruence lattice with $\alpha_i$ \PPPC, then $\beta$ permutes with each $\alpha_i$.
+congruence lattice with $\alpha_i$ \ac{PPPC}, then $\beta$ permutes with each $\alpha_i$.
 \end{theorem}
 \begin{proof}
 We will show $\alpha_1 \circ \beta \subseteq \beta \circ \alpha_1$.
@@ -569,9 +570,201 @@ Easy arguments similar to those above establish that
 On the other hand, since $L$ is a congruence lattice, it must be the case that
 the transtive closure of $\theta_{ij}$ is contained in $L$.\\
 \\
-{\it Todo: prove of Lemma 3 (if possible).}
+{\it TODO: prove of Lemma 3 (if possible).}
+
+\appendix
+\section{Example}
+Let $X$ be a set.  It is useful to represent partitions of $X$ as
+lists of lists, and write them as (possibly nonrectangular) arrays, where each
+row represents a single block.  We do this in the following example, which seems
+to aid intuition when thinking about the Palfy-Saxl problem.
+
+Let $X = \{0,1,2, \dots, 15\}$, and consider the equivalence relation
+$\alpha_1, \dots, \alpha_5$ and $\beta$, generating the following sublattice of
+$\Eq(X)$:
+
+%% \begin{figure}
+\begin{center}
+  
+      \begin{tikzpicture}[scale=1.2]
+      \node (bot) at (0,0)  [draw, circle, inner sep=\dotsize] {};
+      \node (top) at (0,3)  [draw, circle, inner sep=\dotsize] {};
+
+      \node (a1) at (-2,1.5)  [draw, circle, inner sep=\dotsize] {};
+      \node (a2) at (-1,1.5)  [draw, circle, inner sep=\dotsize] {};
+      \node (a3) at (0,1.5)  [draw, circle, inner sep=\dotsize] {};
+      \node (b) at (0,1)  [draw, circle, inner sep=\dotsize] {};
+      \node (a4) at (1,1.5)  [draw, circle, inner sep=\dotsize] {};
+      \node (a5) at (2,1.5)  [draw, circle, inner sep=\dotsize] {};
+
+      \draw (top) node [above] {$1_X$};
+      \draw (a1) node [left] {$\alpha_1$};
+      \draw (a2) node [left] {$\alpha_2$};
+      \draw (a3) node [right] {$\alpha_3$};
+      \draw (b) node [right] {$\beta$};
+      \draw (a4) node [right] {$\alpha_4$};
+      \draw (a5) node [right] {$\alpha_5$};
+      \draw (bot) node [below] {$0_X$};
+      \draw[semithick] 
+      (bot) -- (a1) -- (top) -- (a2) --
+      (bot) -- (b) -- (a3) -- (top) -- (a4) --
+      (bot) -- (a5) -- (top);
+      \end{tikzpicture}
+\end{center}
+%%   \caption{The graph defining the relation $\tau(\alpha_1, \alpha_2, \beta)$;
+%%     that is, $(x,y) \in \tau(\alpha_1, \alpha_2, \beta)$ if and only if there
+%%     exist $a, b \in X$ satisfying the relations in the diagram.}
+%%   \label{fig:rho}
+%% \end{figure}
+where $\alpha_1, \dots, \alpha_5$, and $\beta$ correspond to partitions of $X$
+as follows:
+\[
+\begin{matrix}
+& \alpha_1 &&\\
+  [0 & 1 & 2 & 3]\\
+  [4 & 5 & 6 & 7]\\
+  [8 & 9 & 10 & 11]\\
+  [12 & 13 & 14 & 15]\\
+\end{matrix}
+\qquad
+\begin{matrix}
+& \alpha_2 &&\\
+  [0 &   4 &   8 & 12]\\
+  [1 &   5 &   9 & 13]\\
+  [2 &   6 & 10 & 14]\\
+  [3 &   7 & 11 & 15]
+\end{matrix}
+\qquad
+\begin{matrix}
+& \alpha_3 &&\\
+  [0 &   5 &  10 & 15]\\
+  [1 &   4 &  11 & 14]\\
+  [2 &   7 & 8 & 13]\\
+  [3 &   6 & 9 & 12]
+\end{matrix}
+\]
+
+\vskip5mm
+
+\[
+\begin{matrix}
+& \alpha_4 &&\\
+  [0 &   7 & 9 & 14]\\
+  [1 &   6 & 8 & 15]\\
+  [2 &   5 & 10 & 12]\\
+  [3 &   4 & 11 & 13]\\
+&&&\\
+&&&\\
+&&&\\
+\end{matrix}
+\qquad
+\begin{matrix}
+& \alpha_5 &&\\
+  [0 &   6 & 11 & 13]\\
+  [1 &   7 & 10 & 12]\\
+  [2 &   4 & 9 & 15]\\
+  [3 &   5 & 8 & 14]\\
+&&&\\
+&&&\\
+&&&\\
+\end{matrix}
+\qquad
+\begin{matrix}
+& \beta &&\\
+  [0 &   5 &  10 & 15]\\
+&  [1 &   4] & \\
+&  [2 & 8] &\\
+&  [3 &   12] & \\
+& [6 & 9] & \\
+&  [7 & 13] &\\
+& [11 & 14] & 
+\end{matrix}
+\]
+
+It is clear that the relations $\alpha_1, \dots, \alpha_5$ are pairwise
+permuting pairwise complements (\acs{PPPC}).  Also $\beta$ is pairwise
+complementary by not permuting with each $\alpha_i$, for $i\neq 3$.
+Here are some other facts which can be helpful aids to intuition.
+\begin{fact}
+  Each $M_3$ sublattice with all $\alpha$'s for atoms is a congruence lattice.  In
+  other words, if $i$, $j$, $k$ are three distinct numbers from  the set 
+  $\{1,2,\dots, 5\}^3$, then the sublattice $\{0_X, \alpha_i, \alpha_j,
+  \alpha_k, 1_X\}$ is closed. 
+\end{fact}
+\begin{fact}
+Consider any $M_4$ having all $\alpha$'s for atoms.  The closure is the $M_5$
+lattice $\{0_X, \alpha_1, \dots, \alpha_5, 1_X\}$.
+\end{fact}
+\begin{fact}
+  The $M_3$ sublattice $\{0_X, \alpha_1, \alpha_2, \beta, 1_X\}$ is closed.
+\end{fact}
+\begin{fact}
+  Any $M_4$ generated by $\beta$ and three $\alpha$'s complementary to
+  $\beta$ is not closed.  The closure will have many relations in it.
+\end{fact}
+Regarding the last fact, I've forgotten how many relations are in the closure.
+
+TODO: Check this; also check whether $\alpha_3$ and the other omitted $\alpha$
+  always end up in the closure.
+
+\section{List of Acronyms}
+\begin{acronym}
+\acro{PPPC}{pairwise permuting pairwise complements}
+\end{acronym}
+
 
 \bibliographystyle{plainurl}
 \bibliography{wjd}
 
+
 \end{document}
+
+
+\[
+\begin{matrix}
+  \phantom{0}0 &   \phantom{0}1 &   \phantom{0}2 &   \phantom{0}3\\
+    \phantom{0}4 &   \phantom{0}5 &   \phantom{0}6 &   \phantom{0}7\\
+    \phantom{0}8 &   \phantom{0}9 & 10 & 11\\
+  12 & 13 & 14 & 15
+\end{matrix}
+\qquad
+\begin{matrix}
+  \phantom{0}0 &   \phantom{0}4 &   \phantom{0}8 & 12\\
+  \phantom{0}1 &   \phantom{0}5 &   \phantom{0}9 & 13\\
+  \phantom{0}2 &   \phantom{0}6 & 10 & 14\\
+  \phantom{0}3 &   \phantom{0}7 & 11 & 15
+\end{matrix}
+\qquad
+\begin{matrix}
+  \phantom{0}0 &   \phantom{0}5 &  10 & 15\\
+  \phantom{0}1 &   \phantom{0}4 &  11 & 14\\
+  \phantom{0}2 &   \phantom{0}7 & \phantom{0}8 & 13\\
+  \phantom{0}3 &   \phantom{0}6 & \phantom{0}9 & 12
+\end{matrix}
+\qquad
+\begin{matrix}
+  \phantom{0}0 &   \phantom{0}7 & \phantom{0}9 & 14\\
+  \phantom{0}1 &   \phantom{0}6 & \phantom{0}8 & 15\\
+  \phantom{0}2 &   \phantom{0}5 & 10 & 12\\
+  \phantom{0}3 &   \phantom{0}4 & 11 & 13
+\end{matrix}
+\qquad
+\begin{matrix}
+  \phantom{0}0 &   \phantom{0}6 & 11 & 13\\
+  \phantom{0}1 &   \phantom{0}7 & 10 & 12\\
+  \phantom{0}2 &   \phantom{0}4 & \phantom{0}9 & 15\\
+  \phantom{0}3 &   \phantom{0}5 & \phantom{0}8 & 14
+\end{matrix}
+\]
+and $\beta$ is 
+\[
+\begin{matrix}
+  \phantom{0}0 &   \phantom{0}5 &  10 & 15\\
+&  \phantom{0}1 &   \phantom{0}4 & \\
+&  \phantom{0}2 & \phantom{0}8 &\\
+&  \phantom{0}3 &   12 & \\
+& \phantom{0}6 & \phantom{0}9 & \\
+&  \phantom{0}7 & 13 &\\
+& 11 & 14 & 
+\end{matrix}
+\]
