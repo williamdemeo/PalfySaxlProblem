@@ -216,15 +216,15 @@ The largest and smallest equivalence relations on $X$ are $1_X = X^2$
 and $0_X = \{(x,x) : x \in X\}$, respectively.
 
 One more piece of shorthand notation will be useful below.  
-Suppose $\Theta$ is a set of equivalence relations that are 
-\emph{pairwise permuting pairwise complements} (\ac{PPPC})---that is, 
+Suppose $\Theta$ is a set of equivalence relations.
+We say that $\Theta$ is \acs{PPPC} if
+it consists of {\it \acl{PPPC}}; that is,
 for all $\gamma \neq \delta$ in $\Theta$, we have
 \[
 \gamma \circ \delta = \delta \circ \gamma,  
 \quad  \gamma \meet \delta = 0_X, 
 \quad  \gamma \join \delta = 1_X.
 \]
-Then we say that the relations in $\Theta$ are \acs{PPPC}.
 
 \section{Basic observations}
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
@@ -349,9 +349,8 @@ congruence lattice.
 %% $\beta < \theta < 1_X$.
 
 \section{Graphical Compositions}
-Suppose $\alpha_1$, $\alpha_2$, and $\alpha_3$ are pairwise permuting
-pairwise complements (\ac{PPPC}) in $\Eq(X)$, and let $\beta\in \Eq(X)$ be
-complementary to 
+Suppose $\alpha_1$, $\alpha_2$, and $\alpha_3$ are \ac{PPPC} in $\Eq(X)$, and
+let $\beta\in \Eq(X)$ be complementary to 
 each 
 $\alpha_i$, so that 
 \[
@@ -583,6 +582,8 @@ the transtive closure of $\theta_{ij}$ is contained in $L$.\\
 {\it TODO: prove of Lemma 3 (if possible).}
 
 \appendix
+\acresetall
+
 \section{Example}
 Let $X$ be a set.  It is useful to represent partitions of $X$ as
 lists of lists, and write them as (possibly nonrectangular) arrays, where each
@@ -697,8 +698,7 @@ where $\alpha_1, \dots, \alpha_5$, and $\beta$ correspond to the following parti
 \end{matrix}
 \]
 
-The relations $\alpha_1, \dots, \alpha_5$ are pairwise
-permuting pairwise complements (\acs{PPPC}).  Also, for 
+The relations $\alpha_1, \dots, \alpha_5$ are \acf{PPPC}.  Also, for 
 each $\alpha_i$, with $i\neq 3$, it's clear that $\beta$ and $\alpha_i$ are
 nonpermuting complements.
 Here are some other facts that aid intuition.
