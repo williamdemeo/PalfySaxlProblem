@@ -704,8 +704,7 @@ nonpermuting complements.
 Here are some other facts that aid intuition.
 \begin{fact}
   Each $M_3$ sublattice with all $\alpha$'s for atoms is a congruence lattice.  In
-  other words, if $i$, $j$, $k$ are three distinct numbers from  the set 
-  $\{1,2,\dots, 5\}$, then the sublattice $\{0_X, \alpha_i, \alpha_j,
+  other words, if $i$, $j$, $k$ are three distinct numbers in $\{1,2,\dots, 5\}$, then the sublattice $\{0_X, \alpha_i, \alpha_j,
   \alpha_k, 1_X\}$ is closed. 
 \end{fact}
 \begin{fact}
@@ -729,13 +728,14 @@ TODO: Check this; also check whether $\alpha_3$ and the other omitted $\alpha$
   Wheatstone Bridge (Figure~\ref{fig:rhoagain}) is a subset of $\beta$.
   \end{fact}
 
-What follows is an informal discussion of the motivation that lead to the
-relation $\beta$ given in this example.  (It is verbose and inelegant and
-will be removed eventually.)
+What follows is an informal discussion of the motivation that led to the
+relation $\beta$ given in this example.  (This and other parts of
+the Appendix are verbose and inelegant; all of this will be removed
+eventually.) 
 
-Regarding the last fact, $\beta$ was constructed specifically to provide a
-nontrivial example where such a fact would hold.  That is, we wanted to know if
-there was an example where $\beta$ has smaller height than $\alpha_i$ (so that 
+Regarding Fact~\ref{fact:tau}, $\beta$ was constructed specifically to provide a
+nontrivial example where this fact might hold.  That is, we wanted to know if
+an example existed in which $\beta$ has smaller height than $\alpha_i$ (so that 
 $|x/\beta| \leq |y/\alpha_i| < \nb{\beta}$, and so $\beta$ would not permute
 with $\alpha_1$ and $\alpha_2$), and such that 
 $\tau(\alpha_1, \alpha_2, \beta)\subseteq \beta$, so that the Wheatstone
@@ -765,7 +765,11 @@ corners labeled 2 and 8 the ``opposite corners'' relative to 0 and 10.
 
 The relation $\tau$ defined by the Wheatstone Bridge satisfies 
 \[
-0 \rtau 10 \quad \longleftrightarrow \quad 2\rtau 8.
+0 \rbeta 10 \quad \longrightarrow \quad 2\rtau 8,
+\]
+and, by symmetry of $\alpha_1$ and $\alpha_2$,
+\[
+2 \rbeta 8 \quad \longrightarrow \quad 0\rtau 10.
 \]
 
 Let us make this more general and precise.
