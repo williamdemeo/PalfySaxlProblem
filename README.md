@@ -15,5 +15,10 @@ The main files in the repository are:
 
 3.  [Werner-PartLatConLat.pdf](https://github.com/williamdemeo/PalfySaxlProblem/raw/master/Werner-PartLatConLat.pdf) -- A scanned copy of the article by Werner, "Which partition lattices are congruence lattices?", Colloquia Mathematica, 1974.
 
-To contribute to this repository you can [fork it](https://help.github.com/articles/fork-a-repo) using the Fork button above, then edit some files, and then submit a [pull request](https://help.github.com/articles/using-pull-requests).  If you don't understand the previous sentence means, you might consider learning [the basics of Git in 15 minutes](http://try.github.io/levels/1/challenges/1).
+To contribute to this repository you can
+[fork it](https://help.github.com/articles/fork-a-repo) using the Fork button
+above, then edit some files, and then submit a
+[pull request](https://help.github.com/articles/using-pull-requests).  If you
+don't understand the previous sentence, consider learning
+the basics of [Git in 15 minutes](http://try.github.io/levels/1/challenges/1).
 
