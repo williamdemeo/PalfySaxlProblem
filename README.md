@@ -1,6 +1,9 @@
 Palfy-Saxl Problem
 ==================
-This repsitory contains notes and articles related to a problem of Palfy and Saxl.  
+This repsitory contains notes on an extension of a method in
+[Werner's paper](https://github.com/williamdemeo/PalfySaxlProblem/raw/master/Werner-PartLatConLat.pdf)
+employing graphical compositions. In the notes I consider how the technique
+could be applied to answer the following question of P&aacute;lfy and Saxl.
 
 **Problem.**
 Let A be a finite algebra with Con(A) isomorphic to M_n, for some n at least 4. 
@@ -20,5 +23,5 @@ To contribute to this repository you can
 above, then edit some files, and then submit a
 [pull request](https://help.github.com/articles/using-pull-requests).  If you
 don't understand the previous sentence, consider learning
-the basics of [Git in 15 minutes](http://try.github.io/levels/1/challenges/1).
+[Git in 15 minutes](http://try.github.io/levels/1/challenges/1).
 
