@@ -1,9 +1,24 @@
-%% Based on a TeXnicCenter-Template by Gyorgy SZEIDL.
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{filecontents*}{refs.bib}
+@article {PalfySaxl,
+    AUTHOR = {P{\'a}lfy, P. P. and Saxl, J.},
+     TITLE = {Congruence lattices of finite algebras and factorizations of
+              groups},
+   JOURNAL = {Comm. Algebra},
+  FJOURNAL = {Communications in Algebra},
+    VOLUME = {18},
+      YEAR = {1990},
+    NUMBER = {9},
+     PAGES = {2783--2790},
+      ISSN = {0092-7872},
+     CODEN = {COALDM},
+   MRCLASS = {08A30 (20E32)},
+  MRNUMBER = {1063342 (91h:08003)},
+MRREVIEWER = {R. S. Pierce},
+}
+\end{filecontents*}
 
-%------------------------------------------------------------
-%
 \documentclass{amsart}
+\usepackage[style = ieee, urldate = comp]{biblatex}
 %
 %----------------------------------------------------------
 % This is a sample document for the AMS LaTeX Article Class
@@ -46,7 +61,8 @@
 \usepackage{comment}
 \usepackage{tikz}
 \usepackage{xspace}
-\usepackage[printonlyused]{acronym}%
+%% \usepackage[smaller,printonlyused]{acronym}%
+\usepackage[smaller]{acronym}%
 %------------------------------------------------------------
 % Theorem like environments
 %
@@ -113,6 +129,7 @@
 \newcommand{\Palfy}{P\'alfy}
 \newcommand{\bA}{\ensuremath{\mathbf{A}}}
 \newcommand{\sP}{\ensuremath{\mathscr{P}}}
+\newcommand{\sS}{\ensuremath{\mathcal{S}}}
 %\newcommand{\ker}{\ensuremath{\operatorname{ker}}}
 \newcommand{\Con}{\ensuremath{\operatorname{Con}}}
 \newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
@@ -130,10 +147,15 @@
 \newcommand{\join}{\ensuremath{\vee}}
 \newcommand{\Meet}{\ensuremath{\bigwedge}}
 \renewcommand{\Join}{\ensuremath{\bigvee}}
-\newcommand{\nb}[1]{\ensuremath{\#\mathrm{Blocks}(#1)}}
-%\newcommand{\nb}[1]{\ensuremath{\#{#1}}}
+%% \newcommand{\nb}[1]{\ensuremath{\#\mathrm{Blocks}(#1)}}
+%% \newcommand{\nb}[1]{\ensuremath{\operatorname{N}(#1)}}
+%% \newcommand{\nb}[1]{\ensuremath{\boldsymbol{\nu}(#1)}}
+\newcommand{\nb}[1]{\ensuremath{\operatorname{\boldsymbol{\nu}}(#1)}}
+%% \newcommand{\nb}[1]{\ensuremath{\#{#1}}}
 
 %-------------------------------------------------------
+\addbibresource{refs.bib}
+
 \begin{document}
 \title{On a problem of P\'{a}lfy and Saxl}
 \author{William DeMeo}
@@ -155,7 +177,7 @@ equivalence relations on $X$ and, for $\alpha \in \Eq(X)$ and $x\in X$, we
 denote by $x/\alpha$ the equivalence class of $\alpha$ containing $x$.
 We often refer to equivalence classes as
 ``blocks,'' and we denote by $\nb{\alpha}$ the number of blocks of the
-equivalence relation $\alpha$. 
+relation $\alpha$. 
 
 For a given $\alpha\in \Eq(X)$ the map 
  $\phi_\alpha: x \mapsto x/\alpha$ is a
@@ -163,26 +185,27 @@ function from $X$ into the power set $\sP(X)$
 with kernel $\ker \phi_\alpha = \alpha$. 
 The \emph{block-size function} $x \mapsto |x/\alpha|$ is a function from $X$ into $\{1,2,\dots, |X|\}$.
 
-We will often abuse notation and equate an equivalence relation with the
-corresponding partition of the set $X$.  For example, we will equate 
+We will often abuse notation and identify an equivalence relation with the
+corresponding partition of the set $X$.  For example, we identify
 the relation 
 \[
 \alpha = \{(0,0), (1,1), (2,2), (3,3), (0,1), (1,0), (2,3), (3,2)\}
 \]
-with the partition $|0,1|2,3|$, and often we resort to writing $\alpha = |0,1|2,3|$.
+with the partition $|0,1|2,3|$, and will even resort to writing 
+$\alpha = |0,1|2,3|$. 
 
-We say that $\alpha$ has \emph{uniform blocks} if 
-all blocks of  $\alpha$ have the same size; or, equivalently,
-the block-size function is constant: for all 
-$x, y \in X$, $|x/\alpha| = |y/\alpha|$.  We will use $|x/\alpha|$, without specifying
-a particular $x\in X$, to denote this block size.
+We say that $\alpha$ has \emph{uniform blocks} if all blocks of  $\alpha$ have
+the same size; or, equivalently, the block-size function is constant: for all 
+$x, y \in X$, $|x/\alpha| = |y/\alpha|$.  
+In this case we will use $|x/\alpha|$ without specifying
+a particular $x$ to denote this block size.
 %% \footnote{Alternatively, we
 %%   might consider using 
 %%   $|x_{\cdot}/\alpha|$ to emphasize that every $x\in X$ can be substituted for
 %%   $x_\cdot$ without changing the value of $|x_\cdot/\alpha|$, but this notation
 %%   may be too cumbersome.}  
 Thus, when $\alpha$
-has uniform blocks, we have $|X|= |x/\alpha| \cdot \nb{\alpha}$.
+has uniform blocks, we have $|X|= |x/\alpha| \nb{\alpha}$.
 
 %% If $\alpha$ has uniform blocks of size $r$, then the number of blocks 
 %% of $\alpha$ is $m = |X|/r$.  
@@ -195,41 +218,51 @@ blocks  have
 the block size of the other. In other words, if $\alpha$ and $\beta$ are two
 equivalence relations on $X$ with uniform block sizes $|x/\alpha|$ and
 $|x/\beta|$, respectively, then $\alpha$ and $\beta$ have complementary blocks
-if and only if $(\forall x)(\forall y)\, |x/\alpha|\cdot |y/\beta| = |X|$.
+if and only if $(\forall x)(\forall y)\, |x/\alpha||y/\beta| = |X|$.
 
 %% If $\alpha \in \Eq(X)$ has uniform blocks of size $r$, we say that $\alpha$ has
 %% \emph{balanced uniform block structure}, or simply \emph{balanced blocks},
 %% provided $r = |X|^{1/2}$.
 
 Given two equivalence relations $\alpha$ and $\beta$ on $X$, the relation
-\[
+\begin{equation}
+  \label{eq:7}
 \alpha \circ \beta = \{(x,y) \in X^2: (\exists z)x \ralpha z
 \rbeta y\}
-\]
+\end{equation}
 is called the \emph{composition of $\alpha$ and $\beta$}, and if 
 $\alpha \circ \beta = \beta \circ \alpha$ then $\alpha$ and $\beta$ are said to
 \emph{permute}, or to be \emph{permuting} equivalence relations.  
 Note that $\alpha \circ \beta \subseteq \alpha \join \beta$ with equality if and
 only if $\alpha$ and $\beta$ permute.
 
+From the definition (\ref{eq:7}) it is clear that %for every $x\in X$ 
+$(x,y) \in \alpha\circ \beta$ if and only if
+$y \in z/\beta$ for some $z\in x/\alpha$.  In other terms, for every $x\in X$
+we have
+  \begin{equation}
+    \label{eq:1}
+x/(\alpha\circ \beta) = \bigcup_{z \in x/\alpha} z/\beta.
+%x/(\alpha\circ \beta) = \coprod_{y \in x/\alpha} y/\beta 
+  \end{equation}
+
+
 The largest and smallest equivalence relations on $X$ are $1_X = X^2$
 and $0_X = \{(x,x) : x \in X\}$, respectively.
 
-One more piece of shorthand notation will be useful below.  
-Suppose $\Theta$ is a set of equivalence relations.
-We say that $\Theta$ is \acs{PPPC} if
-it consists of {\it \acl{PPPC}}; that is,
-for all $\gamma \neq \delta$ in $\Theta$, we have
-\[
-\gamma \circ \delta = \delta \circ \gamma,  
-\quad  \gamma \meet \delta = 0_X, 
-\quad  \gamma \join \delta = 1_X.
-\]
+We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
+on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
+If $\Gamma$ is a set of equivalence relations, 
+we say that $\Gamma$ consists of 
+{\it \ac{PPPC}}
+%% {\it \acl{PPPC}} 
+if the following conditions hold for all $\gamma \neq \delta$ in $\Gamma$:
+(i) $\gamma \circ \delta = \delta \circ \gamma$;  
+(ii) $\gamma \meet \delta = 0_X$;  
+(iii) $\gamma \join \delta = 1_X$.
 
 \section{Basic observations}
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
-We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
-on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
 \begin{lemma}
 \label{lem:1}
 Suppose $\alpha$ and $\beta$ are complementary equivalence relations on
@@ -237,7 +270,7 @@ $X$. Then $\alpha$ and $\beta$ permute if and only if they have complementary
 blocks.  That is,
 \[
 \alpha \circ \beta =1_X \quad \Longleftrightarrow \quad (\forall x)(\forall y)\,
-|x/\alpha|\cdot |y/\beta| = |X|.
+|x/\alpha| |y/\beta| = |X|.
 \]
 \end{lemma}
 \begin{corollary}
@@ -251,33 +284,42 @@ $\sqrt{|X|}$.  In other words,
 \quad \Longleftrightarrow \quad (\forall i)(\forall x) \, |x/\alpha_i| =
 \sqrt{|X|}.
 \]
-In this case, we clearly have $|x/\alpha_i| =\nb{\alpha_i}$. 
+In this case,  $|x/\alpha_i| =\nb{\alpha_i}$. 
 \end{corollary}
 \begin{proof}[Proof of Lemma~\ref{lem:1}]
-  Assume $\alpha \circ \beta = \alpha \join \beta = 1_X$. Then, for all $x\in X$
-  we have
+Suppose $\alpha$ and $\beta$ are complementary
+equivalence relations.  Then the union in~(\ref{eq:1}) is disjoint
+since $\alpha \meet \beta = 0_X$. We denote this by writing
   \begin{equation}
-    \label{eq:1}
+    \label{eq:100}
 %x/(\alpha\circ \beta) = \dot{\bigcup}_{y \in x/\alpha} y/\beta = X,
-x/(\alpha\circ \beta) = \coprod_{y \in x/\alpha} y/\beta = X,
+x/(\alpha\circ \beta) = \coprod_{z \in x/\alpha} z/\beta.
   \end{equation}
-where $\coprod$ denotes disjoint union.  The union is disjoint since
-$\alpha \meet \beta = 0_X$.  Since the union in~(\ref{eq:1}) is all of $X$,
-every block of $\beta$ must appear in the union, so the block $x/\alpha$ has
-exactly $\nb{\beta}$ elements. Since $x$ was arbitrary, $\alpha$ has uniform
-blocks of size $|x/\alpha| =\nb{\beta}$. Similarly, 
-$x/(\beta \circ \alpha) = \coprod_{y \in x/\beta} y/\alpha = X$, so 
-$|x/\beta| =\nb{\alpha}$ holds for all $x\in X$.  Therefore, 
-for all $x, y\in X$, we have
+%% where $\coprod$ denotes disjoint union. 
+Also, since 
+$\alpha \circ \beta = \alpha \join \beta = 1_X$, we have 
+$x/(\alpha\circ \beta) =  X$ for 
+every $x\in X$.
+Thus the union in~(\ref{eq:100}) is all of $X$,
+so every block of $\beta$ appears in this union.
+It follows that the size of the block $x/\alpha$ is exactly $\nb{\beta}$. 
+As $x$ was arbitrary, $\alpha$ has uniform
+blocks of size %% $|x/\alpha| =
+$\nb{\beta}$. 
+The same argument with the roles of $\alpha$ and $\beta$ reversed
+gives
+$x/(\beta \circ \alpha) = \coprod_{z \in x/\beta} z/\alpha = X$, 
+and  $|x/\beta| =\nb{\alpha}$ for all $x\in X$.  Therefore, 
+for all $x, z\in X$ we have
 \[
-|x/\alpha|\cdot |y/\beta| 
- = |x/\alpha|\cdot \nb{\alpha} = |X|.
+|x/\alpha| |z/\beta| 
+ = |x/\alpha| \nb{\alpha} = |X|.
 \]
 
 To prove the converse, suppose $\alpha$ and $\beta$ are pairwise complements
-with complementary blocks.  Then $|x/\alpha|\cdot |y/\beta| = |X|$, 
-thus $|y/\beta| = |x/\alpha|^{-1} \cdot |X|  = \nb{\alpha}$ 
-hold for all $x, y \in X$.  Therefore, for all $x\in X$, we have
+with complementary blocks.  Then $|x/\alpha| |y/\beta| = |X|$, 
+so $|y/\beta| = |x/\alpha|^{-1}  |X|  = \nb{\alpha}$. 
+Therefore, for all $x\in X$,
 \begin{align*}
 \bigl|x/(\alpha\circ \beta)\bigr| &= \bigl|\coprod_{y\in x/\alpha} y/\beta\bigr|
 = \sum_{y \in x/\alpha} |y/\beta|\\
@@ -292,45 +334,57 @@ Since $\alpha_1$ and $\alpha_2$ permute and are complements, Lemma~\ref{lem:1}
 implies they have complementary blocks, so
 \begin{equation}
   \label{eq:2}
-|x/\alpha_1| = |x/\alpha_2|^{-1} \cdot |X|= \nb{\alpha_2}.
+|x/\alpha_1| = |x/\alpha_2|^{-1}  |X|= \nb{\alpha_2}.
 \end{equation}
 (This holds for all $x\in X$. Recall that complementary blocks are always
 uniform.) 
 Similarly, since $\alpha_1$ and $\alpha_3$ permute, we have
-$|x/\alpha_1| = |x/\alpha_3|^{-1} \cdot |X| = \nb{\alpha_3}$.
+$|x/\alpha_1| = |x/\alpha_3|^{-1}  |X| = \nb{\alpha_3}$.
 Therefore, $\nb{\alpha_2} = \nb{\alpha_3}$.  Since 
 $\alpha_2$ and $\alpha_3$ permute, we have
 \begin{equation}
   \label{eq:3}
-|x/\alpha_2| = |x/\alpha_3|^{-1} \cdot |X|= \nb{\alpha_3},
+|x/\alpha_2| = |x/\alpha_3|^{-1}  |X|= \nb{\alpha_3},
 \end{equation}
 and the latter is equal to $\nb{\alpha_2}$.  Therefore,
-\[
-|X| = |x/\alpha_2| \cdot \nb{\alpha_2} = |x/\alpha_2| \cdot |x/\alpha_2|. 
-\]
-Thus, $|x/\alpha_2|  = \sqrt{|X|}$, so by (\ref{eq:2}) and (\ref{eq:3}) we have 
+$|X| = |x/\alpha_2|  \nb{\alpha_2} = |x/\alpha_2|  |x/\alpha_2|$, so 
+$|x/\alpha_2|  = \sqrt{|X|}$. By (\ref{eq:2}) and (\ref{eq:3}), it follows
+that
 $|x/\alpha_i| = \sqrt{|X|} = \nb{\alpha_i}$ for $i = 1, 2, 3$.
 
-The converse is obvious, since if $\alpha_i$ and $\alpha_j$ are
+The converse is obvious since, if $\alpha_i$ and $\alpha_j$ are
 complementary equivalence relations on $X$ with 
 $|x/\alpha_i| = \sqrt{|X|}$, then 
 $\nb{\alpha_i} = \sqrt{|X|}$, so
 $\alpha_i \circ \alpha_j = 1_X$.
 \end{proof}
 
-From Corollary~\ref{cor:1} we see that the \Palfy-Saxl problem can be stated as
+Define the set $\sS\subseteq \Eq(X)$ as follows:
+\[
+\sS = \{ \alpha \in \Eq(X) : (\forall x) \; |x/\alpha|  
+= \sqrt{|X|} = \nb{\alpha}\}.
+\]
+From Corollary~\ref{cor:1} we see that the \Palfy-Saxl problem can be rephrased
+as follows:
+
+\medskip
+
 \begin{quote}
   {\sc Problem.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
   4$. %If three nontrivial congruences of $\bA$ pairwise permute, does it follow
-If three atoms of $\bA$ have Property~(\ref{eq:4}) below, does it follow
-  that every atom has Property~(\ref{eq:4})?
-  \begin{equation}
-    \label{eq:4}
-(\forall x) \; |x/\alpha|  = \sqrt{|X|} = \nb{\alpha}
-  \end{equation}
+  If the set $\sS$ contains three atoms of
+  $\Con \bA$,
+  %% have Property~(\ref{eq:4}) below
+  does it follow that $\sS$ contains every atom of 
+  $\Con \bA$?
+  %% has Property~(\ref{eq:4})?
+  %%   \begin{equation}
+  %%     \label{eq:4}
+  %% (\forall x) \; |x/\alpha|  = \sqrt{|X|} = \nb{\alpha}
+  %%   \end{equation}
 \end{quote}
 
-\bigskip
+\medskip
 
 %% \noindent To prove that the answer is ``no,'' it would suffice to find a 
 %% congruence lattice $\Con \bA \cong M_n$, $n\geq 4$, where 3 atoms have
@@ -339,10 +393,10 @@ If three atoms of $\bA$ have Property~(\ref{eq:4}) below, does it follow
 %%  and one atom $\beta$ has $|x/\beta| < \sqrt{|X|} < \nb{\beta}$.
 %% \bigskip
 
-\noindent To prove that the answer is ``yes,'' it will suffice to prove that 
-if $M_n\leq \Eq(X)$ has 3 atoms 
-with Property~(\ref{eq:4}) and
-an atom $\beta$ with $|x/\beta| < \sqrt{|X|}$, then this $M_n$ is not a
+\noindent To prove that the answer is ``yes,'' it suffices to show that 
+whenever $M_n \cong L \leq \Eq(X)$ has 3 atoms in $\sS$ and
+%% with Property~(\ref{eq:4}) and
+an atom $\beta$ with $|x/\beta| < \sqrt{|X|}$, then $L$ is not a
 congruence lattice.  
 %% For example, we might find a method which shows in
 %% such cases that the closure of the lattice will always contain some 
@@ -579,7 +633,7 @@ Easy arguments similar to those above establish that
 On the other hand, since $L$ is a congruence lattice, it must be the case that
 the transtive closure of $\theta_{ij}$ is contained in $L$.\\
 \\
-{\it TODO: prove of Lemma 3 (if possible).}
+{\it TODO: complete proof of Lemma 3 (if possible).}
 
 \appendix
 \acresetall
@@ -839,16 +893,17 @@ For example, looking at the array representing $\alpha_1$, we see that if, say,
 $(2,15)$ were to belong to $\beta$, then the pair $(3,15)$ at 
 the opposite corners must belong to $\tau(\alpha_1, \alpha_2, \beta)$.
 
-\vskip2cm
+%% \vskip2cm
 
-\section{List of Acronyms}
-\begin{acronym}
-\acro{PPPC}{pairwise permuting pairwise complements}
-\end{acronym}
+%% \section{List of Acronyms}
+%% \begin{acronym}
+%% \acro{PPPC}{pairwise-permuting pairwise-complements}
+%% \end{acronym}
 
+%% \bibliographystyle{plainurl}
+%% \bibliography{wjd}
 
-\bibliographystyle{plainurl}
-\bibliography{wjd}
+\printbibliography
 
 
 \end{document}
