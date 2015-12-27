@@ -63,6 +63,14 @@ MRREVIEWER = {R. S. Pierce},
 \usepackage{xspace}
 %% \usepackage[smaller,printonlyused]{acronym}%
 \usepackage[smaller]{acronym}%
+
+\acrodef{cib}[CIB]{commutative idempotent binar}
+\acrodef{cubs}[CUBS]{compatible uniform block structure}
+\newcommand{\cubs}{\acs{cubs}\xspace}
+\acrodef{pppc}[PPPC]{pairwise-permuting pairwise-complements}
+\newcommand{\pppc}{\acs{pppc}\xspace}
+
+
 %------------------------------------------------------------
 % Theorem like environments
 %
@@ -172,13 +180,19 @@ In the paper \cite{PalfySaxl}, \Peter\ \Palfy\ and Jan Saxl pose the following
 \end{quote}
 
 These notes collect some notation and facts that might be useful for attacking this problem.
-Throughout, $X$ denotes a finite set, $\Eq(X)$ denotes the lattice of
-equivalence relations on $X$ and, for $\alpha \in \Eq(X)$ and $x\in X$, we
-denote by $x/\alpha$ the equivalence class of $\alpha$ containing $x$.
+Throughout, $X$ denotes a finite set and $\Eq(X)$ denotes the lattice of
+equivalence relations on $X$. For $\alpha \in \Eq(X)$ and $x\in X$, we
+let $x/\alpha$ denote the equivalence class of $\alpha$ containing $x$, and 
+$X/\alpha$ denotes the set of all equivalence classes of $\alpha$. That is,
+\[
+x/\alpha = \{y\in X : x \mathrel{ \alpha } y\} \quad \text{ and } \quad
+X/\alpha = \{x/\alpha : x\in X \}.
+\]
 We often refer to equivalence classes as
 ``blocks,'' and we denote by $\nb{\alpha}$ the number of blocks of the
-relation $\alpha$. 
-
+relation $\alpha$. That is, $\nb{\alpha} = |X/\alpha|$, and we 
+may use either $\nb{\alpha}$ or $|X/\alpha|$ to denote the number of 
+blocks of $\alpha$.
 For a given $\alpha\in \Eq(X)$ the map 
  $\phi_\alpha: x \mapsto x/\alpha$ is a
 function from $X$ into the power set $\sP(X)$
@@ -191,8 +205,7 @@ the relation
 \[
 \alpha = \{(0,0), (1,1), (2,2), (3,3), (0,1), (1,0), (2,3), (3,2)\}
 \]
-with the partition $|0,1|2,3|$, and will even resort to writing 
-$\alpha = |0,1|2,3|$. 
+with the partition $|0,1|2,3|$, and will even write $\alpha = |0,1|2,3|$. 
 
 We say that $\alpha$ has \emph{uniform blocks} if all blocks of  $\alpha$ have
 the same size; or, equivalently, the block-size function is constant: for all 
@@ -204,42 +217,38 @@ a particular $x$ to denote this block size.
 %%   $|x_{\cdot}/\alpha|$ to emphasize that every $x\in X$ can be substituted for
 %%   $x_\cdot$ without changing the value of $|x_\cdot/\alpha|$, but this notation
 %%   may be too cumbersome.}  
-Thus, when $\alpha$
-has uniform blocks, we have $|X|= |x/\alpha| \nb{\alpha}$.
-
-%% If $\alpha$ has uniform blocks of size $r$, then the number of blocks 
-%% of $\alpha$ is $m = |X|/r$.  
+Thus, if $\alpha$
+has uniform blocks, then
+\[
+|X|= |x/\alpha| |X/\alpha| = |x/\alpha| \nb{\alpha} \quad \text{(for all $x\in X$).}
+\]
 We say that two equivalence relations with uniform
 blocks  have 
-%% If $\beta$ is another equivalence relation, we say
-%% that $\alpha$ and $\beta$ have 
-\emph{complementary uniform block structure}, or simply \emph{complementary
-  blocks}, if the number of blocks of one is equal to
-the block size of the other. In other words, if $\alpha$ and $\beta$ are two
-equivalence relations on $X$ with uniform block sizes $|x/\alpha|$ and
-$|x/\beta|$, respectively, then $\alpha$ and $\beta$ have complementary blocks
-if and only if $(\forall x)(\forall y)\, |x/\alpha||y/\beta| = |X|$.
+\acfi{cubs} if the number of blocks of one is equal to
+the block size of the other. That is,
+$\alpha$ and $\beta$ 
+have \cubs
+iff $|x/\alpha||y/\beta| = |X|$ (for all $x$ and $y$).
 
 %% If $\alpha \in \Eq(X)$ has uniform blocks of size $r$, we say that $\alpha$ has
 %% \emph{balanced uniform block structure}, or simply \emph{balanced blocks},
 %% provided $r = |X|^{1/2}$.
 
-Given two equivalence relations $\alpha$ and $\beta$ on $X$, the relation
+If $\alpha$ and $\beta$ are binary relations on $X$, then the relation
 \begin{equation}
   \label{eq:7}
-\alpha \circ \beta = \{(x,y) \in X^2: (\exists z)x \ralpha z
+\alpha \circ \beta = \{(x,y) \in X^2: (\exists z)\, x \ralpha z
 \rbeta y\}
 \end{equation}
-is called the \emph{composition of $\alpha$ and $\beta$}, and if 
-$\alpha \circ \beta = \beta \circ \alpha$ then $\alpha$ and $\beta$ are said to
-\emph{permute}, or to be \emph{permuting} equivalence relations.  
-Note that $\alpha \circ \beta \subseteq \alpha \join \beta$ with equality if and
-only if $\alpha$ and $\beta$ permute.
+is called the \emph{composition of $\alpha$ and $\beta$}. If 
+$\alpha \circ \beta = \beta \circ \alpha$ then we call $\alpha$ and $\beta$ 
+\emph{permuting} relations and we say that $\alpha$ and $\beta$ \emph{permute}. 
+It is not hard to see that $\alpha \circ \beta \subseteq \alpha \join \beta$
+with equality if and only if $\alpha$ and $\beta$ permute.
 
 From the definition (\ref{eq:7}) it is clear that %for every $x\in X$ 
 $(x,y) \in \alpha\circ \beta$ if and only if
-$y \in z/\beta$ for some $z\in x/\alpha$.  In other terms, for every $x\in X$
-we have
+$y \in z/\beta$ for some $z\in x/\alpha$.  Thus, for every $x\in X$,
   \begin{equation}
     \label{eq:1}
 x/(\alpha\circ \beta) = \bigcup_{z \in x/\alpha} z/\beta.
@@ -247,14 +256,15 @@ x/(\alpha\circ \beta) = \bigcup_{z \in x/\alpha} z/\beta.
   \end{equation}
 
 
-The largest and smallest equivalence relations on $X$ are $1_X = X^2$
+The largest and smallest equivalence relations on $X$ are denoted by $1_X = X^2$
 and $0_X = \{(x,x) : x \in X\}$, respectively.
 
 We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
 on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
 If $\Gamma$ is a set of equivalence relations, 
 we say that $\Gamma$ consists of 
-{\it \ac{PPPC}}
+\acfi{pppc}
+%\pppc %{\it \ac{PPPC}}
 %% {\it \acl{PPPC}} 
 if the following conditions hold for all $\gamma \neq \delta$ in $\Gamma$:
 (i) $\gamma \circ \delta = \delta \circ \gamma$;  
@@ -266,8 +276,8 @@ if the following conditions hold for all $\gamma \neq \delta$ in $\Gamma$:
 \begin{lemma}
 \label{lem:1}
 Suppose $\alpha$ and $\beta$ are complementary equivalence relations on
-$X$. Then $\alpha$ and $\beta$ permute if and only if they have complementary
-blocks.  That is,
+$X$. Then $\alpha$ and $\beta$ permute if and only if they have \cubs.
+That is,
 \[
 \alpha \circ \beta =1_X \quad \Longleftrightarrow \quad (\forall x)(\forall y)\,
 |x/\alpha| |y/\beta| = |X|.
@@ -276,9 +286,9 @@ blocks.  That is,
 \begin{corollary}
 \label{cor:1}
 Suppose $\alpha_1$, $\alpha_2$, $\alpha_3$ are pairwise complementary
-equivalence relations on $X$. Then  $\alpha_1$, $\alpha_2$, $\alpha_3$
-pairwise permute if and only if they all have uniform blocks of size 
-$\sqrt{|X|}$.  In other words,
+equivalence relations on the finite set $X$. 
+Then  $\alpha_1$, $\alpha_2$, $\alpha_3$ pairwise permute if and only if they
+all have uniform blocks of size $\sqrt{|X|}$.  That is,
 \[
 (\forall i)(\forall j) \, (i\neq j \longrightarrow \alpha_i \circ \alpha_j = 1_X)
 \quad \Longleftrightarrow \quad (\forall i)(\forall x) \, |x/\alpha_i| =
@@ -403,7 +413,7 @@ congruence lattice.
 %% $\beta < \theta < 1_X$.
 
 \section{Graphical Compositions}
-Suppose $\alpha_1$, $\alpha_2$, and $\alpha_3$ are \ac{PPPC} in $\Eq(X)$, and
+Suppose $\alpha_1$, $\alpha_2$, and $\alpha_3$ are \pppc in $\Eq(X)$, and
 let $\beta\in \Eq(X)$ be complementary to 
 each 
 $\alpha_i$, so that 
@@ -570,7 +580,7 @@ $R_{ij}^\beta\circ R_{ij}^\beta$ is the identity map.
 
 \section{Final piece of the puzzle}
 As above, suppose $L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong  M_4$ is a
-congruence lattice and suppose $\{\alpha_i\}_{i=1}^3$  is \ac{PPPC}.  
+congruence lattice and suppose $\{\alpha_i\}_{i=1}^3$  is \pppc.
 Suppose $R_{ij}^\beta: \beta \rightarrow \beta$ holds for all 
 $i, j \in \{1,2,3\}$.
 
@@ -591,7 +601,7 @@ then one of the following holds:
 If Lemma~\ref{lem:missingpiece} is true, then we can prove the following:
 \begin{theorem}
 If $L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong  M_4$ is a
-congruence lattice with $\alpha_i$ \ac{PPPC}, then $\beta$ permutes with each $\alpha_i$.
+congruence lattice with $\alpha_i$ \pppc, then $\beta$ permutes with each $\alpha_i$.
 \end{theorem}
 \begin{proof}
 We will show $\alpha_1 \circ \beta \subseteq \beta \circ \alpha_1$.
@@ -752,7 +762,7 @@ where $\alpha_1, \dots, \alpha_5$, and $\beta$ correspond to the following parti
 \end{matrix}
 \]
 
-The relations $\alpha_1, \dots, \alpha_5$ are \acf{PPPC}.  Also, for 
+The relations $\alpha_1, \dots, \alpha_5$ are \pppc.  Also, for 
 each $\alpha_i$, with $i\neq 3$, it's clear that $\beta$ and $\alpha_i$ are
 nonpermuting complements.
 Here are some other facts that aid intuition.
