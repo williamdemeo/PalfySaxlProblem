@@ -1,4 +1,21 @@
 \begin{filecontents*}{refs.bib}
+@article {MR3076179,
+    AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
+     TITLE = {The shape of congruence lattices},
+   JOURNAL = {Mem. Amer. Math. Soc.},
+  FJOURNAL = {Memoirs of the American Mathematical Society},
+    VOLUME = {222},
+      YEAR = {2013},
+    NUMBER = {1046},
+     PAGES = {viii+169},
+      ISSN = {0065-9266},
+      ISBN = {978-0-8218-8323-5},
+   MRCLASS = {08B05 (08B10)},
+  MRNUMBER = {3076179},
+MRREVIEWER = {James B. Nation},
+       DOI = {10.1090/S0065-9266-2012-00667-8},
+       URL = {http://dx.doi.org/10.1090/S0065-9266-2012-00667-8},
+}
 @article {PalfySaxl,
     AUTHOR = {P{\'a}lfy, P. P. and Saxl, J.},
      TITLE = {Congruence lattices of finite algebras and factorizations of
@@ -133,8 +150,9 @@ MRREVIEWER = {R. S. Pierce},
 \renewcommand{\unlhd}{\ensuremath{\trianglelefteqslant}}
 
 
+\newcommand{\defn}[1]{{\it #1}}
 \newcommand{\Peter}{P{\'e}ter}
-\newcommand{\Palfy}{P\'alfy}
+\newcommand{\Palfy}{P\'alfy\xspace}
 \newcommand{\bA}{\ensuremath{\mathbf{A}}}
 \newcommand{\sP}{\ensuremath{\mathscr{P}}}
 \newcommand{\sS}{\ensuremath{\mathcal{S}}}
@@ -170,16 +188,32 @@ MRREVIEWER = {R. S. Pierce},
 \date{November 13, 2013}
 
 \maketitle
+\begin{abstract}
+If $\bA$ is a finite algebra in a Taylor variety 
+with $\Con \bA \cong M_n$, $n\geq 4$, and if three nontrivial congruences 
+of $\bA$ pairwise permute, then every pair of congruences of $\bA$ permute.
+%% (In fact, the result we prove is slightly more general; the
+%% congruence lattices need not be exactly isomorphic to $M_n$.) 
+Thus, for algebras satisfying a nontrivial idempotent Malcev
+condition, this gives a positive answer to a question asked by \Palfy and
+Saxl in 1990. 
+
+\end{abstract}
 
 \section{Introduction}
-In the paper \cite{PalfySaxl}, \Peter\ \Palfy\ and Jan Saxl pose the following 
+In the paper \cite{PalfySaxl}, \Peter\ \Palfy\ and Jan Saxl pose 
+the following 
 \begin{quote}
-  {\sc Problem.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
+  {\scshape Problem.}
+  Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
   4$. If three nontrivial congruences of $\bA$ pairwise permute, does it follow
   that every pair of congruences of $\bA$ permute?
 \end{quote}
+In this note we solve this problem for a special class of algebras---namely,
+those satisfying a nontrivial idempotent Malcev condition.  We call such algebras
+\defn{Taylor algebras} because they have Taylor term operations.
 
-These notes collect some notation and facts that might be useful for attacking this problem.
+\subsection{Notation}
 Throughout, $X$ denotes a finite set and $\Eq(X)$ denotes the lattice of
 equivalence relations on $X$. For $\alpha \in \Eq(X)$ and $x\in X$, we
 let $x/\alpha$ denote the equivalence class of $\alpha$ containing $x$, and 
@@ -270,6 +304,102 @@ if the following conditions hold for all $\gamma \neq \delta$ in $\Gamma$:
 (i) $\gamma \circ \delta = \delta \circ \gamma$;  
 (ii) $\gamma \meet \delta = 0_X$;  
 (iii) $\gamma \join \delta = 1_X$.
+
+
+\subsection{Centralizers and abelian algebras}
+In later sections nonabelian algebras will play the following role:
+some of the theorems will begin with the assumption 
+that a particular algebra $\bA$ is nonabelian and then proceed to show that 
+if the result to be proved were false, then $\bA$ would have to be abelian. 
+To prepare the way for such arguments, we review some basic facts about abelian
+algebras. (Much of the notation we adopt here is similar to that used
+in~\cite{MR3076179}.)
+
+Suppose $\bS$ and $\bT$ are tolerances of $\bA$.  An \defn{$\bS,\bT$-matrix} 
+is a $2\times 2$ array of the form
+\[
+\begin{bmatrix*}[r] f(a,u) & f(a,v)\\ f(b,u)&f(b,v)\end{bmatrix*},
+\]
+where $f$, $a$, $b$, $u$, $v$ have the following properties:
+\begin{enumerate}[(i)]
+\item $f\in \Pol_{\ell + m}(\bA)$,
+\item $(a, b)\in A^\ell\times A^\ell$ and $a \mathrel{\underline{\bS}} b$,
+\item $(u, v)\in A^m\times A^m$ and $u \mathrel{\underline{\bT}} v$.
+\end{enumerate}
+Let $\delta$ be a congruence relation of $\bA$.
+If every $\bS,\bT$-matrix satisfies
+\begin{equation}
+  \label{eq:22}
+f(a,u) \mathrel{\delta} f(a,v)\quad \iff \quad f(b,u) \mathrel{\delta} f(b,v),
+\end{equation}
+then we say that $\bS$ \defn{centralizes $\bT$ modulo} $\delta$ and we write 
+$\sansC(\bS, \bT; \delta)$.
+It is important to note that $\sansC(\bS, \bT; \delta)$ holds iff condition
+(\ref{eq:22}) is true \emph{for all}
+$\ell$, $m$, $f$, $a$, $b$, $u$, $v$ satisfying properties (i)--(iii).
+(A generalization of this definition that works for compatible relations that are not
+necessarily binary appears in Section~\ref{sec:centralizing-n-ary} of the appendix.)
+The condition $\sansC(\bS, \bT; 0_{\bA})$ is sometimes called the 
+\defn{$\bS, \bT$-term condition}, and when it holds we say  that
+$\bS$ \defn{centralizes} $\bT$, denoted
+$\sansC(\bS, \bT)$.
+The \defn{commutator} of $\bS$ and $\bT$, denoted by $[\bS, \bT]$,
+is the least congruence $\delta$ such that $\sansC(\bS, \bT; \delta)$ 
+holds.  A tolerance $\bT$ is called \defn{abelian} if
+$[\bT, \bT] = 0_\bA$ (iff $\sansC(\bT, \bT)$). 
+An algebra $\bA$ is called \defn{abelian} if $1_\bA$ is abelian
+(iff $\sansC(1_\bA, 1_\bA)$).
+The \defn{centralizer of $\bT$ modulo $\delta$}, denoted by
+$(\delta : \bT )$, is the largest congruence $\alpha$ on $\bA$ such that 
+$\sansC(\alpha, \bT ; \delta)$ holds.
+
+We pause to remark that an algebra $\bA$ is abelian iff $\sansC(1_\bA, 1_\bA)$ iff
+%% \begin{align*}
+%% \forall \ell \in \{0,1,2,\dots \},&
+%% \quad \forall m \in  \{1,2,\dots \},\\
+%% \quad \forall f\in \Pol_{\ell + m}(\bA),&
+%% \quad \forall (a, b)\in A^\ell\times A^\ell,&\\ 
+%% &\ker f(a, \cdot)=\ker f(b, \cdot).
+%% \end{align*}
+\[
+\forall \ell \in \{0,1,2,\dots \}, 
+\quad \forall m \in  \{1,2,\dots \},
+\quad \forall f\in \Pol_{\ell + m}(\bA),
+\quad \forall (a, b)\in A^\ell\times A^\ell,
+\]
+\[
+\ker f(a, \cdot)=\ker f(b, \cdot).
+\]
+
+%\medskip
+
+
+
+We now collect some useful facts about centralizers of congruence relations
+that we need in Section~\ref{sec:tayl-vari-rect}.
+These facts are well-known. Nevertheless, we provide their proofs 
+Section~\ref{sec:proofs-elem-facts} of the appendix. 
+
+\begin{lemma}
+\label{lem:centralizers}
+Let $\bA$ be an algebra with congruences $\alpha, \beta \in \Con(\bA)$.  Then,
+\begin{enumerate}
+
+\item \label{fact:centralizer}  
+  %% For each $\alpha\in \Con(\bA)$ 
+  there exists a largest congruence that centralizes $\alpha$,
+  denoted by $(0:\alpha)$ and called the \defn{centralizer} of $\alpha$;
+
+\item \label{fact:point-separating_implies_mutually-centralizing}  
+  if $\alpha \meet \beta = 0_{\bA}$ then $\sansC(\beta, \alpha)$ and $\sansC(\alpha, \beta)$;
+
+\item \label{fact:centralizing_ideal}
+  $\sansC(\beta, \alpha)$ if and only if $\beta \leq (0: \alpha)$.
+
+\end{enumerate}
+\end{lemma}
+
+
 
 \section{Basic observations}
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
