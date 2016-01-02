@@ -35,11 +35,29 @@ MRREVIEWER = {R. S. Pierce},
 \end{filecontents*}
 
 \documentclass{amsart}
+\usepackage{amscd,amssymb}  % amsthm, amsmath are included by default
+\usepackage{amsfonts}%
+\usepackage{mathrsfs}
+%(wjd) added stmaryrd and enumerate packages
+\usepackage{stmaryrd,enumerate}
+\usepackage{latexsym,mathrsfs,ifthen}
+\usepackage{mathtools}
+\usepackage[mathcal]{euscript}
 \usepackage[style = ieee, urldate = comp]{biblatex}
+\usepackage[colorlinks=true,urlcolor=black,linkcolor=black,citecolor=black]{hyperref}
+\usepackage{scalefnt}
+\usepackage{tikz}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{comment}
+%% \usepackage[margin=1in]{geometry}
+\usepackage{bm}
+\usepackage{proof-dashed}
+\newrobustcmd*{\entails}{\vdash}
+
 %
 %----------------------------------------------------------
-% This is a sample document for the AMS LaTeX Article Class
-% Class options
+% AMS LaTeX Article Class options
 %        -- Point size:  8pt, 9pt, 10pt (default), 11pt, 12pt
 %        -- Paper size:  letterpaper(default), a4paper
 %        -- Orientation: portrait(default), landscape
@@ -68,15 +86,7 @@ MRREVIEWER = {R. S. Pierce},
 % ensures that the paper size is a4, fonts are typeset at the size 12p
 % and the equation numbers are on the right side
 %
-\usepackage{amsmath}%
-\usepackage{amsfonts}%
-\usepackage{amssymb}%
-\usepackage{mathrsfs}
-%(wjd) added stmaryrd and enumerate packages
-\usepackage{stmaryrd,enumerate}
-\usepackage{graphicx}
-\usepackage{comment}
-\usepackage{tikz}
+
 \usepackage{xspace}
 %% \usepackage[smaller,printonlyused]{acronym}%
 \usepackage[smaller]{acronym}%
@@ -153,7 +163,10 @@ MRREVIEWER = {R. S. Pierce},
 \newcommand{\defn}[1]{{\it #1}}
 \newcommand{\Peter}{P{\'e}ter}
 \newcommand{\Palfy}{P\'alfy\xspace}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
 \newcommand{\bA}{\ensuremath{\mathbf{A}}}
+\newcommand{\bS}{\ensuremath{\mathbf{S}}}
+\newcommand{\bT}{\ensuremath{\mathbf{T}}}
 \newcommand{\sP}{\ensuremath{\mathscr{P}}}
 \newcommand{\sS}{\ensuremath{\mathcal{S}}}
 %\newcommand{\ker}{\ensuremath{\operatorname{ker}}}
@@ -168,6 +181,8 @@ MRREVIEWER = {R. S. Pierce},
 \newcommand{\rrho}{\ensuremath{\mathrel{\tau}}}
 \newcommand{\rtau}{\ensuremath{\mathrel{\tau}}}
 \newcommand{\rtheta}{\ensuremath{\mathrel{\theta}}}
+\newcommand{\Pol}{\ensuremath{\operatorname{Pol}}}
+\newcommand{\sansC}{\ensuremath{\mathsf{C}}}
 
 \newcommand{\meet}{\ensuremath{\wedge}}
 \newcommand{\join}{\ensuremath{\vee}}
@@ -337,8 +352,6 @@ $\sansC(\bS, \bT; \delta)$.
 It is important to note that $\sansC(\bS, \bT; \delta)$ holds iff condition
 (\ref{eq:22}) is true \emph{for all}
 $\ell$, $m$, $f$, $a$, $b$, $u$, $v$ satisfying properties (i)--(iii).
-(A generalization of this definition that works for compatible relations that are not
-necessarily binary appears in Section~\ref{sec:centralizing-n-ary} of the appendix.)
 The condition $\sansC(\bS, \bT; 0_{\bA})$ is sometimes called the 
 \defn{$\bS, \bT$-term condition}, and when it holds we say  that
 $\bS$ \defn{centralizes} $\bT$, denoted
@@ -346,14 +359,24 @@ $\sansC(\bS, \bT)$.
 The \defn{commutator} of $\bS$ and $\bT$, denoted by $[\bS, \bT]$,
 is the least congruence $\delta$ such that $\sansC(\bS, \bT; \delta)$ 
 holds.  A tolerance $\bT$ is called \defn{abelian} if
-$[\bT, \bT] = 0_\bA$ (iff $\sansC(\bT, \bT)$). 
+$[\bT, \bT] = 0_\bA$ (i.e., $\sansC(\bT, \bT)$). 
 An algebra $\bA$ is called \defn{abelian} if $1_\bA$ is abelian
-(iff $\sansC(1_\bA, 1_\bA)$).
+(i.e., $[1_\bA, 1_\bA] = 0_\bA$).
 The \defn{centralizer of $\bT$ modulo $\delta$}, denoted by
 $(\delta : \bT )$, is the largest congruence $\alpha$ on $\bA$ such that 
 $\sansC(\alpha, \bT ; \delta)$ holds.
 
-We pause to remark that an algebra $\bA$ is abelian iff $\sansC(1_\bA, 1_\bA)$ iff
+We pause to remark that an algebra $\bA$ is abelian iff $\sansC(1_\bA, 1_\bA)$
+iff $[1_\bA, 1_\bA] = 0_\bA$ iff 
+for all 
+%% $\ell \in \{0,1,2,\dots \}$, 
+%% $m \in  \{1,2,\dots \}$, $f\in \Pol_{\ell + m}(\bA)$ and 
+$\ell, m \in \N$,  $f\in \Pol_{\ell + m}(\bA)$, and 
+$(a, b)\in A^\ell\times A^\ell$, we have
+$\ker f(a, \cdot)=\ker f(b, \cdot)$.
+%%%% 
+%%%% First edit:
+%%%% 
 %% \begin{align*}
 %% \forall \ell \in \{0,1,2,\dots \},&
 %% \quad \forall m \in  \{1,2,\dots \},\\
@@ -361,24 +384,31 @@ We pause to remark that an algebra $\bA$ is abelian iff $\sansC(1_\bA, 1_\bA)$ i
 %% \quad \forall (a, b)\in A^\ell\times A^\ell,&\\ 
 %% &\ker f(a, \cdot)=\ker f(b, \cdot).
 %% \end{align*}
-\[
-\forall \ell \in \{0,1,2,\dots \}, 
-\quad \forall m \in  \{1,2,\dots \},
-\quad \forall f\in \Pol_{\ell + m}(\bA),
-\quad \forall (a, b)\in A^\ell\times A^\ell,
-\]
-\[
-\ker f(a, \cdot)=\ker f(b, \cdot).
-\]
-
+%%%% 
+%%%% Second edit:
+%%%% 
+%% \[
+%% \forall \ell \in \{0,1,2,\dots \}, 
+%% \quad \forall m \in  \{1,2,\dots \},
+%% \quad \forall f\in \Pol_{\ell + m}(\bA),
+%% \quad \forall (a, b)\in A^\ell\times A^\ell,
+%% \]
+%% \[
+%% \ker f(a, \cdot)=\ker f(b, \cdot).
+%% \]
+%% In other terms
+%% \[
+%% \infer={\ker f(a, \cdot)=\ker f(b, \cdot)}{
+%% \ell, m \in \N & f\in \Pol_{\ell + m}(\bA) & (a, b)\in A^\ell\times A^\ell}
+%% \]
+%% \[
+%% \ell, m : \N \quad f: \Pol_{\ell + m}(\bA) \quad a, b : A^\ell
+%% \entails \ker f(a, \cdot)=\ker f(b, \cdot)
+%% \]
 %\medskip
 
-
-
-We now collect some useful facts about centralizers of congruence relations
-that we need in Section~\ref{sec:tayl-vari-rect}.
-These facts are well-known. Nevertheless, we provide their proofs 
-Section~\ref{sec:proofs-elem-facts} of the appendix. 
+We now collect some well-known useful facts about centralizers of congruence
+relations that we need later.
 
 \begin{lemma}
 \label{lem:centralizers}
