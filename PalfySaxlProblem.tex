@@ -122,7 +122,8 @@ MRREVIEWER = {R. S. Pierce},
 \newtheorem{notation}{Notation}
 \newtheorem{problem}{Problem}
 \newtheorem{proposition}{Proposition}
-\newtheorem{remark}{Remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{remarks}{Remarks}
 \newtheorem{solution}{Solution}
 \newtheorem{summary}{Summary}
 \newtheorem{tool}{Tool}
@@ -133,6 +134,7 @@ MRREVIEWER = {R. S. Pierce},
 %(wjd) A few useful macros 
 \renewcommand{\phi}{\ensuremath{\varphi}}
 \newcommand{\core}{\ensuremath{\operatorname{core}}}
+\newcommand{\Clo}{\ensuremath{\operatorname{Clo}}}
 \newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
 \newcommand{\<}{\ensuremath{\langle}}
 \renewcommand{\>}{\ensuremath{\rangle}}
@@ -191,7 +193,8 @@ MRREVIEWER = {R. S. Pierce},
 %% \newcommand{\nb}[1]{\ensuremath{\#\mathrm{Blocks}(#1)}}
 %% \newcommand{\nb}[1]{\ensuremath{\operatorname{N}(#1)}}
 %% \newcommand{\nb}[1]{\ensuremath{\boldsymbol{\nu}(#1)}}
-\newcommand{\nb}[1]{\ensuremath{\operatorname{\boldsymbol{\nu}}(#1)}}
+%% \newcommand{\nb}[1]{\ensuremath{\operatorname{\boldsymbol{\nu}}(#1)}}
+\newcommand{\nb}[1]{\ensuremath{|X/#1|}}
 %% \newcommand{\nb}[1]{\ensuremath{\#{#1}}}
 
 %-------------------------------------------------------
@@ -204,15 +207,14 @@ MRREVIEWER = {R. S. Pierce},
 
 \maketitle
 \begin{abstract}
-If $\bA$ is a finite algebra in a Taylor variety 
+If $\bA$ is a finite algebra %% in a Taylor variety 
 with $\Con \bA \cong M_n$, $n\geq 4$, and if three nontrivial congruences 
-of $\bA$ pairwise permute, then every pair of congruences of $\bA$ permute.
-%% (In fact, the result we prove is slightly more general; the
-%% congruence lattices need not be exactly isomorphic to $M_n$.) 
-Thus, for algebras satisfying a nontrivial idempotent Malcev
-condition, this gives a positive answer to a question asked by \Palfy and
-Saxl in 1990. 
-
+of $\bA$ pairwise permute, does every pair of congruences of $\bA$ permute?
+For algebras satisfying a nontrivial idempotent Malcev
+condition, the answer is yes. What about more generally? In this note, 
+we first resolve the problem for algebras in Taylor varieties 
+and then describe an approach that might help to solve
+the more general problem.
 \end{abstract}
 
 \section{Introduction}
@@ -224,9 +226,11 @@ the following
   4$. If three nontrivial congruences of $\bA$ pairwise permute, does it follow
   that every pair of congruences of $\bA$ permute?
 \end{quote}
-In this note we solve this problem for a special class of algebras---namely,
-those satisfying a nontrivial idempotent Malcev condition.  We call such algebras
-\defn{Taylor algebras} because they have Taylor term operations.
+In this note we answer this question affirmatively for a special class of
+algebras---namely, those that live in a \defn{Taylor variety}, which is a variety 
+satisfying a nontrivial idempotent Malcev condition.  Thereafter, we consider
+one approach to the general case that seems promising.
+
 
 \subsection{Notation}
 Throughout, $X$ denotes a finite set and $\Eq(X)$ denotes the lattice of
@@ -238,10 +242,12 @@ x/\alpha = \{y\in X : x \mathrel{ \alpha } y\} \quad \text{ and } \quad
 X/\alpha = \{x/\alpha : x\in X \}.
 \]
 We often refer to equivalence classes as
-``blocks,'' and we denote by $\nb{\alpha}$ the number of blocks of the
-relation $\alpha$. That is, $\nb{\alpha} = |X/\alpha|$, and we 
-may use either $\nb{\alpha}$ or $|X/\alpha|$ to denote the number of 
-blocks of $\alpha$.
+``blocks.''  The number of blocks of $\alpha$ is $|X/\alpha|$.
+%% and we denote by $\nb{\alpha}$ the number of blocks of the
+%% relation $\alpha$. That is, $\nb{\alpha} = |X/\alpha|$, and we 
+%% $\nb{\alpha} = |X/\alpha|$, and we 
+%% may use either $\nb{\alpha}$ or $|X/\alpha|$ to denote the number of 
+%% blocks of $\alpha$.
 For a given $\alpha\in \Eq(X)$ the map 
  $\phi_\alpha: x \mapsto x/\alpha$ is a
 function from $X$ into the power set $\sP(X)$
@@ -269,7 +275,8 @@ a particular $x$ to denote this block size.
 Thus, if $\alpha$
 has uniform blocks, then
 \[
-|X|= |x/\alpha| |X/\alpha| = |x/\alpha| \nb{\alpha} \quad \text{(for all $x\in X$).}
+|X|= |x/\alpha| \,|X/\alpha| %% = |x/\alpha| \nb{\alpha}
+\quad \text{(for all $x\in X$).}
 \]
 We say that two equivalence relations with uniform
 blocks  have 
@@ -366,7 +373,8 @@ The \defn{centralizer of $\bT$ modulo $\delta$}, denoted by
 $(\delta : \bT )$, is the largest congruence $\alpha$ on $\bA$ such that 
 $\sansC(\alpha, \bT ; \delta)$ holds.
 
-We pause to remark that an algebra $\bA$ is abelian iff $\sansC(1_\bA, 1_\bA)$
+\begin{remark}
+An algebra $\bA$ is abelian iff $\sansC(1_\bA, 1_\bA)$
 iff $[1_\bA, 1_\bA] = 0_\bA$ iff 
 for all 
 %% $\ell \in \{0,1,2,\dots \}$, 
@@ -374,6 +382,7 @@ for all
 $\ell, m \in \N$,  $f\in \Pol_{\ell + m}(\bA)$, and 
 $(a, b)\in A^\ell\times A^\ell$, we have
 $\ker f(a, \cdot)=\ker f(b, \cdot)$.
+\end{remark}
 %%%% 
 %%%% First edit:
 %%%% 
@@ -407,28 +416,75 @@ $\ker f(a, \cdot)=\ker f(b, \cdot)$.
 %% \]
 %\medskip
 
-We now collect some well-known useful facts about centralizers of congruence
-relations that we need later.
+We now collect some well-known and useful facts about centralizers of congruence
+relations that will be needed later.
 
 \begin{lemma}
 \label{lem:centralizers}
-Let $\bA$ be an algebra with congruences $\alpha, \beta \in \Con(\bA)$.  Then,
+Let $\bA$ be an algebra with congruences 
+$\alpha, \beta, \gamma, \alpha', \beta' \in \Con(\bA)$.
+Then,
 \begin{enumerate}
-
 \item \label{fact:centralizer}  
   %% For each $\alpha\in \Con(\bA)$ 
-  there exists a largest congruence that centralizes $\alpha$,
-  denoted by $(0:\alpha)$ and called the \defn{centralizer} of $\alpha$;
-
-\item \label{fact:point-separating_implies_mutually-centralizing}  
-  if $\alpha \meet \beta = 0_{\bA}$ then $\sansC(\beta, \alpha)$ and $\sansC(\alpha, \beta)$;
-
-\item \label{fact:centralizing_ideal}
-  $\sansC(\beta, \alpha)$ if and only if $\beta \leq (0: \alpha)$.
-
+  there exists a largest congruence that centralizes $\beta$,
+  denoted by $(0:\beta)$;
+\item \label{fact:centralizing_over_join1}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha', \beta; \gamma)$, then
+  $\sansC(\alpha \join \alpha', \beta; \gamma)$;
+\item \label{fact:centralizing_over_join2}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha, \beta'; \gamma)$, then
+  $\sansC(\alpha, \beta \join \beta'; \gamma)$;
+\item \label{fact:monotone_centralizers1}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\alpha' \leq \alpha$, then 
+  $\sansC(\alpha', \beta; \gamma)$;
+\item \label{fact:monotone_centralizers2}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\beta' \leq \beta$, then
+  $\sansC(\alpha, \beta'; \gamma)$;
+\item \label{fact:centralizing_over_meet}
+  $\sansC(\alpha, \beta; \alpha \meet \beta)$.
 \end{enumerate}
 \end{lemma}
 
+\begin{remarks}
+Fact~(\ref{fact:centralizer}) says
+ that $\sansC((0:\beta), \beta)$---that is, 
+$[(0:\beta), \beta] = 0_\bA$---and that $(0:\beta)$ is the largest such
+ congruence. 
+Therefore, by (\ref{fact:centralizing_over_join1}) and (\ref{fact:monotone_centralizers1}) 
+we have %$\sansC(\alpha, \beta)$ for all $\alpha \leq (0: \beta)$. 
+%%  Also, by $\sansC((0:\beta), \beta)$ we have 
+\begin{equation}
+\label{fact:centralizing_ideal}
+  \sansC(\alpha, \beta) 
+\quad \Leftrightarrow \quad
+\alpha \leq (0: \beta).
+\end{equation}
+The relation $(0:\beta)$ is called the \defn{centralizer} 
+of $\beta$.
+By (\ref{fact:centralizing_over_meet}) we have that
+\begin{equation}
+\label{fact:point-separating_implies_mutually-centralizing}    
+\alpha \meet \beta = 0_{\bA}  
+%% \quad \Rightarrow \quad 
+\quad \text{ implies } \quad 
+\sansC(\beta, \alpha) 
+\; \text{ and } \;
+\sansC(\alpha, \beta).
+\end{equation}
+
+\end{remarks}
+
+\begin{lemma}
+If $\bA$ is the algebra with universe $\{0,1\}$ and with $\Clo(\bA)$ consisting
+of only the projections, then $\bA$ is abelian.
+\end{lemma}
+
+\begin{lemma}
+If $\bA$ is a finite algebra and if 
+$\alpha_1$, $\alpha_2$, $\alpha_3 \in \Con(\bA)$ are pairwise complements, 
+then $\bA$ is abelian.
+\end{lemma}
 
 
 \section{Basic observations}
@@ -438,23 +494,24 @@ Let $\bA$ be an algebra with congruences $\alpha, \beta \in \Con(\bA)$.  Then,
 Suppose $\alpha$ and $\beta$ are complementary equivalence relations on
 $X$. Then $\alpha$ and $\beta$ permute if and only if they have \cubs.
 That is,
-\[
-\alpha \circ \beta =1_X \quad \Longleftrightarrow \quad (\forall x)(\forall y)\,
-|x/\alpha| |y/\beta| = |X|.
-\]
+\begin{equation}
+  \label{eq:9}
+\alpha \circ \beta =1_X \quad \Longleftrightarrow \quad (\forall x)(\forall z)\;
+|x/\alpha| |z/\beta| = |X|.
+\end{equation}
 \end{lemma}
 \begin{corollary}
 \label{cor:1}
 Suppose $\alpha_1$, $\alpha_2$, $\alpha_3$ are pairwise complementary
 equivalence relations on the finite set $X$. 
 Then  $\alpha_1$, $\alpha_2$, $\alpha_3$ pairwise permute if and only if they
-all have uniform blocks of size $\sqrt{|X|}$.  That is,
+have uniform blocks of size $\sqrt{|X|}$.  That is,
 \[
 (\forall i)(\forall j) \, (i\neq j \longrightarrow \alpha_i \circ \alpha_j = 1_X)
 \quad \Longleftrightarrow \quad (\forall i)(\forall x) \, |x/\alpha_i| =
 \sqrt{|X|}.
 \]
-In this case,  $|x/\alpha_i| =\nb{\alpha_i}$. 
+In this case,  $|x/\alpha_i| = |X/\alpha_i|$. %\nb{\alpha_i}$. 
 \end{corollary}
 \begin{proof}[Proof of Lemma~\ref{lem:1}]
 Suppose $\alpha$ and $\beta$ are complementary
@@ -472,67 +529,109 @@ $x/(\alpha\circ \beta) =  X$ for
 every $x\in X$.
 Thus the union in~(\ref{eq:100}) is all of $X$,
 so every block of $\beta$ appears in this union.
-It follows that the size of the block $x/\alpha$ is exactly $\nb{\beta}$. 
+It follows that the size of the block $x/\alpha$ is exactly  
+the number $|X/\beta|$ of blocks of $\beta$. 
+That is, $|x/\alpha| =|X/\beta|$.
+%$\nb{\beta}$. 
 As $x$ was arbitrary, $\alpha$ has uniform
 blocks of size %% $|x/\alpha| =
-$\nb{\beta}$. 
-The same argument with the roles of $\alpha$ and $\beta$ reversed
-gives
-$x/(\beta \circ \alpha) = \coprod_{z \in x/\beta} z/\alpha = X$, 
-and  $|x/\beta| =\nb{\alpha}$ for all $x\in X$.  Therefore, 
-for all $x, z\in X$ we have
-\[
-|x/\alpha| |z/\beta| 
- = |x/\alpha| \nb{\alpha} = |X|.
-\]
+$|X/\beta|$. %$\nb{\beta}$. 
+Observe that, since $\alpha$ has uniform blocks, we have
+\begin{equation}
+\label{eq:8}
+|x/\alpha|\, |X/\alpha| = |X|.  
+\end{equation}
 
-To prove the converse, suppose $\alpha$ and $\beta$ are pairwise complements
-with complementary blocks.  Then $|x/\alpha| |y/\beta| = |X|$, 
-so $|y/\beta| = |x/\alpha|^{-1}  |X|  = \nb{\alpha}$. 
-Therefore, for all $x\in X$,
-\begin{align*}
-\bigl|x/(\alpha\circ \beta)\bigr| &= \bigl|\coprod_{y\in x/\alpha} y/\beta\bigr|
-= \sum_{y \in x/\alpha} |y/\beta|\\
-&= \sum_{y \in x/\alpha} \nb{\alpha} \\
-&= |x/\alpha|\nb{\alpha} = |X|.
-\end{align*}
-This proves that $\alpha\circ \beta = 1_X$, as desired.
+The same argument with the roles of 
+$\alpha$ and $\beta$ swapped gives
+%% $x/(\beta \circ \alpha) = \coprod_{z \in x/\beta} z/\alpha = X$, 
+%% and
+$|x/\beta| = |X/\alpha|$. %$\nb{\beta}$. 
+Thus, for all $x, z\in X$ we have
+\[
+|x/\alpha|\, |z/\beta| 
+ = |x/\alpha| \,|X/\alpha|
+ %% = |X/\beta|\, |z/\beta|
+ = |X/\beta|\, |X/\alpha|.
+\]
+This and (\ref{eq:8}) imply
+$|x/\alpha|\, |z/\beta| = |X|$, as desired.
+
+To prove the converse, suppose $\alpha$ and $\beta$ have \cubs.
+%% are pairwise complements with complementary blocks. 
+Then $|x/\alpha|\, |y/\beta| = |X|$, 
+so $|y/\beta| = |x/\alpha|^{-1}  |X|  =  |X/\alpha|$, for all 
+$x, y\in X$. 
+Therefore, 
+%% \begin{align*}
+%% \bigl|x/(\alpha\circ \beta)\bigr| &= \bigl|\coprod_{y\in x/\alpha} y/\beta\bigr|
+%% = \sum_{y \in x/\alpha} |y/\beta|= \sum_{y \in x/\alpha} \, |X/\alpha| \\
+%% &= |x/\alpha| \, |X/\alpha| = |X|.
+%% \end{align*}
+\[
+\bigl|x/(\alpha\circ \beta)\bigr| = \bigl|\coprod_{y\in x/\alpha} y/\beta\bigr|
+= \sum_{y \in x/\alpha} |y/\beta|= \sum_{y \in x/\alpha} \, |X/\alpha| = |x/\alpha| \, |X/\alpha| = |X|,
+\]
+for all $x\in X$. This proves $\alpha\circ \beta = 1_X$, as desired.
 \end{proof}
 
-\begin{proof}[Proof of Corollary~\ref{cor:1}]
-Since $\alpha_1$ and $\alpha_2$ permute and are complements, Lemma~\ref{lem:1}
-implies they have complementary blocks, so
-\begin{equation}
-  \label{eq:2}
-|x/\alpha_1| = |x/\alpha_2|^{-1}  |X|= \nb{\alpha_2}.
-\end{equation}
-(This holds for all $x\in X$. Recall that complementary blocks are always
-uniform.) 
-Similarly, since $\alpha_1$ and $\alpha_3$ permute, we have
-$|x/\alpha_1| = |x/\alpha_3|^{-1}  |X| = \nb{\alpha_3}$.
-Therefore, $\nb{\alpha_2} = \nb{\alpha_3}$.  Since 
-$\alpha_2$ and $\alpha_3$ permute, we have
-\begin{equation}
-  \label{eq:3}
-|x/\alpha_2| = |x/\alpha_3|^{-1}  |X|= \nb{\alpha_3},
-\end{equation}
-and the latter is equal to $\nb{\alpha_2}$.  Therefore,
-$|X| = |x/\alpha_2|  \nb{\alpha_2} = |x/\alpha_2|  |x/\alpha_2|$, so 
-$|x/\alpha_2|  = \sqrt{|X|}$. By (\ref{eq:2}) and (\ref{eq:3}), it follows
-that
-$|x/\alpha_i| = \sqrt{|X|} = \nb{\alpha_i}$ for $i = 1, 2, 3$.
+\begin{proof}[Proof of Cor.~\ref{cor:1}]
+Let $\alpha_1, \alpha_2, \alpha_3$ be pairwise permuting equivalence relations
+on $X$.
 
-The converse is obvious since, if $\alpha_i$ and $\alpha_j$ are
-complementary equivalence relations on $X$ with 
-$|x/\alpha_i| = \sqrt{|X|}$, then 
-$\nb{\alpha_i} = \sqrt{|X|}$, so
-$\alpha_i \circ \alpha_j = 1_X$.
+\noindent ($\Rightarrow$)
+Assume $\alpha_1, \alpha_2, \alpha_3$ are \pppc. Then, by Lemma~\ref{lem:1},
+\begin{align*}
+|x/\alpha_1|\, |x/\alpha_2| &= |X|\\
+|x/\alpha_1|\, |x/\alpha_3| &= |X|\\
+|x/\alpha_2|\, |x/\alpha_3| &= |X|.
+\end{align*}
+By the third of these equations, we have 
+$|x/\alpha_3| = |x/\alpha_2|^{-1} |X|$.
+Substituting this into the second equation gives 
+$|x/\alpha_1|\, |x/\alpha_2|^{-1} |X| = |X|$,
+or $|x/\alpha_2|= |x/\alpha_1|$.
+Substituting this into the first equation gives 
+$|x/\alpha_1|= \sqrt{|X|}$. This can finally be substituted
+%% Permuting the
+%% roles of $\alpha_1$, $\alpha_2$, $\alpha_3$, 
+%% the same argument yields 
+back into the second and third
+equations to arrive at $|x/\alpha_2|= \sqrt{|X|} = |x/\alpha_3|$.
+
+%% Since $\alpha_1$ and $\alpha_2$ permute and are complements, Lemma~\ref{lem:1}
+%% implies they have complementary uniform block structure (\cubs), so
+%% \begin{equation}
+%%   \label{eq:2}
+%% |x/\alpha_1| = |x/\alpha_2|^{-1}  |X|=  |X/\alpha_2|.
+%% \end{equation}
+%% Similarly, since $\alpha_1$ and $\alpha_3$ permute, we have
+%% $|x/\alpha_1| = |x/\alpha_3|^{-1}  |X| = |X/\alpha_3|$.
+%% Therefore, $|X/\alpha_2| = |X/\alpha_3|$.  
+%% Since $\alpha_2$ and $\alpha_3$ permute, we have
+%% \begin{equation}
+%%   \label{eq:3}
+%% |x/\alpha_2| = |x/\alpha_3|^{-1}  |X| = |X/\alpha_3|,
+%% \end{equation}
+%% and the latter is equal to $|X/\alpha_2|$.  Therefore,
+%% $|X| = |x/\alpha_2|\, |X/\alpha_2| = |x/\alpha_2| \, |x/\alpha_2|$, so 
+%% $|x/\alpha_2|  = \sqrt{|X|}$. By (\ref{eq:2}) and (\ref{eq:3}), it follows
+%% that
+%% $|x/\alpha_i| = \sqrt{|X|} = |X/\alpha_i|$ for $i = 1, 2, 3$.
+
+\noindent $(\Leftarrow)$ The right-to-left direction follows immediately from 
+the right-to-left direction in (\ref{eq:9}).
+%%  since, if $\alpha_i$ and $\alpha_j$ are
+%% complementary equivalence relations on $X$ with 
+%% $|x/\alpha_i| = \sqrt{|X|}$, then 
+%% $|X/\alpha_i| = \sqrt{|X|}$, so
+%% $\alpha_i \circ \alpha_j = 1_X$.
 \end{proof}
 
 Define the set $\sS\subseteq \Eq(X)$ as follows:
 \[
 \sS = \{ \alpha \in \Eq(X) : (\forall x) \; |x/\alpha|  
-= \sqrt{|X|} = \nb{\alpha}\}.
+= \sqrt{|X|} = |X/\alpha|\}.
 \]
 From Corollary~\ref{cor:1} we see that the \Palfy-Saxl problem can be rephrased
 as follows:
@@ -571,6 +670,7 @@ congruence lattice.
 %% For example, we might find a method which shows in
 %% such cases that the closure of the lattice will always contain some 
 %% $\beta < \theta < 1_X$.
+
 
 \section{Graphical Compositions}
 Let $X$ be a nonempty set. Given $\alpha$, $\beta$, $\gamma \in \Eq(X)$,
@@ -1017,7 +1117,7 @@ eventually.)
 Regarding Fact~\ref{fact:tau}, $\beta$ was constructed specifically to provide a
 nontrivial example where this fact might hold.  That is, we wanted to know if
 an example existed in which $\beta$ has smaller height than $\alpha_i$ (so that 
-$|x/\beta| \leq |y/\alpha_i| < \nb{\beta}$, and so $\beta$ would not permute
+$|x/\beta| \leq |y/\alpha_i| < |X/\beta|$, and so $\beta$ would not permute
 with $\alpha_1$ and $\alpha_2$), and such that 
 $\tau(\alpha_1, \alpha_2, \beta)\subseteq \beta$, so that the Wheatstone
 Bridge of Figure~\ref{fig:rhoagain} would not generate an equivalence
