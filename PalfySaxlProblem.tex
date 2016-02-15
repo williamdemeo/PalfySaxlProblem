@@ -32,7 +32,7 @@ MRREVIEWER = {Gudrun Kalmbach},
   journal = 	 {Algebra Universalis},
 volume = {69},
 year={2013},
-note = {Available from: \href{https://github.com/williamdemeo/Overalgebras}{github.com/williamdemeo/Overalgebras}},
+note={url: \href{https://github.com/williamdemeo/Overalgebras}{github.com/williamdemeo}},
 DOI={10.1007/s00012-013-0226-3},
 pages={257--278}
 }
@@ -49,7 +49,7 @@ pages={257--278}
    MRCLASS = {08A05 (03C05 08-02 08B05)},
   MRNUMBER = {958685 (89m:08001)},
 MRREVIEWER = {Joel Berman},
-note = {Available from: \href{http://math.hawaii.edu/~ralph/Classes/619/HobbyMcKenzie-FiniteAlgebras.pdf}{math.hawaii.edu}}
+note = {url: \href{http://math.hawaii.edu/~ralph/Classes/619/HobbyMcKenzie-FiniteAlgebras.pdf}{math.hawaii.edu}}
 }		
 @article {MR3076179,
     AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
@@ -249,6 +249,7 @@ DOI = {10.1007/BF02483080}
 \renewcommand{\>}{\ensuremath{\rangle}}
 \newcommand{\lb}{\ensuremath{\llbracket}}
 \newcommand{\rb}{\ensuremath{\rrbracket}}
+\newcommand{\sC}{\ensuremath{\mathscr{C}}}
 \newcommand{\bB}{\ensuremath{\mathbf{B}}}
 \newcommand{\bc}{\ensuremath{\mathbf{c}}}
 %(wjd) I think it's better to use \lb H, G \rb than [H,G], 
@@ -361,7 +362,6 @@ We then discuss a strategy that we hope will lead to a solution in the harder ca
 \end{abstract}
 
 \section{Introduction}
-This paper mainly concerns lattices of the form displayed in Figure~\ref{fig:Mn}.
 \begin{figure}[!h]
       \begin{tikzpicture}[scale=1.2]
       \node (bot) at (0,0)  [draw, circle, inner sep=\dotsize] {};
@@ -383,10 +383,11 @@ This paper mainly concerns lattices of the form displayed in Figure~\ref{fig:Mn}
   \caption{The lattice $M_n$ has $n$ ``atoms'' for a total of $n+2$ elements.}
   \label{fig:Mn}
 \end{figure}
-In the paper \cite{PalfySaxl}, \Peter \Palfy and Jan Saxl pose 
+This paper mainly concerns lattices of the form displayed in Figure~\ref{fig:Mn}.
+In~\cite{PalfySaxl}, \Peter \Palfy and Jan Saxl pose 
 the following: 
 \begin{quote}
-  {\scshape Problem.}
+  {\scshape Problem 1.}
   Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
   4$. If three nontrivial congruences of $\bA$ pairwise permute, does it follow
   that every pair of congruences of $\bA$ permute?
@@ -397,6 +398,12 @@ Specifically, if the algebra in question is not \emph{strongly abelian}, then it
 Malcev term operation, so all congruences permute.  
 We also give some examples to guide intuition, and suggest some 
 possible strategies for handling the harder (strongly abelian) case. 
+
+It will be conveinent in the sequel to refer to the following:
+\begin{quote}
+  {\sc Conjecture 1.} The answer to Problem 1 is ``yes.''
+\end{quote}
+
 
 \subsection{Notation}
 Throughout, $X$ denotes a finite set and $\Eq(X)$ denotes the lattice of
@@ -684,20 +691,10 @@ as follows:
 \medskip
 
 \begin{quote}
-  {\sc Problem.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
-  4$. %If three nontrivial congruences of $\bA$ pairwise permute, does it follow
-  If the set $\sS$ contains three atoms of
-  $\Con \bA$,
-  %% have Property~(\ref{eq:4}) below
-  does it follow that $\sS$ contains every atom of 
-  $\Con \bA$?
-  %% has Property~(\ref{eq:4})?
-  %%   \begin{equation}
-  %%     \label{eq:4}
-  %% (\forall x) \; |x/\alpha|  = \sqrt{|X|} = \nb{\alpha}
-  %%   \end{equation}
+  {\sc Problem 1.} Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq 4$. 
+  If the set $\sS$ contains three atoms of $\Con \bA$, does it follow that $\sS$ contains 
+  every atom of $\Con \bA$?
 \end{quote}
-
 \medskip
 
 %% \noindent To prove that the answer is ``no,'' it would suffice to find a 
@@ -1275,6 +1272,74 @@ Theorem~\ref{thm:types-tame-quotients}(\ref{item:3}),
 $M_n$ must be isomorphic to the congruence lattice of a vector space, 
 hence $n-1$ is a prime power.
 
+Assume $\bA$ is a finite algebra with $\Con \bA \cong M_n$ ($n>3$), 
+and suppose at least three atoms pairwise permute. 
+Suppose also that $\bA$ is Abelian, but not strongly abelian.
+As noted above, $M_n$ must be isomorphic to the congruence lattice of a 
+vector space, so $n-1$ is a prime power.  
+(Palfy and Saxl already proved that $n-1$ would have to be a prime power.)
+However, permutability of congruences is not a lattice theoretic property,
+and the fact that $\Con \bA$ is isomorphic to the congruence lattice of a vector space is not
+enough to conclude that all congruences of $\bA$ permute.  
+
+Let $\alpha$ and $\beta$ be any two atoms in $\Con \bA$.  Then 
+there is a subdirect embedding of $\bA$ in $\bA/\alpha \times \bA/\beta$.
+That is $\bA$ is isomorphic to a subalgebra of $\bA/\alpha \times \bA/\beta$ 
+where the projections are surjective onto each component.
+We would like to prove that this subdirect product is actually the full product, so that 
+we may conclude $|A| = |A/\alpha||A/\beta|$, as this implies that $\alpha$ and $\beta$ permute.
+
+Let us now suppose that the idempotent reduct of $\bA$ is abelian and that
+there is a Taylor term operation in $\Clo \bA$.  %% In particular, $\bA$ is not strongly abelian.
+Since Abelian algebras are ``absorption-free,'' we can apply the Absorption Theorem of Barto and
+Kozik to see that the subdirect product in the last paragraph is actually the full product.
+In fact, Abelian algebras are hereditarily absorption-free, so by Barto-Kozik-Stanovsky the 
+idempotent reduct of $\bA$ has a Malcev term operation in $\Clo \bA$.  Therefore, so $\bA$ has 
+a Malcev term operation, so $V(\bA)$ has a Malcev term in this case. In particular, 
+all congruences of $\bA$ permute.
+
+The more difficult case occurs when $\bA$ has no Taylor term operation in $\Clo \bA$.
+In this case, $\bA$ is strongly Abelian.  If $\bA$ is a transitive $G$-set, 
+then $\Con\bA$ is an interval in a subgroup lattice of a finite group.  
+Palfy and Saxl prove that, in this case, if at least three atoms permute, then all congruences permute.
+If $\bA$ is an intransitive $G$-set with congruence lattice isomorphic to $M_n$, it is not hard to
+prove that $n$ must be equal to 2.\footnote{This follows from stuff in the small congruence lattice paper we are working on.}
+
+Finally, we assume $\bA$ is strongly abelian but not a $G$-set. In fact, assume 
+$\bA$ is the smallest counterexample to Conjecture 1.
+Recall that $\Con\<A, \dots\>$ and $\Con\<A, \Pol_1\bA\>$ possess exactly the same congruences, so
+we focus on the algebra $\<A, \Pol_1\bA\>$.  In fact, we can ignore the trivial (constant)
+operations in $\Pol_1\bA$, since these have no influence on the congruences.  What remains is the 
+algebra $\bA^*:=\<A, F\>$, where $F\subset \Pol_1\bA$ and $F$ omits constants.  Since $\bA^*$ is not a $G$-set,
+and since $M_n$ is tight, 
+$F$ contains an nonidentity idempotent operation $e^2 = e$ such that $e(A) = V \subsetneq A$ and such that 
+$|_V : \Con \bA^* \to \Con (\bA^*|_V)$ is a $0,1$-separating lattice homomorphism.  Since 
+$\Con \bA^*$ is simple, this $|_V$ is actually a lattice isomorphism.
+
+Assume $V$ is a minimal set and consider the algebra $\bA^*|_V$.  This has an $M_n$
+congruence lattice and, moreover, it's easy to see that if $\alpha, \beta \in \Con\bA^*$ are
+permuting congruences, then $\alpha|_V, \beta|_V \in \Con (\bA^*|_V)$ are also permuting.
+Since $\bA^*$ is a minimal counterexample to the claim, it must be the case that all congruences of 
+$\bA^*|_V$ permute.
+
+Suppose $\alpha_1, \alpha_2, \alpha_3$ are three congruences of $\bA^*$ that pairwise permute.
+Suppose $\beta$ does not permute with $\alpha_1$ (nor $\alpha_2$ nor $\alpha_3$).
+We now know that, despite the non-permuting of $\alpha_1$ and $\beta$, it must be the case that 
+$\alpha_1|_V$ and $\beta|_V$ permute. The goal now is to show that this situation cannot arise.
+Recall that $\Cg^{\bA^*}(\beta|_V) = (\beta|_V)^* \leq \beta\leq \hat{\beta|_V}$.
+In the present context, all three of these congruences of $\bA^*$ must be equal.
+So one way to reach a contradiction would be to prove that $\hat{\beta|_V} > \beta$.
+
+
+
+%% QUESTION: If A is not a G-set, can the idempotent reduct of A be a G-set?  I suppose, for an idempotent algebra, to be a G-set just means it has trivial term operations (the identity and projections).
+%% So, if A is essentially unary, isn't the idempotent reduct necessarily a G-set?
+%% If there were no G-sets in HS(Idem(A)), then Idem(A) has a Taylor term op (by [1] or [2]), so A has a Taylor term op and we're back in Case 1.
+%% [1] Bulatov-Jeavons (2001) Proposition 4.14
+%% [2] Barto-Kozik-Stanovsky Theorem 2.4. 
+%% ...so, I still need to figure out how to handle this final case: when A has no Taylor term op, A is not a G-set, and HS(Idem(A)) contains a G-set.  
+
+
 \section{Graphical Compositions}
 Let $X$ be a nonempty set. Given $\alpha$, $\beta$, $\gamma \in \Eq(X)$,
 define the relation 
@@ -1342,7 +1407,7 @@ $\alpha_i$, so that $L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong
 \end{figure}
 Define the relation 
 $\tau=\tau(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ as
-$R(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ as
+%% $R(\alpha_1, \alpha_2, \beta)\subseteq X\times X$ as
 follows:
 \[
 x \rtau y \quad \longleftrightarrow \quad (\exists (a, b) \in \beta)\;  
@@ -1367,19 +1432,22 @@ satisfying the relations depicted in Figure~\ref{fig:rho}.
       \draw[semithick] (b)-- (y) node[pos=.5,right] {$\alpha_1$};
       \draw[semithick] (a)-- (y) node[pos=.5,right] {$\alpha_2$};
       \end{tikzpicture}
-  \caption{The Wheatstone Bridge which defines the relation 
+  \caption{The Wheatstone Bridge defines the relation 
     $\tau(\alpha_1, \alpha_2, \beta)$ as follows: 
-    $(x,y) \in \tau(\alpha_1, \alpha_2, \beta)$ if and only if there 
+    $(x,y) \in \tau(\alpha_1, \alpha_2, \beta)$ iff there 
     exist $a, b \in X$ satisfying the relations in the diagram.}
   \label{fig:rho}
 \end{figure}
 %\end{center}
-It is clear that $\tau$ is a \emph{tolerance}, that is, a reflexive and symmetric binary relation.
-Let $f: X\to X$ be a unary operation and suppose that $f$ is \emph{compatible} with each
+Let $f: X\to X$ be a unary operation and suppose that $f$ is compatible with each
 relation $\theta \in \{\alpha_1, \alpha_2, \beta\}$, that is, 
 $(u,v)\in \theta \, \longrightarrow \, (f(u), f(v))\in \theta$.  Then $f$ is also
 compatible with $\tau$. %% (Consider the diagram in Figure~\ref{fig:rho}, and give
 %% each vertex $u$ the label $f(u)$.)
+If $\sC$ denotes the clone generated by the unary operations compatible 
+with each $\theta \in \{\alpha_1, \alpha_2, \beta\}$, then $\tau$ is a tolerance
+of the algebra $\<X, \sC\>$; that is, $\tau$ is reflexive, symmetric, and 
+compatible with $\sC$.
 
 \begin{fact} If 
 $L = \{0_X, \alpha_1, \alpha_2, \alpha_3, \beta, 1_X\} \cong  M_4$,
@@ -1549,7 +1617,7 @@ argument as in the first case, but replace $R^\beta_{12}$ with $R^\beta_{13}$.
 \end{enumerate}
 \end{proof}
 
-\section{Proof of Lemma 3}
+\section{Proof of Lemma~\ref{lem:missingpiece}}
 Consider the relation $\theta_{ij}$ defined as follows:
 \[
 x \rtheta_{ij} y \quad \longleftrightarrow \quad (\exists a, b) \;
