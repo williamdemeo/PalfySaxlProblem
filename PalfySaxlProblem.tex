@@ -1,4 +1,56 @@
 \begin{filecontents*}{refs.bib}
+@inproceedings{McKenzie:1983,
+    AUTHOR = {McKenzie, Ralph},
+     TITLE = {Finite forbidden lattices},
+ BOOKTITLE = {Universal algebra and lattice theory ({P}uebla, 1982)},
+    SERIES = {Lecture Notes in Math.},
+    VOLUME = {1004},
+     PAGES = {176--205},
+ PUBLISHER = {Springer},
+   ADDRESS = {Berlin},
+      YEAR = {1983},
+   MRCLASS = {06B05 (06B10 08A30 08B15)},
+  MRNUMBER = {716183 (85b:06006)},
+MRREVIEWER = {Ralph Freese},
+DOI = {10.1007/BFb0063438}
+}
+@BOOK{alvi:1987,
+    AUTHOR = {McKenzie, Ralph N. and McNulty, George F. and Taylor, Walter F.},
+     TITLE = {Algebras, lattices, varieties. {V}ol. {I}},
+ PUBLISHER = {Wadsworth \& Brooks/Cole},
+   ADDRESS = {Monterey, CA},
+      YEAR = {1987},
+     PAGES = {xvi+361},
+      ISBN = {0-534-07651-3},
+   MRCLASS = {08-01 (06-01)},
+  MRNUMBER = {883644 (88e:08001)},
+MRREVIEWER = {Gudrun Kalmbach},
+}
+@article{overalgebras,
+  author = 	 {William DeMeo},
+  title = 	 {Expansions of finite algebras and their congruence lattices},
+  journal = 	 {Algebra Universalis},
+volume = {69},
+year={2013},
+note = {Available from: \href{https://github.com/williamdemeo/Overalgebras}{github.com/williamdemeo/Overalgebras}},
+DOI={10.1007/s00012-013-0226-3},
+pages={257--278}
+}
+@BOOK{HM:1988,
+    AUTHOR = {Hobby, David and McKenzie, Ralph},
+     TITLE = {The structure of finite algebras},
+    SERIES = {Contemporary Mathematics},
+    VOLUME = {76},
+ PUBLISHER = {American Mathematical Society},
+   ADDRESS = {Providence, RI},
+      YEAR = {1988},
+     PAGES = {xii+203},
+      ISBN = {0-8218-5073-3},
+   MRCLASS = {08A05 (03C05 08-02 08B05)},
+  MRNUMBER = {958685 (89m:08001)},
+MRREVIEWER = {Joel Berman},
+note = {Available from: \href{http://math.hawaii.edu/~ralph/Classes/619/HobbyMcKenzie-FiniteAlgebras.pdf}{math.hawaii.edu}}
+}		
 @article {MR3076179,
     AUTHOR = {Kearnes, Keith A. and Kiss, Emil W.},
      TITLE = {The shape of congruence lattices},
@@ -31,6 +83,22 @@ MRREVIEWER = {James B. Nation},
    MRCLASS = {08A30 (20E32)},
   MRNUMBER = {1063342 (91h:08003)},
 MRREVIEWER = {R. S. Pierce},
+}
+@article {Palfy:1980,
+    AUTHOR = {P{\'a}lfy, P{\'e}ter P{\'a}l and Pudl{\'a}k, Pavel},
+     TITLE = {Congruence lattices of finite algebras and intervals in
+              subgroup lattices of finite groups},
+   JOURNAL = {Algebra Universalis},
+  FJOURNAL = {Algebra Universalis},
+    VOLUME = {11},
+      YEAR = {1980},
+    NUMBER = {1},
+     PAGES = {22--27},
+      ISSN = {0002-5240},
+   MRCLASS = {08A30 (06B15 08A60 20E15)},
+  MRNUMBER = {593011 (82g:08003)},
+MRREVIEWER = {Ralph Freese},
+DOI = {10.1007/BF02483080}
 }
 \end{filecontents*}
 
@@ -96,7 +164,47 @@ MRREVIEWER = {R. S. Pierce},
 \newcommand{\cubs}{\acs{cubs}\xspace}
 \acrodef{pppc}[PPPC]{pairwise-permuting pairwise-complements}
 \newcommand{\pppc}{\acs{pppc}\xspace}
+\newcommand\dotsize{1pt}
+%% \newcommand{\q}[2]{\ensuremath{\langle #1, #2\rangle}}
+\newcommand{\q}[2]{\ensuremath{#1 < #2}}
+\newcommand{\qab}{\ensuremath{\q{\alpha}{\beta}}}
+%% \newcommand{\resB}{\ensuremath{|_{_B}}}
+\newcommand{\resB}{\ensuremath{|_B}}
+%% \newcommand{\resBi}{\ensuremath{|_{_{B_i}}}}
+\newcommand{\resBi}{\ensuremath{|_{B_i}}}
+%% \newcommand{\resU}{\ensuremath{|_{_U}}}
+\newcommand{\resU}{\ensuremath{|_U}}
+%% \newcommand{\resV}{\ensuremath{|_{_V}}}
+\newcommand{\resV}{\ensuremath{|_V}}
+%% \newcommand{\res}[1]{\ensuremath{|_{_{#1}}}}
+\newcommand{\res}[1]{\ensuremath{|_{#1}}}
+\newcommand{\suchthat}{\ensuremath{\mid}}  % (new notation)
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                      ifthenelse                             %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Use the \todo command to make notes of things to fix. 
+%% Apply italics or bold or caps for emphasis as needed, e.g.,
+%%
+%%     \todo{(wjd) FIX THE NEXT LINE!}
+%%     \todo{(wjd) \emph{Revise the paragraph above}}
+%%
+   \newboolean{todos}
+   \setboolean{todos}{true}  % set to true to include TODO statements
+%   \setboolean{todos}{false}  % set to false to exclude TODO statements
+%% INCLUDE TODO ITEMS by commenting out `\setboolean{todos}{false}`
+%% OMIT TODO ITEMS by uncommenting `\setboolean{todos}{false}`:
+%%   \setboolean{todos}{false}
+%%
+   \newcommand{\todo}[1]{\ifthenelse{\boolean{todos}}{%
+       ~\vskip0.1mm\noindent {\bf To do:} #1\vskip2mm}{}}
+%%
+%% optionally include everything (or just important parts)
+   \newboolean{long}
+   \setboolean{long}{true}  % set to true to include everything
+%   \setboolean{long}{false}  % set to false for the condensed version
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %------------------------------------------------------------
 % Theorem like environments
@@ -118,6 +226,7 @@ MRREVIEWER = {R. S. Pierce},
 \newtheorem{example}{Example}
 \newtheorem{exercise}{Exercise}
 \newtheorem{lemma}{Lemma}
+\newtheorem*{lem}{Lemma}
 \newtheorem{fact}{Fact}[section]
 \newtheorem{notation}{Notation}
 \newtheorem{problem}{Problem}
@@ -132,14 +241,16 @@ MRREVIEWER = {R. S. Pierce},
 \numberwithin{equation}{section}
 %--------------------------------------------------------
 %(wjd) A few useful macros 
+\newcommand{\bx}{\ensuremath{\mathbf{x}}}
+\newcommand{\by}{\ensuremath{\mathbf{y}}}
+\newcommand{\bz}{\ensuremath{\mathbf{z}}}
 \renewcommand{\phi}{\ensuremath{\varphi}}
-\newcommand{\core}{\ensuremath{\operatorname{core}}}
-\newcommand{\Clo}{\ensuremath{\operatorname{Clo}}}
-\newcommand{\Sub}{\ensuremath{\operatorname{Sub}}}
 \newcommand{\<}{\ensuremath{\langle}}
 \renewcommand{\>}{\ensuremath{\rangle}}
 \newcommand{\lb}{\ensuremath{\llbracket}}
 \newcommand{\rb}{\ensuremath{\rrbracket}}
+\newcommand{\bB}{\ensuremath{\mathbf{B}}}
+\newcommand{\bc}{\ensuremath{\mathbf{c}}}
 %(wjd) I think it's better to use \lb H, G \rb than [H,G], 
 %      since single brackets typically denotes the commutator.
 %      If you don't like this, uncomment the next two lines and
@@ -161,10 +272,22 @@ MRREVIEWER = {R. S. Pierce},
 %      change this back by commenting the next line.
 \renewcommand{\unlhd}{\ensuremath{\trianglelefteqslant}}
 
+\newcommand{\ba}{\ensuremath{\mathbf{a}}}
+\newcommand{\bb}{\ensuremath{\mathbf{b}}}
+\newcommand{\bt}{\ensuremath{\mathbf{t}}}
+\newcommand{\bu}{\ensuremath{\mathbf{u}}}
+\newcommand{\bv}{\ensuremath{\mathbf{v}}}
+\newcommand{\bw}{\ensuremath{\mathbf{w}}}
+\newcommand{\nn}{\ensuremath{\underline{n}}}
+\newcommand{\mm}{\ensuremath{\underline{m}}}
+\newcommand{\kk}{\ensuremath{\underline{k}}}
 
 \newcommand{\defn}[1]{{\it #1}}
-\newcommand{\Peter}{P{\'e}ter}
-\newcommand{\Palfy}{P\'alfy\xspace}
+\newcommand{\Peter}{P\'{e}ter\xspace}
+\newcommand{\Palfy}{P\'{a}lfy\xspace}
+\newcommand{\Pudlak}{Pudl\'ak\xspace}
+\newcommand{\PP}{P\'{a}lfy-Pudl\'{a}k\xspace}
+\newcommand{\PAP}{P\'{a}lfy\ and Pudl\'{a}k\xspace}
 \newcommand{\N}{\ensuremath{\mathbb{N}}}
 \newcommand{\bA}{\ensuremath{\mathbf{A}}}
 \newcommand{\bS}{\ensuremath{\mathbf{S}}}
@@ -172,8 +295,16 @@ MRREVIEWER = {R. S. Pierce},
 \newcommand{\sP}{\ensuremath{\mathscr{P}}}
 \newcommand{\sS}{\ensuremath{\mathcal{S}}}
 %\newcommand{\ker}{\ensuremath{\operatorname{ker}}}
-\newcommand{\Con}{\ensuremath{\operatorname{Con}}}
-\newcommand{\Eq}{\ensuremath{\operatorname{Eq}}}
+
+\DeclareMathOperator{\typ}{typ}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Eq}{Eq}
+\DeclareMathOperator{\Cg}{Cg}
+\DeclareMathOperator{\Con}{Con}
+\DeclareMathOperator{\Sub}{Sub}
+\DeclareMathOperator{\Pol}{Pol}
+\DeclareMathOperator{\Clo}{Clo}
+\newcommand{\core}{\ensuremath{\operatorname{core}}}
 
 \newcommand{\rel}{\ensuremath{\mathrel}}
 \newcommand{\ralpha}{\ensuremath{\mathrel{\alpha}}}
@@ -183,8 +314,8 @@ MRREVIEWER = {R. S. Pierce},
 \newcommand{\rrho}{\ensuremath{\mathrel{\tau}}}
 \newcommand{\rtau}{\ensuremath{\mathrel{\tau}}}
 \newcommand{\rtheta}{\ensuremath{\mathrel{\theta}}}
-\newcommand{\Pol}{\ensuremath{\operatorname{Pol}}}
 \newcommand{\sansC}{\ensuremath{\mathsf{C}}}
+\newcommand{\hatmap}{\ensuremath{\widehat{\phantom{x}}}} %bd ok
 
 \newcommand{\meet}{\ensuremath{\wedge}}
 \newcommand{\join}{\ensuremath{\vee}}
@@ -203,34 +334,69 @@ MRREVIEWER = {R. S. Pierce},
 \begin{document}
 \title{On a problem of P\'{a}lfy and Saxl}
 \author{William DeMeo}
-\date{November 13, 2013}
+%\date{November 13, 2013}
+%\date{14 Feb 2016}
+\date{\today}
 
 \maketitle
 \begin{abstract}
-If $\bA$ is a finite algebra %% in a Taylor variety 
-with $\Con \bA \cong M_n$, $n\geq 4$, and if three nontrivial congruences 
-of $\bA$ pairwise permute, does every pair of congruences of $\bA$ permute?
-For algebras satisfying a nontrivial idempotent Malcev
-condition, the answer is yes. What about more generally? In this note, 
-we first resolve the problem for algebras in Taylor varieties 
-and then describe an approach that might help to solve
-the more general problem.
+Among the oldest open questions in universal algebra is the following: which finite lattices are
+congruence lattices of finite algebras?  In this note we consider a related problem about a special class of
+lattice, namely, the ``diamonds'' $M_n$, which are height-two modular lattice with $n$ atoms.
+In \cite{PalfySaxl}, \Peter \Palfy and Jan Saxl used deep results from group theory to prove that if a finite
+algebra has a congruence lattice isomorphic to $M_n$ ($n>3$), and at least three atoms
+pairwise permute, then $n-1$ is a power of a prime number.
+In the process, they also showed that if a $G$-set has an $M_n$ ($n>3$) congruence lattice and
+at least 3 atoms pairwise permute, then all congruences permute.
+
+\Palfy and Saxl leave open the following question: if a finite algebra has congruence
+lattice $M_n$ ($n>3$), and if at least 3 atoms pairwise permute, does it follow that
+all congruences permute? In this note, we present some of the background required understand 
+\Palfy and Saxl's question, including some tame congruence theory that dispenses with an
+``easy'' case of the question.  
+%% (Specifically, if the algebra in question is not \emph{strongly abelian}, then it has a 
+%% Malcev term operation, so all congruences permute.)  
+We then discuss a strategy that we hope will lead to a solution in the harder case. 
+%% lead to a solution in the harder (strongly abelian) case. 
 \end{abstract}
 
 \section{Introduction}
-In the paper \cite{PalfySaxl}, \Peter\ \Palfy\ and Jan Saxl pose 
-the following 
+This paper mainly concerns lattices of the form displayed in Figure~\ref{fig:Mn}.
+\begin{figure}[!h]
+      \begin{tikzpicture}[scale=1.2]
+      \node (bot) at (0,0)  [draw, circle, inner sep=\dotsize] {};
+      \node (a1) at (-1,1)  [draw, circle, inner sep=\dotsize] {};
+      \node (a2) at (-.5,1)  [draw, circle, inner sep=\dotsize] {};
+      \node (a3) at (0,1)  [draw, circle, inner sep=\dotsize] {};
+      \node (a4) at (.7,1) {}; % [draw, circle, inner sep=\dotsize] {};
+      \node (b) at (1,1)  [draw, circle, inner sep=\dotsize] {};
+      \node (top) at (0,2)  [draw, circle, inner sep=\dotsize] {};
+      %% \draw (a1) node [left] {$\alpha_1$};
+      %% \draw (a2) node [right] {$\alpha_2$};
+      \draw (a4) node [left] {$\cdots$};
+      %% \draw (b) node [right] {$\alpha_n$};
+      %% \draw (bot) node [below] {$0_X$};
+      %% \draw (top) node [above] {$1_X$};
+      \draw[semithick] (bot)--(a1)--(top)--(a2)--(bot)--(a3)--(top)--(b)--(bot);
+      %% \draw[semithick] (bot)--(a1)--(top)--(a2)--(bot)--(b)--(top);
+      \end{tikzpicture}
+  \caption{The lattice $M_n$ has $n$ ``atoms'' for a total of $n+2$ elements.}
+  \label{fig:Mn}
+\end{figure}
+In the paper \cite{PalfySaxl}, \Peter \Palfy and Jan Saxl pose 
+the following: 
 \begin{quote}
   {\scshape Problem.}
   Let $\bA$ be a finite algebra with $\Con \bA \cong M_n$, $n\geq
   4$. If three nontrivial congruences of $\bA$ pairwise permute, does it follow
   that every pair of congruences of $\bA$ permute?
 \end{quote}
-In this note we answer this question affirmatively for a special class of
-algebras---namely, those that live in a \defn{Taylor variety}, which is a variety 
-satisfying a nontrivial idempotent Malcev condition.  Thereafter, we consider
-one approach to the general case that seems promising.
-
+In this note, we answer this question affirmatively for a special class of
+algebras. 
+Specifically, if the algebra in question is not \emph{strongly abelian}, then it has a 
+Malcev term operation, so all congruences permute.  
+We also give some examples to guide intuition, and suggest some 
+possible strategies for handling the harder (strongly abelian) case. 
 
 \subsection{Notation}
 Throughout, $X$ denotes a finite set and $\Eq(X)$ denotes the lattice of
@@ -241,26 +407,33 @@ $X/\alpha$ denotes the set of all equivalence classes of $\alpha$. That is,
 x/\alpha = \{y\in X : x \mathrel{ \alpha } y\} \quad \text{ and } \quad
 X/\alpha = \{x/\alpha : x\in X \}.
 \]
+The largest and smallest equivalence relations on $X$ are denoted by $1_X = X^2$
+and $0_X = \{(x,x) : x \in X\}$, respectively.
+We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
+on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
+
+
 We often refer to equivalence classes as
-``blocks.''  The number of blocks of $\alpha$ is $|X/\alpha|$.
-%% and we denote by $\nb{\alpha}$ the number of blocks of the
-%% relation $\alpha$. That is, $\nb{\alpha} = |X/\alpha|$, and we 
-%% $\nb{\alpha} = |X/\alpha|$, and we 
-%% may use either $\nb{\alpha}$ or $|X/\alpha|$ to denote the number of 
-%% blocks of $\alpha$.
-For a given $\alpha\in \Eq(X)$ the map 
- $\phi_\alpha: x \mapsto x/\alpha$ is a
+``blocks.''  
+For a given $\alpha\in \Eq(X)$, the number of blocks 
+of $\alpha$ is $|X/\alpha|$. The map $\phi_\alpha: x \mapsto x/\alpha$ is a
 function from $X$ into the power set $\sP(X)$
-with kernel $\ker \phi_\alpha = \alpha$. 
-The \emph{block-size function} $x \mapsto |x/\alpha|$ is a function from $X$ into $\{1,2,\dots, |X|\}$.
+with kernel $\ker \phi_\alpha = \alpha$.
+The \emph{block-size function} $x \mapsto |x/\alpha|$ is a function from $X$ 
+into $\{1,2,\dots, |X|\}$. 
 
 We will often abuse notation and identify an equivalence relation with the
-corresponding partition of the set $X$.  For example, we identify
-the relation 
+corresponding partition of the set $X$.  For example, if $X = \{0,1,2,3,4\}$, 
+we identify the relation 
 \[
-\alpha = \{(0,0), (1,1), (2,2), (3,3), (0,1), (1,0), (2,3), (3,2)\}
+\alpha = \{(0,0), (1,1), (2,2), (3,3), (4,4), (0,1), (1,0), (2,3), (3,2)\}% \subseteq X^2
 \]
-with the partition $|0,1|2,3|$, and will even write $\alpha = |0,1|2,3|$. 
+with the partition $|0,1|2,3|4|$, and will even write $\alpha = |0,1|2,3|4|$. 
+Using this example to illustrate the notation above, we have
+$\varphi_\alpha(0) = 0/\alpha = \{0,1\} = 1/\alpha = \varphi_\alpha(1)$.
+Similarly, $\varphi_\alpha(2) = \{2,3\}= \varphi_\alpha(3)$, and 
+$\varphi_\alpha(4) = 4/\alpha = \{4\}$.  Thus, we have $X/\alpha = \{\{0,1\}, \{2,3\}, \{4\}\}$, so
+$|X/\alpha| = 3$ in this case.
 
 We say that $\alpha$ has \emph{uniform blocks} if all blocks of  $\alpha$ have
 the same size; or, equivalently, the block-size function is constant: for all 
@@ -293,44 +466,74 @@ iff $|x/\alpha||y/\beta| = |X|$ (for all $x$ and $y$).
 If $\alpha$ and $\beta$ are binary relations on $X$, then the relation
 \begin{equation}
   \label{eq:7}
-\alpha \circ \beta = \{(x,y) \in X^2: (\exists z)\, x \ralpha z
-\rbeta y\}
+\alpha \circ \beta = \{(x,y) \in X^2: \exists z\,.\, x \ralpha z \rbeta y\}
 \end{equation}
-is called the \emph{composition of $\alpha$ and $\beta$}. If 
-$\alpha \circ \beta = \beta \circ \alpha$ then we call $\alpha$ and $\beta$ 
+is called the \emph{composition of $\alpha$ and $\beta$}. 
+Obviously, $(x,y) \in \alpha\circ \beta$ iff $(y,x) \in \beta\circ \alpha$.
+If $\alpha \circ \beta = \beta \circ \alpha$, then we call $\alpha$ and $\beta$ 
 \emph{permuting} relations and we say that $\alpha$ and $\beta$ \emph{permute}. 
-It is not hard to see that $\alpha \circ \beta \subseteq \alpha \join \beta$
-with equality if and only if $\alpha$ and $\beta$ permute.
 
+In this paper, we are mostly concerned with the set 
+$\Eq(X)$ of equivalence relations on $X$. 
+$\Eq(X)$ is a lattice if we define, 
+for $\alpha, \beta \in \Eq(X)$, the meet $\alpha\meet \beta$
+to be the usual intersection of sets $\alpha$ and $\beta$ and the join 
+$\alpha \join \beta$ to be the equivalence relation generated by
+$\alpha$ and $\beta$, that is, the smallest equivalence relation containing both 
+$\alpha$ and $\beta$.  It is not too difficult to prove that 
+$\alpha \join \beta$ is equal to 
+\[
+\alpha \join \beta = (\alpha\circ \beta) \cup 
+(\alpha\circ \beta \circ \alpha) \cup
+(\alpha\circ \beta \circ \alpha \circ \beta) \cup \cdots
+\]
+and that 
+$\alpha \circ \beta \subseteq \alpha \join \beta$,
+with equality if and only if $\alpha$ and $\beta$ permute.
+Note that, if $\alpha$ and $\beta$ do not permute, then 
+the relation $\alpha\circ \beta$ is not symmetric, and therefore 
+is not an equivalence relation.
+Nonetheless, we will abuse the notation
+$x/\alpha\circ \beta$ in such cases, and define
+\begin{equation*}
+  %% \label{eq:10}
+x/\alpha\circ \beta:= \{y\in X : \exists z\,.\, x \ralpha z \rbeta y\}
+\;\text{ and }\;
+\alpha\circ \beta\backslash x:= \{y\in X : \exists z\,.\, y \ralpha z \rbeta x\}.
+\end{equation*}
+Although these are not necessarily
+equivalence classes, they are well-defined subsets of $X$. 
+%% the two sets in~(\ref{eq:10}) are equal.
 From the definition (\ref{eq:7}) it is clear that %for every $x\in X$ 
 $(x,y) \in \alpha\circ \beta$ if and only if
 $y \in z/\beta$ for some $z\in x/\alpha$.  Thus, for every $x\in X$,
   \begin{equation}
     \label{eq:1}
-x/(\alpha\circ \beta) = \bigcup_{z \in x/\alpha} z/\beta.
+x/\alpha\circ \beta = \bigcup_{z \in x/\alpha} z/\beta.
 %x/(\alpha\circ \beta) = \coprod_{y \in x/\alpha} y/\beta 
   \end{equation}
+ Furthermore,
+$\alpha$ and $\beta$ are permuting equivalence relations 
+iff for each $x\in X$ we have $x/\alpha\circ \beta = \alpha\circ \beta\backslash x$.
 
-
-The largest and smallest equivalence relations on $X$ are denoted by $1_X = X^2$
-and $0_X = \{(x,x) : x \in X\}$, respectively.
-
-We say that $\alpha$ and $\beta$ are \emph{complementary} equivalence relations
-on $X$ provided $\alpha \join \beta = 1_X$ and $\alpha \meet \beta = 0_X$.
+We conclude this subsection with one more definition
+that is nonstandard but is quite useful for our application.
 If $\Gamma$ is a set of equivalence relations, 
 we say that $\Gamma$ consists of 
 \acfi{pppc}
 %\pppc %{\it \ac{PPPC}}
 %% {\it \acl{PPPC}} 
 if the following conditions hold for all $\gamma \neq \delta$ in $\Gamma$:
-(i) $\gamma \circ \delta = \delta \circ \gamma$;  
-(ii) $\gamma \meet \delta = 0_X$;  
-(iii) $\gamma \join \delta = 1_X$.
+\begin{enumerate}[(i)]
+\item $\gamma \join \delta = 1_X$;
+\item $\gamma \meet \delta = 0_X$;  
+\item $\gamma \circ \delta = \delta \circ \gamma$.  
+\end{enumerate}
 
 
-\input{centralizers.tex}
 
-\section{Basic observations}
+
+\subsection{Basic observations}
 %% denote the relation $(\forall x)(\forall y)(x,y) \in 0_X \leftrightarrow x=y$.
 \begin{lemma}
 \label{lem:1}
@@ -419,11 +622,10 @@ for all $x\in X$. This proves $\alpha\circ \beta = 1_X$, as desired.
 \end{proof}
 
 \begin{proof}[Proof of Cor.~\ref{cor:1}]
-Let $\alpha_1, \alpha_2, \alpha_3$ be pairwise permuting equivalence relations
-on $X$.
+Let $\alpha_1, \alpha_2, \alpha_3$ be pairwise complementary equivalence relations.
 
 \noindent ($\Rightarrow$)
-Assume $\alpha_1, \alpha_2, \alpha_3$ are \pppc. Then, by Lemma~\ref{lem:1},
+Assume $\alpha_1, \alpha_2, \alpha_3$ are pairwise permuting (hence, \pppc). Then, by Lemma~\ref{lem:1},
 \begin{align*}
 |x/\alpha_1|\, |x/\alpha_2| &= |X|\\
 |x/\alpha_1|\, |x/\alpha_3| &= |X|\\
@@ -514,6 +716,564 @@ congruence lattice.
 %% such cases that the closure of the lattice will always contain some 
 %% $\beta < \theta < 1_X$.
 
+\subsection{Clones and tolerances}
+Let $\bA =  \<A, \dots \>$ be an algebra with congruence lattice $\Con\<A, \dots \>$.
+Recall that a \emph{clone} on a non-void set $A$ is a set of operations on $A$
+that contains the projection operations and is closed under compositions.
+The \emph{clone of term operations} of the algebra $\bA$, denoted by $\Clo \bA$,
+is the smallest clone on $A$ containing the basic operations of $\bA$.
+The \emph{clone of polynomial operations} of $\bA$, denoted by
+$\Pol \bA$, is the clone generated by the basic operations
+of $\bA$ and the constant unary maps on $A$. The set of $n$-ary members of
+$\Pol \bA$ is denoted by $\Pol_n \bA$.
+It often simplifies matters to shift our attention away from the 
+basic operations of $\bA$ and focus instead on $\Clo\bA$ or $\Pol\bA$, or even 
+$\Pol_1\bA$.  If our primary interest is the congruence lattice $\Con \bA$,
+this is not a limitation because of the following fact:
+$\Con\<A, \dots \>  = \Con \<A, \Clo \bA\> = \Con \<A, \Pol \bA\>=
+\Con \<A, \Pol_1 \bA\>$. 
+For proof, see e.g.~\cite[Theorem~4.18]{alvi:1987}.
+
+A reflexive, symmetric, compatible binary relation $T\subseteq A^2$ is called a 
+\defn{tolerance of $\bA$}.  
+Any congruence relation of an algebra is a tolerance, and the 
+transitive closure of any tolerance is a congruence relation.
+We call a tolerance of $\bA$ \defn{connected} if its transitive closure is all of $A^2$.
+As a compatible and binary relation, 
+a tolerance induces a subalgebra of $\bA^2$, so we often denote a
+tolerances with boldface letters, as in $\bT \leq \bA^2$.  If we have a pair 
+$(\bu, \bv) \in A^m\times A^m$ of $m$-tuples of $A$, then we write  
+$\bu \mathrel{\underline{\bT}} \bv$ just in case $\bu(i) \mathrel{\bT} \bv(i)$ for all $i\in \mm$. 
+
+\subsection{Centralizers and Abelian Algebras}
+We will need some basic facts about abelian algebras. Let $\bA = \<A, F^{\bA}\>$ be an algebra.
+%% and let $\Clo\bA$ denote the clone of term operations of $\bA$; that is, 
+%% $\Clo\bA$ is the smallest set of operations on $\bA$ that includes the basic operations of 
+%% $\bA$ and the projections, and that is closed under general composition.
+Suppose $\bS$ and $\bT$ are tolerances on $\bA$.  An \defn{$\bS,\bT$-matrix} 
+is a $2\times 2$ array of the form
+\[
+\begin{bmatrix*}[r] t(\ba,\bu) & t(\ba,\bv)\\ t(\bb,\bu)&t(\bb,\bv)\end{bmatrix*},
+\]
+where $t$, $\ba$, $\bb$, $\bu$, $\bv$ have the following properties:
+\begin{enumerate}[\rm(i)]
+\item $t\in \Clo_{\ell + m}\bA$,
+\item $(\ba, \bb)\in A^\ell\times A^\ell$ and $\ba \mathrel{\underline{\bS}} \bb$,
+\item $(\bu, \bv)\in A^m\times A^m$ and $\bu \mathrel{\underline{\bT}} \bv$.
+\end{enumerate}
+Let $\delta$ be a congruence relation of $\bA$.
+If the entries of every $\bS,\bT$-matrix satisfy
+\begin{equation}
+  \label{eq:22}
+t(\ba,\bu) \mathrel{\delta} t(\ba,\bv)\quad \iff \quad t(\bb,\bu) \mathrel{\delta} t(\bb,\bv),
+\end{equation}
+then we say that $\bS$ \defn{centralizes $\bT$ modulo} $\delta$ and we write 
+$\sansC(\bS, \bT; \delta)$.
+That is, $\sansC(\bS, \bT; \delta)$ holds iff 
+(\ref{eq:22}) holds \emph{for all}
+$\ell$, $m$, $t$, $\ba$, $\bb$, $\bu$, $\bv$ satisfying properties (i)--(iii).
+The condition $\sansC(\bS, \bT; 0_{\bA})$ is sometimes called the 
+\defn{$\bS, \bT$-term condition}, and when it holds we say  that
+$\bS$ \defn{centralizes} $\bT$, and write
+$\sansC(\bS, \bT)$.
+A tolerance $\bT$ is called \defn{abelian} if $\sansC(\bT, \bT)$.
+An algebra $\bA$ is called \defn{abelian} if $1_\bA$ is abelian.
+
+\begin{remark}
+An algebra $\bA$ is abelian iff $\sansC(1_\bA, 1_\bA)$ iff
+\ifthenelse{\boolean{long}}{%
+\[
+\forall \ell \in \{0,1,2,\dots \}, 
+\quad \forall m \in  \{1,2,\dots \},
+\quad \forall t\in \Clo_{\ell + m}\bA,
+\quad \forall (a, b)\in A^\ell\times A^\ell,
+\]
+\[
+\ker t(a, \cdot)=\ker t(b, \cdot).
+\]}{
+\[
+\forall \ell, m \in \N,
+%% \quad \forall m \in  \{1,2,\dots \},\]
+\quad \forall t\in \Clo_{\ell + m}\bA,
+\quad \forall (\ba, \bb)\in A^\ell\times A^\ell,
+\]
+\[
+\ker t(\ba, \cdot)=\ker t(\bb, \cdot).
+\]}
+\end{remark}
+
+\subsection{Facts}
+We now collect some useful facts about centralizers of congruence relations.
+These facts are well-known and easy to prove. (See, for example,~\cite{MR3076179}.)
+\begin{lemma}
+\label{lem:centralizers}
+Let $\bA$ be an algebra with congruences 
+$\alpha, \beta, \gamma, \alpha', \beta' \in \Con(\bA)$, and let 
+$\bB$ be a subalgebra of $\bA$. Then,
+\begin{enumerate}
+\item \label{fact:centralizing_over_meet}
+  $\sansC(\alpha, \beta; \alpha \meet \beta)$;
+\item \label{fact:centralizing_over_meet2}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha, \beta; \gamma')$, then
+  $\sansC(\alpha, \beta; \gamma \meet \gamma')$;
+\item \label{fact:centralizing_over_join1}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha', \beta; \gamma)$, then
+  $\sansC(\alpha \join \alpha', \beta; \gamma)$;
+%% \item \label{fact:centralizing_over_join2}
+%%   if $\sansC(\alpha, \beta; \gamma)$ and $\sansC(\alpha, \beta'; \gamma)$, then
+%%   $\sansC(\alpha, \beta \join \beta'; \gamma)$;
+\item \label{fact:monotone_centralizers1}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\alpha' \leq \alpha$, then 
+  $\sansC(\alpha', \beta; \gamma)$;
+\item \label{fact:monotone_centralizers2}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\beta' \leq \beta$, then
+  $\sansC(\alpha, \beta'; \gamma)$;
+\item \label{fact:dual_monotone_centralizers}
+  if $\sansC(\alpha, \beta; \gamma)$ and $\gamma \leq \gamma'$, then
+  $\sansC(\alpha, \beta; \gamma')$;
+\item \label{item:subalg}
+  if $\sansC(\alpha, \beta; \delta)$ holds in $\bA$, 
+  then $\sansC(\alpha\cap B^2, \beta\cap B^2;\delta\cap B^2)$ holds in $\bB$;
+\item \label{item:factors}
+  if $\delta' \leq \delta$, then $\sansC(\alpha, \beta; \delta)$ holds 
+  in $\bA$ iff $\sansC(\alpha/\delta', \beta/\delta'; \delta/\delta')$
+  holds in $\bA/\delta'$.
+\end{enumerate}
+\end{lemma}
+\begin{remark}
+By (\ref{fact:centralizing_over_meet}), 
+if $\alpha \meet \beta = 0_{\bA}$,  
+then $\sansC(\beta, \alpha)$ and $\sansC(\alpha, \beta)$.
+By (\ref{fact:dual_monotone_centralizers}),
+if an algebra $\bA$ is abelian, 
+then $\sansC(1_\bA, 1_\bA; \theta)$ for all $\theta \in \Con(\bA)$, so
+in this case (\ref{item:factors}) implies that $\sansC(1_{\bA/\theta}, 1_{\bA/\theta})$ for every $\theta \in \Con(\bA)$.
+\end{remark}
+
+\ifthenelse{\boolean{long}}{%
+\begin{lemma}
+\label{lem:triv-clone-implies-abelian}
+If $\Clo\bA$ is trivial (i.e., generated by the projections),
+then $\bA$ is abelian.
+\end{lemma}}{}
+%% (An easy proof of Lemma~\ref{lem:triv-clone-implies-abelian} appears in 
+%% Appendix Section~\ref{sec:proofs-elem-facts}.
+%% It can also be shown that $\bA$ is \emph{strongly abelian} in this case,
+%% but we won't need this.) 
+
+\ifthenelse{\boolean{long}}{%
+If the congruence lattice $\Con(\bA)$ has a 0,1-sublattice of shape
+$M_n$ with $n\geq 3$,
+then $\bA$ is abelian, as the next result shows.\footnote{A
+``0,1-sublattice of shape
+$M_n$ with $n\geq 3$'' is a height-two modular sublattice with top $1_\bA$, bottom
+  $0_\bA$, and at least~3 atoms.}
+For proof, see the Appendix.}{}
+\begin{lemma}
+\label{lem:M3-abelian}
+If $\alpha_1$, $\alpha_2$, $\alpha_3 \in \Con(\bA)$ are pairwise complements,
+then $\sansC(1_\bA, \alpha_i)$ for each $i=1,2,3$.  If, in addition, $\bA$ is
+idempotent with a Taylor term operation, then $\sansC(1_\bA, 1_\bA)$; that is, $\bA$ is abelian.
+\end{lemma}
+
+\ifthenelse{\boolean{long}}{%
+Here is another well known and easily derivable fact:
+$\bA$ is abelian if and only if the diagonal of $\bA \times \bA$ is a class of a
+congruence of $\bA \times \bA$.}{} 
+We denote the diagonal of $A$ by $D(A) := \{(a,a): a \in A\}$. 
+\begin{lemma}
+\label{lem:diagonal}
+An algebra $\bA$ is abelian if and only if there is some $\theta \in \Con (\bA^2)$ that has
+the diagonal set $D(A)$ as a congruence class.
+\end{lemma}
+
+Lemma~\ref{lem:diagonal} can be used to prove that if there is 
+a congruence of $\bA_1 \times \bA_2$ that has the graph of a bijection as a
+block, then both $\bA_1$ and $\bA_2$ are abelian algebras.  This is the content of 
+Lemma~\ref{lem:bijection_abelian}. 
+\ifthenelse{\boolean{long}}{%
+(See Appendix Section~\ref{sec:proofs-elem-facts} for proof.)}{
+(See~\cite{Bergman-DeMeo} for proof.)}
+\begin{lemma}
+  \label{lem:bijection_abelian}
+Suppose $\rho: A_1 \to A_2$ is a bijection and suppose the graph
+$\{(x, \rho x) \mid x \in A_1\}$ is a block of some congruence
+$\beta \in \Con (A_1 \times A_2)$.  Then both $\bA_1$ and $\bA_2$ are abelian.
+\end{lemma}
+
+\subsection{Prelude to tame congruence theory}
+\label{sec:residuation-lemma}
+Suppose $e \in \Pol_1\bA$ is a unary polynomial satisfying $e^2(x) = e(x)$ for
+all $x\in A$.  Define $B=e(A)$ and
+$F_B = \{ef\resB \suchthat f\in \Pol_1\bA\}$, and consider the
+unary algebra $\bB= \<B, F_B\>$.
+(In the definition of  $F_B$, we could have used
+$\Pol \bA$ instead of $\Pol_1\bA$, and then our discussion would not be
+limited to unary algebras.  However, we are mainly concerned with
+congruence lattices, so we lose nothing by restricting the scope in this way.)
+
+\Peter \Palfy and Pavel \Pudlak
+prove in~\cite[Lemma~1]{Palfy:1980} that
+the restriction mapping $\resB$, defined on $\Con\bA$ by
+$\alpha\resB = \alpha \cap B^2$, is a lattice epimorphism of $\Con\bA$ onto $\Con\bB$.
+In~\cite{McKenzie:1983}, Ralph McKenzie
+developed the foundations of what would become tame congruence theory, and
+the \PP\ lemma played a seminal role in this development.  In his presentation
+of the lemma, McKenzie introduced the mapping $\hatmap$ defined on $\Con\bB$ as follows:
+\begin{equation}
+  \label{eq:hatmap}
+\widehat{\beta} = \{(x,y) \in A^2 \suchthat \text{ for all }
+f\in \Pol_1\bA, \, (ef(x), ef(y))\in \beta \}.
+\end{equation}
+Throughout this paper, whenever $\bA = \< A, \dots\>$
+ and $\bB = \< B, \dots\>$ are algebras with $B = e(A)$ for some
+$e^2 = e \in \Pol_1\bA$,  we take 
+$\hatmap \colon \Con\bB \rightarrow \Con\bA$ to mean the map 
+defined in~(\ref{eq:hatmap}).
+It is not hard to see that the codomain of $\hatmap$ is indeed $\Con\bA$.  For
+example, if $(x,y) \in \widehat{\beta}$ and $g\in \Pol_1\bA$, then for all 
+$f\in \Pol_1\bA$ we have $(efg(x),efg(y)) \in \beta$, so 
+$(g(x),g(y))\in \widehat{\beta}$.
+
+For each $\beta \in \Con\bB$, let $\beta^* = \Cg^\bA(\beta)$.  That is,
+$^*\colon \Con\bB \rightarrow \Con\bA$ is
+the congruence generation operator restricted to the set $\Con\bB$.
+The following lemma concerns the three mappings, $\resB$, $\hatmap$, and $^*$.
+The third statement of the lemma, which follows from the first two,
+will be useful in the later sections of the paper.
+
+\begin{lemma}[Lemma 2.1 of \cite{overalgebras}]\
+\label{lem:residuation}
+\begin{enumerate}[\rm(i)]
+  \item \label{item:residlemma-i} $^*\colon \Con\bB \rightarrow \Con\bA$ is a residuated mapping with
+    residual $\resB$.
+  \item \label{item:residlemma-ii} $\resB \colon  \Con\bA \rightarrow \Con\bB$ is a residuated mapping with
+    residual $\hatmap$.
+\item \label{item:residlemma-iii} For all $\alpha \in \Con\bA$, for all $\beta \in \Con\bB$,
+\[
+\beta = \alpha\resB \quad \Longleftrightarrow  \quad
+\beta^* \leq \alpha \leq \widehat{\beta}.
+\]
+In particular,
+$\beta^*\resB = \beta = \widehat{\beta}\resB$.
+  \end{enumerate}
+\end{lemma}
+The proof is straightforward once we recall the definition of a residuated mapping.
+However, as we will only make use of item (iii), we relegate the proof of 
+Lemma~\ref{lem:residuation} to Section~\ref{sec:residuation-lemma-1} of the appendix.
+
+The lemma above was inspired by the two approaches to
+proving~\cite[Lemma~1]{Palfy:1980}.  In the original paper $^*$ is used, while
+McKenzie uses the $\hatmap$ operator.  Both $\beta^*$ and
+$\widehat{\beta}$ are mapped onto $\beta$ by the restriction map $\resB$, so
+the restriction map is indeed onto $\Con\bB$.
+By combining the two approaches, our version of the lemma highlights 
+the fact that the interval 
+\[
+\lb\beta^*, \widehat{\beta}\rb =
+\{\alpha \in \Con\bA \suchthat \beta^* \leq \alpha \leq \widehat{\beta}\}
+\]
+is precisely the set of congruences for
+which $\alpha\resB = \beta$.  In other words, the
+$\resB$-inverse image of $\beta$ is
+$\lb\beta^*, \widehat{\beta}\rb$.
+This fact plays a central role in the
+theory developed in this  paper.
+For the sake of completeness, we conclude this section by
+verifying that~\cite[Lemma~1]{Palfy:1980} can be obtained from the lemma above.
+\begin{corollary}%bd [cf.~Lemma 1 of \cite{Palfy:1980}]
+[cf.~{\cite[Lemma 1]{Palfy:1980}}]
+The mapping  $\resB \colon  \Con\bA \rightarrow \Con\bB$ is onto and preserves meets and joins.
+\end{corollary}
+\begin{proof}
+  Given $\beta\in \Con\bB$, each $\theta\in \Con\bA$ in the interval 
+  $\lb \beta^*, \widehat{\beta}\rb$ is mapped to $\theta\resB = \beta$, so $\resB$ is clearly
+  onto.  That $\resB$ preserves meets is obvious, so we just check that $\resB$ is
+  join preserving.  Since $\resB$ is order preserving, we have, for all 
+  $S \subseteq \Con\bA$,
+  \[
+  \Join \theta\resB \leq \bigl(\Join \theta\bigr)\resB,
+  \]
+where joins are over all $\theta \in S$.  The opposite inequality follows
+from~(\ref{eq:resid2}) above. Indeed, by~(\ref{eq:resid2}) we have
+\[
+\bigl(\Join \theta\bigr)\resB \leq \Join \theta\resB
+\quad \Longleftrightarrow \quad
+\Join \theta \leq \bigl(\Join \theta\resB \bigr)\!\widehat{\phantom{X}}
+%%wjd: yes, this is fine (and I'll change it below as well).
+\]
+and the last inequality holds by another application of~(\ref{eq:resid2}): if $\eta \in S$, then
+\[
+\eta \leq \bigl(\Join \theta\resB\bigr)\!\widehat{\phantom{X}}
+\quad \Longleftrightarrow \quad
+\eta\resB \leq \Join \theta\resB.
+\]
+\end{proof}
+
+\section{Tame Congruence Theory}
+In this section we review some basic definitions and results of \emph{tame congruence theory},
+as developed by David Hobby and Ralph McKenzie in \cite{HM:1988}. 
+We then remark on some consequences of this theory that is useful for our application.
+In particular, we will see that if $\bA$ is a finite algebra whose
+congruence lattice is $M_n$, for some $n>2$, then $\bA$ is Abelian. 
+(Note how this improves upon~\ref{lem:M3-abelian}.)
+Moreover, we will see that when $n-1$ is not a prime power, 
+$\Con \bA \cong M_n$ implies that $\bA$ is \emph{strongly Abelian}.
+
+\subsection{Tight lattices} In this section we define the class of ``tight'' lattices
+(\cite[Definition 1.6]{HM:1988}) and the class of ``tame'' congruences. 
+Later we apply these concepts to congruence lattices of shape $M_n$.
+
+\begin{definition}
+Let $L$ be any lattice.
+\begin{enumerate}
+\item 
+By a \defn{meet endomorphism} of $L$ we mean a function 
+$\mu : L \to L$ satisfying, for all $x, y \in L$,
+$\mu(x\meet y) = \mu(x) \meet \mu(y)$.
+A \defn{join endomorphism} is defined dually.
+\item Departing from standard terminology, 
+we call a function $\mu: L \to L$ \defn{increasing}
+iff $\mu(x) \geq x$ for all $x in L$, and 
+\defn{strictly increasing}
+if $\mu(x) > x$ for all $x\in L$ except the largest element of $L$.
+The concepts of \defn{decreasing} and of \defn{strictly decreasing}
+function on $L$ are defined dually.
+\item By a \defn{polarity} of $L$ we mean a pair $(\sigma, \mu)$ 
+such that $\sigma$ is a decreasing join endomorphism of $L$, $\mu$ 
+is an increasing meet endomorphism of $L$, and
+$\sigma\mu(x) \leq x \leq \mu\sigma(x)$ for all $x$ in $L$.
+%% \item By a \defn{tolerance} of $L$, we mean a reflexive and symmetric subalgebra of 
+%% $L^2$, i.e., a binary relation p С L2 such that for all x, j/, w, v ? L we have : (i) (x, x) ? p\
+%% (ii) (x,y) € p iff (y,x) ? p\ (iii) if (x,y), (w, v) ? p then (xW u^yW v) ? p and
+%% (x Ли,у Av) ? p.
+\end{enumerate}
+\end{definition}
+%% In finite lattices, there are one-to-one correspondences: 
+%% tolerances $\leftrightarrow$ polarities 
+%% $\leftrightarrow$ increasing meet endomorphisms 
+%% $\leftrightarrow$ decreasing join endomorphisms.
+%% (See \cite[Lemma 1.2]{HM:1988}.)
+
+%% \begin{lemma}[Lemma 1.3 of \cite{HM:1988}]
+%% Let $\rho$ be a tolerance of a finite lattice $L$, and let $(\sigma, \mu)$ 
+%% be the associated polarity. The following are equivalent.
+%% A) $\rho$ is connected.
+%% B) There exists a sequence 0 = xo < x\ < • - • < xn = 1 of elements of L (for
+%% some n > 0) with (xi,Xi+i) ? $\rho$ for all i < n.
+%% C) cr is strictly decreasing.
+%% D) /x is strictly increasing.
+%% \end{lemma}
+
+Let $L$ be any lattice with $0$ and $1$. 
+A homomorphism $f: L\to L'$
+is called 0,1-\defn{separating} iff $f^{-1}\{f(0)\} = \{0\}$ ($f$ \emph{separates} 0) and 
+$f^{-1}\{f(1)\}  = \{1\}$ ($f$ \emph{separates} 1). 
+%% To denote that $f$ is a homomorphism with the property just defined,we write / : L '—> I/. 
+We say that $L$ is 0,1-\defn{simple} iff $|L| > 1$ and every 
+nonconstant homomorphism $f : L \to L'$ is 0,1-separating.
+
+\begin{definition}
+A lattice $L$ is called \defn{tight} iff $L$ is finite, 
+$|L| > 1$, and if $\rho$ is any tolerance of $L$ containing $\<0,a\>$ for some $a > 0$, 
+or containing  $\<b,1\>$ for some $b < 1$, then $\rho= L^2$.
+\end{definition}
+
+\begin{lemma}[Lemma 1.7 of \cite{HM:1988}]
+\label{lem:tight}
+A finite lattice $L$ is tight iff $L$ is 0,1-simple and every strictly 
+increasing meet endomorphism of $L$ is constant (i.e., $L^2$ is the only 
+connected tolerance of $L$).
+\end{lemma}
+
+\begin{lemma}[Lemma 1.8 of \cite{HM:1988}]
+For any lattice $L$ with $0$ and $1$, such that $|L| > 1$, the following are
+equivalent.
+\begin{enumerate}
+\item $L$ is 0,1-simple.
+\item $L$ has a largest congruence $\theta \neq L^2$, and this congruence satisfies 
+$1/\theta = \{1\}$ and $0/\theta = \{0\}$.
+\end{enumerate}
+\end{lemma}
+From Lemma~\ref{lem:tight}, it easily follows that for every $n \geq 2$, the lattice 
+$M_n$ is tight. 
+
+%% \begin{definition}[Definition 2.2 of \cite{HM:1988}]
+%% Suppose that $A$ is a nonempty set, $\emptyset \neq U \subseteq A$, 
+%% $\theta \in \Eq(A)$, $f$ is a function with domain $A$,
+%% $h:A^n\to A$ is an $n$-ary operation on $A$, and 
+%% $U_0 \cup \cdots \cup U_{n-1} \subseteq A$, and 
+%% denote by $\underline{U}$ (resp., $U^n$) the usual Cartesian product $U_0 \times \cdots U_{n-1}$
+%% (resp., power $U \times \cdots \times U$).
+%% Define
+%% \begin{enumerate}
+%% \item $\theta\resU := \theta \cap U^2$;
+%% \item $f|_U := \{(x,f(x)) \colon x \in U\}$;
+%% \item $h|_{\underline{U}} := \{(x_0,\dots, x_{n-1}, h(x_0,\dots, x_{n-1})) \colon x_i \in U_i, 0 \leq i<n\}$;
+%% \item $h|_U:= h|_{U^n}$.
+
+%% If $\bA = \<A,\dots\>$ is any algebra with universe $A$, define
+%% \item $(\Pol \bA)|_U := $ the set of all $h|_U$ such that $h\in \Pol_n\bA$ 
+%% for some $n$, and $h(U^n) \subseteq U$;
+%% \item $\bA|_U := \<U, (\Pol\bA)|_U\>$, called the \defn{algebra induced on $U$ by $\bA$} 
+%% (or an \defn{induced algebra of $\bA$}).
+%% \end{enumerate}
+%% \end{definition}
+
+
+
+\subsection{Tame quotients}
+All algebras considered will be assumed to be finite. 
+The concept of a minimal set relative to a pair of congruences is fundamental.
+
+\begin{definition}[Definition 2.5 of \cite{HM:1988}]
+Let $\bA$ be a finite algebra and let $\alpha < \beta$ be two congruences of $\bA$. 
+Define $U_\bA (\alpha, \beta)$ to be the set of all sets of the form 
+$f(A)$ where $f\in \Pol_1\bA$ and $f(\beta)\nsubseteq \alpha$.
+Define $M_\bA (\alpha, \beta)$ to be the set 
+of all minimal members of $U_\bA (\alpha, \beta)$.
+Call the members of $M_\bA (\alpha, \beta)$ the 
+$\alpha,\beta$-\defn{minimal sets} of $\bA$.
+\end{definition}
+\newcommand\Mab{\ensuremath{M_\bA (\alpha, \beta)}}
+Observe that $\Mab$ is non-empty and for each $\alpha,\beta$-minimal set 
+$U$, we have $\alpha|_U \neq \beta|_U$.
+By a \defn{quotient} in a lattice $L$, we mean simply a pair $\<x,y\>$ 
+of elements of $L$ with $x < y$. 
+We often refer to such a pair as ``the quotient $\q{x}{y}$ in $L$.'' 
+A \defn{prime quotient} is a covering relation $x\prec y$ in $L$; that is,  
+if $x\leq z\leq y$, then either $z=x$ or $z=y$.
+The interval lattice $\lb x,y \rb$ associated with a quotient $\q{x}{y}$ 
+is the sublattice of $L$ consisting of all elements $z$ such that 
+$x \leq z \leq y$. 
+
+\begin{definition}
+For a finite algebra $\bA$, a quotient $\qab$
+in $\Con \bA$ is called \defn{tame} if there exists $V \in \Mab$ 
+and a unary $e^2=e \in \Pol_1\bA$ such that $e(A) = V$ and 
+such that $\lb \alpha, \beta \rb \to \lb \alpha\resV, \beta\resV \rb$ 
+is a 0,1-separating lattice homomorphism.
+\end{definition}
+
+\begin{theorem}[Thm.~2.11 of \cite{HM:1988}]
+If $\qab$ is a quotient in $\Con \bA$ such that $\lb \alpha, \beta \rb$ is tight,
+then $\qab$ is tame.
+\end{theorem}
+
+\newcommand{\abmin}{$\alpha, \beta$-minimal\xspace}
+
+Let $\qab$ be a quotient in $\Con\bA$.
+If $A \in \Mab$, then we call $\bA$ \defn{minimal relative to} 
+$\qab$, or simply $\alpha, \beta$-\defn{minimal}.
+\begin{lemma}[Lemma 2.13 of \cite{HM:1988}]
+If $\qab$ is a quotient in $\Con\bA$, then the following hold.
+\begin{enumerate}[(1)]
+\item $\bA$ is \abmin iff for all $f\in \Pol_1\bA$, 
+  either $f$ is a permutation of $\bA$ or $f(\alpha) \subseteq \beta$.
+\item If $\bA$ is \abmin then $\qab$ is tame.
+\item \label{item:1}
+  If $\qab$ is tame and $U \in \Mab$ then the algebra 
+  $\bA|_U$ is $\alpha|_U, \beta|_U$-minimal.
+\end{enumerate}
+In item (\ref{item:1}), ``tameness'' can be replaced by ``there exists 
+$e^2 = e\in \Pol_1\bA$ with $U = e(A)$.''
+\end{lemma}
+
+A finite algebra $\bA$ is called \defn{minimal} if 
+$\bA$ is $0_A, 1_A$-minimal, equivalently, $|A|>1$ and every nonconstant 
+$f\in \Pol_1\bA$ is a permutation. 
+A finite algebra $\bA$ is called \defn{E-minimal} if 
+$|A|> 1$ and every nonconstant $e^2 = e\in \Pol_1\bA$ is
+the identity.
+
+\subsection{The types of tame quotients}
+We are now ready to define and study the five types of tame congruence quotients.
+In this section we delineate the distinct characters of these types, primarily in
+relation to the ``polynomial structure'' of an algebra. Later, we
+consider the congruence lattice of an algebra as a labeled graph, where all of
+the prime quotients are labeled with their respective types. We then consider
+the ways in which this labeling is influenced by the unlabeled congruence lattice,
+construed purely as an abstract lattice.
+
+\begin{definition}[Definition 5.1 of \cite{HM:1988}]\
+  \begin{enumerate}
+\item Let $\qab$ be a tame quotient of congruences in a finite algebra 
+$\bA$. Let $U\in \Mab$.  We define the \defn{type} of $\qab$, 
+written $\typ(\alpha,\beta)$, to be the type of $\bA\resU$ 
+relative to $\q{\alpha\resU}{\beta\resU}$.
+\item
+Let $\q{\gamma}{\lambda}$ be any quotient of congruences in a finite algebra $\bA$. 
+Then we let $\typ\{\gamma, \lambda\}$ denote the set
+$\{\typ(\alpha, \beta) : \gamma \leq \alpha \prec \beta \leq \lambda\}$.
+\item
+Let $\bA$ be any finite algebra. We call $\bA$ \defn{tame} iff the quotient 
+$\q{0_A}{1_A}$ is tame. % (implying that $|A| > 1$). 
+If $\bA$ is tame, we put $\typ \bA = \typ(0_A, 1_A)$.
+\item Let $\bA$ be any finite algebra. By $\typ\{\bA\}$ we denote the set 
+$\typ\{0_A,1_A\}$ of types.
+  \end{enumerate}
+\end{definition}
+
+%% The type of a tame quotient $\qab$ in a finite algebra $\bA$ is well-defined by the
+%% above. To verify this, let Uo and U\ be (a,/?)-minimal sets. According to Theo-
+%% Theorem 2.8 A) and Exercise 2.9 E), there exists an isomorphism between the structures
+%% (Uo,Po\A\Uo,a\Uo,C\u0) and (C/bPolAl^al^,/?!^). Therefore the type of A|^
+%% relative to {pt\un0\ui) is the same for г = 0 and г = 1.
+%% A first corollary of this definition and of our earlier work is worth noting. Recall
+%% that for a tame quotient (a,/3) in A, an (a,/?)-trace is simply any set N such that
+%% for some U G MA(a, /?) and x G C/, we have N = (x//3) r\U Ф (х/а) П СЛ
+%% COROLLARY 5.2. Let (a,/?) be a tame quotient in a unite algebra A.
+%% A) For every (a,/3)-trace N, the algebra M = (A\n)/(cx\n) & a minimal (and
+%% therefore tame) algebra, and typ(a,/3) = typ(M).
+%% B) If typ(a, /3) Ф 1 or if а -< /3, then for every pair of (a, ft)-traces No and N\,
+%% we have No ^ N1 and Mo = Mi, where M{ =
+
+%% The Abelian types are 1 and 2; the non-Abelian types are 3, 4 and 5. The next
+%% theorem summarizes what we have learned thus far about the types, and contains a
+%% new result that has some interesting corollaries. After looking at these corollaries, we
+%% shall begin a study of the non-Abelian types. Recall that a quotient (a, ft) is called
+%% prime iff a -< /?, i.e., /? covers a.
+
+\begin{theorem}[Theorem 5.7 of \cite{HM:1988}] 
+\label{thm:types-tame-quotients}
+Let $\bA$ be a finite algebra.  
+\begin{enumerate}[\rm(1)]
+\item Every prime congruence quotient of $\bA$ is tame.
+\item \label{item:2}
+  For any quotient $\qab$ of $\bA$, the following are equivalent:
+  \begin{enumerate}[\rm(i)]
+  \item $\qab$ is prime and nonabelian.
+  \item $\qab$ is tame and $\typ(\alpha, \beta)\in \{3,4,5\}$.
+  \end{enumerate}
+\item A tame quotient $\qab$ has type 1 iff it is strongly Abelian, and has type 2 
+  iff it is Abelian but not strongly Abelian.
+\item  \label{item:3}
+  For any quotient $\qab$ of $\bA$ that is not strongly Abelian, the following are
+  equivalent:
+  \begin{enumerate}[\rm(i)]
+  \item $\qab$ is tame.
+  \item The interval lattice $\lb\alpha, \beta \rb$ is tight.
+  \item $\lb\alpha, \beta \rb$  is 0,1-simple and complemented.
+  \item  $\lb\alpha, \beta \rb$  admits a 0,1-separating homomorphism onto the congruence 
+    lattice of a vector space. (This homomorphism is essentially unique.)
+  \end{enumerate}
+\end{enumerate}
+\end{theorem}
+
+\subsection{Application to $M_n$}
+%% Let $\bA$ be a finite algebra with congruence lattice $\Con \bA \cong M_n$.
+We first note that, for $n\geq 2$, the lattice $M_n$ 
+is simple and tight.
+%% \begin{lemma}The lattice $M_n$ is tight.\end{lemma}
+Suppose $\bA$ is a finite algebra with $\Con \bA\cong M_n$. 
+Then $\lb 0_A,1_A \rb$ is tight, hence $\q{0_A}{1_A}$ is tame. 
+Since $\q{0_A}{1_A}$ is not prime, by 
+Theorem~\ref{thm:types-tame-quotients}(\ref{item:2}),
+$\typ(0,1) \notin \{3,4,5\}$. Thus, $\bA$ is Abelian.
+Finally, if $\bA$ is Abelian, but not strongly abelian, then by 
+Theorem~\ref{thm:types-tame-quotients}(\ref{item:3}),
+$M_n$ must be isomorphic to the congruence lattice of a vector space, 
+hence $n-1$ is a prime power.
 
 \section{Graphical Compositions}
 Let $X$ be a nonempty set. Given $\alpha$, $\beta$, $\gamma \in \Eq(X)$,
@@ -527,7 +1287,6 @@ W(\alpha, \beta; \gamma) := \{(x,y) \in X^2 : \exists (a, b) \in \gamma
 That is, $(x,y) \in W(\alpha, \beta; \gamma)$ iff there exists $(a,b)\in \gamma$
 such that the relations in Figure~\ref{fig:wsb} hold.
 
-\newcommand\dotsize{1pt}
 
 %\begin{center}
 \begin{figure}[!h]
@@ -808,6 +1567,262 @@ the transtive closure of $\theta_{ij}$ is contained in $L$.\\
 \appendix
 \acresetall
 
+\section{Miscellaneous Proofs}
+\label{sec:proofs-elem-facts}
+\begin{lem} {\bf \ref{lem:triv-clone-implies-abelian}.}
+If $\Clo \bA$ is trivial (i.e., generated by the projections),
+then $\bA$ is abelian.
+\end{lem}
+\begin{proof}
+We want to show $\sansC(1_\bA, 1_\bA)$.  Equivalently, we must show
+that for all $t\in \Clo\bA$ (say, $(\ell+m)$-ary) 
+and all $a, b \in A^\ell$, we have $\ker t(a,\cdot)=\ker t(b,\cdot)$.
+We prove this by induction on the height of the term $t$.  Height-one terms are
+projections and the result is obvious for these.  Let $n>1$ and assume the result
+holds for all terms  of height less than
+$n$.  Let $t$ be a term of height $n$, say, $k$-ary.  Then for some terms 
+$g_1, \dots, q_k$ of height less than $n$ and for some $j\leq k$, we have
+$t = p^k_j [q_1, q_2, \dots, q_k] = q_j$ and since $q_j$ has height less than
+$n$, we have
+\[
+\ker t(a,\cdot)=\ker g_j(a,\cdot) = \ker g_j(b,\cdot)=\ker t(b,\cdot).
+\]\end{proof}
+In fact, it can be shown that $\bA$ is \emph{strongly abelian} in this case. 
+
+\begin{lem}{\bf \ref{lem:M3-abelian}.}
+If $\alpha_1$, $\alpha_2$, $\alpha_3 \in \Con(\bA)$ are pairwise complements,
+then $\sansC(1_\bA, \alpha_i)$ for each $i=1,2,3$.  If, in addition, $\bA$ is
+idempotent and has a Taylor term operation, then $\sansC(1_\bA, 1_\bA)$; that is, $\bA$ is abelian.
+\end{lem}
+\begin{proof}
+  The goal is to prove $\sansC(1_\bA, 1_\bA)$.
+  By Lemma~\ref{lem:centralizers}~(\ref{fact:centralizing_over_meet}), we have
+  $\sansC(\alpha_1, \alpha_2; \alpha_1 \meet \alpha_2)$.  
+  Since $\alpha_1 \meet \alpha_2= 0_\bA$, this means
+  $\sansC(\alpha_1, \alpha_2)$.
+  Similarly, $\sansC(\alpha_3, \alpha_2)$.  Therefore, by 
+  Lemma~\ref{lem:centralizers}~(\ref{fact:centralizing_over_join1}), we have
+  $\sansC(\alpha_1 \join \alpha_3, \alpha_2)$. This is equivalent to 
+  $\sansC(1_\bA, \alpha_2)$, since $\alpha_1 \join \alpha_3 = 1_\bA$. 
+  The same argument \emph{mutatis-mutandis} yields
+  $\sansC(1_\bA,\alpha_1)$ and $\sansC(1_\bA,\alpha_3)$. 
+  Before proceding, note that $\sansC(\alpha_1, \alpha_1)$, by 
+  Lemma~\ref{lem:centralizers}~(\ref{fact:monotone_centralizers1}).
+  Now, if $\bA$ is idempotent and has a Taylor term operation, then
+  by \ref{thm:kearnes-kiss-3.27} we have 
+  $\sansC(\alpha_1 \join \alpha_2,\alpha_1 \join \alpha_2; \alpha_2)$.
+  That is, $\sansC(1_\bA,1_\bA; \alpha_2)$.
+  Similarly, $\sansC(1_\bA,1_\bA; \alpha_3)$.
+  By~\ref{lem:centralizers}~(\ref{fact:centralizing_over_meet2}) then, 
+  $\sansC(1_\bA,1_\bA; \alpha_2 \meet\alpha_3)$. 
+  That is, $\sansC(1_\bA,1_\bA)$.
+\end{proof}
+
+\begin{lem}{\bf\ref{lem:diagonal}.}
+ An algebra $\bA$ is abelian if and only if there is some 
+ $\theta \in \Con (\bA^2)$ that has the diagonal $D(A):= \{(a,a): a \in A\}$ 
+ as a congruence class.
+\end{lem}
+\begin{proof}
+($\Leftarrow$) Assume $\Theta$ is such a congruence.  Fix 
+  $k<\omega$,
+  $t^{\bA}\in \Clo_{k+1}\bA$, 
+  $u, v \in A$, and
+  $\bx, \by \in A^k$.
+  We will prove the implication~(\ref{eq:22}), which in the present context is
+\begin{equation*}
+t^\bA(\bx,u) = t^\bA(\by,u) \quad \Longrightarrow \quad 
+t^{\bA}(\bx,v) = t^{\bA}(\by,v).
+\end{equation*}
+Since $D(A)$ is a class of $\Theta$, we have 
+  $(u,u) \mathrel{\Theta} (v,v)$, and since $\Theta$ is a reflexive relation, we have
+  $(x_i,y_i)  \mathrel{\Theta} (x_i,y_i)$ for all $i$.  Therefore,
+\begin{equation}
+  \label{eq:90}  
+  t^{\bA\times \bA}((x_1,y_1), \dots, (x_k,y_k), (u,u))
+  \mathrel{\Theta}
+  t^{\bA\times \bA}((x_1,y_1), \dots, (x_k,y_k), (v,v)).
+\end{equation}
+  since $t^{\bA \times \bA}$ is a term operation of $\bA\times \bA$.
+  Note that~(\ref{eq:90}) is equivalent to
+  \begin{equation}
+    \label{eq:13}
+    (t^{\bA}(\bx, u), t^{\bA}(\by,u))
+    \mathrel{\Theta}
+    (t^{\bA}(\bx, v), t^{\bA}(\by, v)).
+  \end{equation}
+  If $t^{\bA}(\bx, u)= t^{\bA}(\by, u)$ then 
+  the first pair in~(\ref{eq:13}) belongs to the $\Theta$-class
+  $D(A)$, so the second pair must also belong this $\Theta$-class.
+  That is, $t^{\bA}(\bx, v)= t^{\bA}(\by, v)$, as desired.
+
+  \vskip2mm
+
+  \noindent ($\Rightarrow$) Assume $\bA$ is abelian. We show
+  $\Cg^{\bA^2}(D(A)^2)$ has $D(A)$ as a block.  Assume
+  \begin{equation}
+    \label{eq:16}
+  ((x,x), (c,c')) \in \Cg^{\bA^2}(D(A)^2).
+  \end{equation}
+  It suffices to prove that $c=c'$.  Recall, Malcev's congruence generation
+  theorem states that (\ref{eq:16}) holds iff
+  %$(x,x) \theta (c,c') \in \Cg^{\bA^2}(D(A)^2)$ iff %% for $0\leq i \leq n$ and 
+  %% $0\leq j \leq n-1$, there exist
+  \begin{align*}
+  \exists \,& (z_0,z_0'), (z_1,z_1'), \dots, (z_n,z_n') \in A^2\\
+    \exists \,& ((x_0,x_0'), (y_0,y_0')), ((x_1,x_1'), (y_1,y_1')), \dots, 
+    ((x_{n-1},x_{n-1}'), (y_{n-1},y_{n-1}')) \in D(A)^2\\
+    \exists \, & f_0, f_1, \dots, f_{n-1}\in F^*_{\bA^2}
+  \end{align*}
+  %% \begin{align*}
+  %% (z_i,z_i') &\in A^2\\
+  %% ((x_j,x_j'), (y_j,y_j')) &\in D(A)^2\\
+  %% f_j &\in F^*_{\bA^2}
+  %% \end{align*}
+  such that 
+  \begin{align}
+    \label{eq:70}
+    \{(x, x),(z_1,z_1')\} &= \{f_0(x_0,x_0'), f_0(y_0,y_0')\}\\
+\nonumber
+     \{(z_1,z_1'),(z_2,z_2')\} &= \{f_1(x_1,x_1'), f_1(y_1,y_1')\}\\
+\nonumber
+     & \vdots\\
+    \label{eq:80}
+     \{(z_{n-1},z_{n-1}'),(c, c')\} &= \{f_{n-1}(x_{n-1},x_{n-1}'), f_{n-1}(y_{n-1},y_{n-1}')\}
+ \end{align}
+The notation $f_i\in F^*_{\bA^2}$ means 
+\begin{align*}
+f_i(x, x') &= g_i^{\bA^2}((a_1, a_1'), (a_2, a_2'), \dots, (a_k, a_k'), (x, x'))\\
+&= (g_i^{\bA}(a_1, a_2, \dots, a_k, x), g_i^{\bA}(a_1', a_2', \dots, a_k', x')),
+\end{align*}
+for some $g_i^{\bA} \in \Clo_{k+1}\bA$ and some constants 
+$\ba = (a_1, \dots, a_k)$ and $\ba' = (a_1', \dots, a_k')$ in $A^k$. 
+Now, $((x_i,x_i'), (y_i,y_i'))\in D(A)^2$ implies 
+$x_i=x_i'$, and $y_i=y_i'$, so in fact we have 
+\[
+     \{(z_i,z_i'),(z_{i+1},z_{i+1}')\} = \{f_i(x_i,x_i), f_i(y_i,y_i)\} \quad (0\leq i < n).
+\]
+Therefore, by Equation~(\ref{eq:70}) we have either 
+\[
+     (x,x)= (g_i^{\bA}(\ba, x_0), g_i^{\bA}(\ba', x_0)) \quad \text{ or } \quad 
+     (x,x)= (g_i^{\bA}(\ba, y_0), g_i^{\bA}(\ba', y_0)).
+\]
+Thus, either $g_i^{\bA}(\ba, x_0) =  g_i^{\bA}(\ba', x_0)$ %\quad \text{ or } \quad 
+or $g_i^{\bA}(\ba, y_0) =  g_i^{\bA}(\ba', y_0)$.
+By the abelian assumption, if one of these equations holds, then so does the
+other. This and and Equation (\ref{eq:70}) imply $z_1 = z_1'$.  Applying the same
+argument inductively, we find that $z_i = z_i'$ for all $1\leq i < n$ and so, by
+(\ref{eq:80}) and the abelian property, we have $c= c'$.
+\end{proof}
+
+\begin{lem}{\bf\ref{lem:bijection_abelian}.}
+Suppose $\rho: A_1 \to A_2$ is a bijection and suppose the graph
+$\{(x, \rho x) \mid x \in A_1\}$ is a block of some congruence
+$\beta \in \Con (A_1 \times A_2)$.  Then both $\bA_1$ and $\bA_2$ are abelian.
+\end{lem}
+\begin{proof}
+  Define the relation $\alpha\subseteq (A_1\times A_1)^2$ as follows: for
+  $((a,a'), (b,b')) \in (A_1\times A_1)^2$,
+  \[
+  (a,a')\mathrel{\alpha} (b,b')
+  \quad \iff \quad
+  (a, \rho a') \mathrel{\beta} (b, \rho b')
+  \]
+  We prove that the diagonal $D(A_1)$ is a block of $\alpha$ by showing that
+  $(a, a) \mathrel{\alpha} (b,b')$ implies $b = b'$.
+  Indeed, if $(a, a) \mathrel{\alpha} (b,b')$, then
+  $(a, \rho a) \mathrel{\beta} (b, \rho b')$, which means that
+  $(b, \rho b')$ belongs to the block and
+  $(a, \rho a)/\beta = \{(x, \rho x): x\in A_1\}$.  Therefore,
+  $\rho b  = \rho b'$, so $b = b'$ since $\rho$ is injective.
+  This proves that $\bA_1$ is abelian.
+
+  To prove $\bA_2$ is abelian, we reverse the roles of $A_1$ and $A_2$ in the
+  foregoing argument.  
+  If $\{(x, \rho x) \mid x \in A_1\}$ is a block of $\beta$,
+  then 
+  $\{(\rho^{-1}(\rho x), \rho x) \mid \rho x \in A_2\}$ is a block of $\beta$; that
+  is, $\{(\rho^{-1} y, y) \mid y \in A_2\}$ is a block of $\beta$.  Define 
+  the relation $\alpha\subseteq (A_2\times A_2)^2$ as follows: for
+  $((a,a'), (b,b')) \in (A_2\times A_2)^2$,
+  \[
+  (a,a')\mathrel{\alpha} (b,b')
+  \quad \iff \quad
+  (\rho^{-1}a, \rho a') \mathrel{\beta} (\rho^{-1}b, \rho b').
+  \]
+  As above, we can prove that the diagonal $D(A_2)$ is a block of $\alpha$
+  by using the injectivity of $\rho^{-1}$ to show that $(a, a) \mathrel{\alpha}
+  (b,b')$
+  implies $b = b'$.
+\end{proof}
+
+\subsection{Residuation Lemma}
+\label{sec:residuation-lemma-1}
+\begin{lem}{\bf\ref{lem:residuation}.} (Lem.~2.1 of \cite{overalgebras})\
+\begin{enumerate}[\rm(i)]
+  \item \label{item:residlemma-i} $^*\colon \Con\bB \rightarrow \Con\bA$ is a residuated mapping with
+    residual $\resB$.
+  \item \label{item:residlemma-ii} $\resB \colon  \Con\bA \rightarrow \Con\bB$ is a residuated mapping with
+    residual $\hatmap$.
+\item \label{item:residlemma-iii} For all $\alpha \in \Con\bA$, for all $\beta \in \Con\bB$,
+\[
+\beta = \alpha\resB \quad \Longleftrightarrow  \quad
+\beta^* \leq \alpha \leq \widehat{\beta}.
+\]
+In particular,
+$\beta^*\resB = \beta = \widehat{\beta}\resB$.
+  \end{enumerate}
+\end{lem}
+\begin{proof}
+  We first recall the definition of {\it residuated mapping}.  If $X$ and $Y$
+  are partially ordered sets, and if
+$f\colon  X \rightarrow Y$ and
+$g\colon  Y \rightarrow X$ are order preserving maps, then the following are
+equivalent:
+\begin{enumerate}[(a)]
+\item $f\colon  X \rightarrow Y$ is a {\it residuated mapping} with {\it residual}
+$g\colon  Y \rightarrow X$;
+\item 
+$(\forall  x\in X)(\forall y\in Y) \, f(x) \leq y \iff x \leq g(y)$;
+\item $g\circ f \geq \id_X$ and $f\circ g \leq \id_Y$,
+\end{enumerate}
+where $\id_S$ denotes the identity map on the set $S$.
+The definition says that for each $y\in Y$ there is a unique
+$x\in X$ that is maximal with respect to the property $f(x) \leq y$, and the
+maximum is given by $x = g(y)$.
+Thus, (\ref{item:residlemma-i}) is equivalent to:
+$\forall  \alpha \in \Con\bA,\, \forall  \beta \in \Con\bB$,
+\begin{equation}
+  \label{eq:residuation}
+\beta^* \leq \alpha \iff \beta \leq \alpha\resB.
+\end{equation}
+This is easily verified, as follows:  If
+$\beta^* \leq \alpha$ and $(x,y)\in \beta$, then
+$(x,y) \in \beta^* \leq \alpha$
+and $(x,y) \in B^2$, so $(x,y)\in
+\alpha\resB$.  If $\beta \leq \alpha\resB$ then
+$\beta^* \leq (\alpha\resB)^* \leq \Cg^\bA(\alpha) = \alpha$.
+
+Statement (\ref{item:residlemma-ii}) is equivalent to:
+$\forall \alpha \in \Con\bA, \, \forall \beta \in \Con\bB$,
+\begin{equation}
+  \label{eq:resid2}
+\alpha\resB\leq \beta \iff \alpha \leq \widehat{\beta}.
+\end{equation}
+This is also easy to check.  For, suppose
+$\alpha\resB\leq \beta$ and $(x,y)\in \alpha$. Then $(ef(x), ef(y)) \in \alpha$
+for all $f \in \Pol_1\bA$ and $(ef(x), ef(y)) \in B^2$, therefore,
+$(ef(x), ef(y)) \in \alpha\resB \leq \beta$, so $(x,y) \in \widehat{\beta}$.
+Suppose $\alpha \leq \widehat{\beta}$ and $(x,y) \in \alpha\resB$.
+Then $(x,y) \in \alpha \leq  \widehat{\beta}$, so
+$(ef(x), ef(y)) \in \beta$ for all $f\in \Pol_1\bA$, including $f=\id_A$, so
+$(e(x), e(y)) \in \beta$. But $(x, y) \in B^2$, so $(x, y) = (e(x), e(y)) \in
+\beta$.
+
+Combining~(\ref{eq:residuation}) and~(\ref{eq:resid2}), we obtain statement (\ref{item:residlemma-iii}) of the lemma.
+\end{proof}
+
+
 \section{Example}
 Let $X$ be a set.  It is useful to represent partitions of $X$ as
 lists of lists, and write them as (possibly nonrectangular) arrays, where each
@@ -885,8 +1900,8 @@ where $\alpha_1, \dots, \alpha_5$, and $\beta$ correspond to the following parti
 & \alpha_4 &&\\
   [0 &   7 & 9 & 14]\\
   [1 &   6 & 8 & 15]\\
-  [2 &   5 & 10 & 12]\\
-  [3 &   4 & 11 & 13]\\
+  [2 &   5 & 11 & 12]\\
+  [3 &   4 & 10 & 13]\\
 &&&\\
 &&&\\
 &&&
