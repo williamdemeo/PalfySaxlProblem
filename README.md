@@ -1,5 +1,10 @@
 Palfy-Saxl Problem
 ==================
+
+**Notice:** as of Feb 2016, work on this repository has been suspended.  Work continues on a (temporarily private) bitbucket respository, but the new results will be posted here soon (within the next month or two).
+
+---------------------------------------
+
 This repsitory contains notes on an extension of a method in
 [Werner's paper](https://github.com/williamdemeo/PalfySaxlProblem/raw/master/Werner-PartLatConLat.pdf)
 employing graphical compositions. In the notes I consider how the technique
